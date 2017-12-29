@@ -1,0 +1,57 @@
+{
+  "Id": 0,
+  "Name": "DS.TypeProperty",
+  "Version": "1",
+  "Metadata": "",
+  "Items": [
+    {
+      "Value": {
+        "Id": "1",
+        "Name": "Квартира"
+      },
+      "ValueId": "1"
+    },
+	{
+      "Value": {
+        "Id": "2",
+        "Name": "Дом"
+      },
+      "ValueId": "2"
+    },
+	{
+      "Value": {
+        "Id": "3",
+        "Name": "Земля"
+      },
+      "ValueId": "3"
+    },
+	{
+      "Value": {
+        "Id": "4",
+        "Name": "Коммерческая недвижимость"
+      },
+      "ValueId": "4"
+    },
+	{
+      "Value": {
+        "Id": "5",
+        "Name": "Транспорт"
+      },
+      "ValueId": "5"
+    },
+	{
+      "Value": {
+        "Id": "6",
+        "Name": "Другое"
+      },
+      "ValueId": "6"
+    },
+	{
+      "Value": {
+        "Id": "7",
+        "Name": "Отсутствует"
+      },
+      "ValueId": "7"
+    }	
+  ]
+}

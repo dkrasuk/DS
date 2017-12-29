@@ -1,0 +1,150 @@
+﻿.form-control {
+    min-height: 34px;
+    height:inherit
+}
+
+.table-oly-data-show .dataTables_length,
+.table-oly-data-show .dataTables_filter,
+.table-oly-data-show .dataTables_info,
+.table-oly-data-show .dataTables_paginate,
+.table-oly-data-show table thead {
+    display: none;
+}
+
+.tasks-paremeters-table {
+    width: 100%;
+}
+
+.task-description {
+    min-height: 70px;
+}
+
+.tasks-table {
+    background-color:#fff;
+}
+
+.new-action-data-form {
+    border: 2px solid #e7e7e7;
+    padding-top: 10px;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+}
+
+.pad-l-10 {
+    padding-right: 10px;
+}
+
+.required::after {
+    content: '*';
+    color: red;
+    font-size: 18px;
+    padding-left: 3px;
+}
+
+input.error, 
+textarea.error,
+select.error{
+    border: 1px solid red;
+}
+
+label.error {
+    font-weight: normal;
+    font-size: 12px;
+    color: #a94442;
+    float:right;
+}
+
+table.tasks-table.dataTable tbody > tr > td:first-child {
+    padding: 0;
+}
+
+.dropdown-menu > li > .addition-dropdown-menu > .btn {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+
+    background-color: transparent;
+    width: 100%;
+    text-align: left;
+    border: 0;
+    border-radius: 0;
+    margin-bottom:5px;
+}
+.dropdown-menu > li > .addition-dropdown-menu > .btn:hover, 
+.dropdown-menu > li > .addition-dropdown-menu > .btn:focus {
+    color: #262626;
+    text-decoration: none;
+    background-color: #f5f5f5;
+}
+
+.addition-dropdown-menu .glyphicon.glyphicon-refresh {
+    margin-left: 10px;
+}
+
+.animated.rotate {
+    -webkit-animation:spin 2s linear infinite;
+    -moz-animation:spin 2s linear infinite;
+    animation:spin 2s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+.form-group .select2.select2-container {
+    width:100%
+}
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+ 
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.refresh-task-table-btn {
+    margin-bottom: 0;
+    margin-right: 10px;
+}
+.dataTables_wrapper.dt-bootstrap .dataTables_length label,
+.dataTables_wrapper.dt-bootstrap .dataTables_length .form-control,
+.dataTables_wrapper.dt-bootstrap .dataTables_filter .form-control.input-sm {
+    margin-bottom: 0;
+}
+
+.dataTables_wrapper.dt-bootstrap .dataTables_paginate {
+    padding-top: 5px;
+}
+.dataTables_wrapper.dt-bootstrap .dataTables_processing {
+    display:none;
+    border: none;
+    background-color: transparent;
+}
+
+.workflow-commands-panel .inline-command-panel,
+.workflow-commands-panel .ddl-command-panel{
+    display: inline-block;
+}

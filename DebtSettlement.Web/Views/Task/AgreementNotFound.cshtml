@@ -1,0 +1,17 @@
+﻿@model DebtSettlement.Web.Models.Task.TaskViewModel
+
+@{
+    ViewBag.Title = "Договор не найден";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (@Model == null)
+{
+    <h1 class="text-danger">Ошибка создания задачи.</h1>
+    <h2 class="text-danger">Для создания задачи следует указать корректное значение AgreementId договора </h2>
+}
+else
+{
+    <h1 class="text-danger">Договор не найден.</h1>
+    <h2 class="text-danger">Невозможно создать задачу по договору c AgreementId: @Model.AgreementId </h2>
+}

@@ -1,0 +1,734 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DebtSettlement.Web</name>
+    </assembly>
+    <members>
+        <member name="T:DebtSettlement.Web.AutoMapperConfig">
+            <summary>
+            Class AutoMapperConfig.
+            </summary>
+        </member>
+        <member name="M:DebtSettlement.Web.AutoMapperConfig.RegisterMappings">
+            <summary>
+            Registers the mappings.
+            </summary>
+        </member>
+        <member name="T:DebtSettlement.Web.BundleConfig">
+            <summary>
+            Class BundleConfig.
+            </summary>
+        </member>
+        <member name="M:DebtSettlement.Web.BundleConfig.RegisterBundles(System.Web.Optimization.BundleCollection)">
+            <summary>
+            Registers the bundles.
+            </summary>
+            <param name="bundles">The bundles.</param>
+        </member>
+        <member name="T:DebtSettlement.Web.FilterConfig">
+            <summary>
+            Class FilterConfig.
+            </summary>
+        </member>
+        <member name="M:DebtSettlement.Web.FilterConfig.RegisterGlobalFilters(System.Web.Mvc.GlobalFilterCollection)">
+            <summary>
+            Registers the global filters.
+            </summary>
+            <param name="filters">The filters.</param>
+        </member>
+        <member name="T:DebtSettlement.Web.IocControllerFactory">
+            <summary>
+            Class IocControllerFactory.
+            </summary>
+            <seealso cref="T:System.Web.Mvc.DefaultControllerFactory" />
+        </member>
+        <member name="M:DebtSettlement.Web.IocControllerFactory.#ctor(Unity.IUnityContainer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DebtSettlement.Web.IocControllerFactory"/> class.
+            </summary>
+            <param name="container">The container.</param>
+        </member>
+        <member name="M:DebtSettlement.Web.IocControllerFactory.GetControllerInstance(System.Web.Routing.RequestContext,System.Type)">
+            <summary>
+            Retrieves the controller instance for the specified request context and controller type.
+            </summary>
+            <param name="requestContext">The context of the HTTP request, which includes the HTTP context and route data.</param>
+            <param name="controllerType">The type of the controller.</param>
+            <returns>The controller instance.</returns>
+        </member>
+        <member name="T:DebtSettlement.Web.RouteConfig">
+            <summary>
+            Class RouteConfig.
+            </summary>
+        </member>
+        <member name="M:DebtSettlement.Web.RouteConfig.RegisterRoutes(System.Web.Routing.RouteCollection)">
+            <summary>
+            Registers the routes.
+            </summary>
+            <param name="routes">The routes.</param>
+        </member>
+        <member name="T:DebtSettlement.Web.SwaggerConfig">
+            <summary>
+            Class SwaggerConfig.
+            </summary>
+        </member>
+        <member name="M:DebtSettlement.Web.SwaggerConfig.Register">
+            <summary>
+            Registers this instance.
+            </summary>
+        </member>
+        <member name="T:DebtSettlement.Web.WebApiConfig">
+            <summary>
+            Class WebApiConfig.
+            </summary>   
+        </member>
+        <member name="M:DebtSettlement.Web.WebApiConfig.Register(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Registers the specified configuration.
+            </summary>
+            <param name="config">The configuration.</param>
+        </member>
+        <member name="M:DebtSettlement.Web.WebApiConfig.RegisterDependencyResolver(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Registers the dependency resolver.
+            </summary>
+            <param name="config">The configuration.</param>
+        </member>
+        <member name="T:DebtSettlement.Web.Attributes.ODataQueryableAttribute">
+            <summary>
+            Class ODataQueryableAttribute. This class cannot be inherited.
+            </summary>
+            <seealso cref="T:System.Web.Http.OData.EnableQueryAttribute" />
+        </member>
+        <member name="M:DebtSettlement.Web.Attributes.ODataQueryableAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:DebtSettlement.Web.Attributes.ODataQueryableAttribute"/> class.
+            </summary>
+        </member>
+        <member name="M:DebtSettlement.Web.Attributes.ODataQueryableAttribute.ApplyQuery(System.Linq.IQueryable,System.Web.Http.OData.Query.ODataQueryOptions)">
+            <summary>
+            Applies the query to the given IQueryable based on incoming query from uri and query settings. By default, the implementation supports $top, $skip, $orderby and $filter. Override this method to perform additional query composition of the query.
+            </summary>
+            <param name="queryable">The original queryable instance from the response message.</param>
+            <param name="queryOptions">The <see cref="T:System.Web.Http.OData.Query.ODataQueryOptions" /> instance constructed based on the incoming request.</param>
+            <returns>IQueryable.</returns>
+        </member>
+        <member name="M:DebtSettlement.Web.Attributes.ODataQueryableAttribute.ValidateQuery(System.Net.Http.HttpRequestMessage,System.Web.Http.OData.Query.ODataQueryOptions)">
+            <summary>
+            Validates the OData query in the incoming request. By default, the implementation throws an exception if the query contains unsupported query parameters. Override this method to perform additional validation of the query.
+            </summary>
+            <param name="request">The incoming request.</param>
+            <param name="queryOptions">The <see cref="T:System.Web.Http.OData.Query.ODataQueryOptions" /> instance constructed based on the incoming request.</param>
+        </member>
+        <member name="M:DebtSettlement.Web.Attributes.ODataQueryableAttribute.ProcessUrl(System.String)">
+            <summary>
+            Processes the URL.
+            </summary>
+            <param name="url">The URL.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="T:DebtSettlement.Web.Constants">
+            <summary>
+            Class Constants.
+            </summary>
+        </member>
+        <member name="F:DebtSettlement.Web.Constants.DefaultConectionStringName">
+            <summary>
+            The default conection string name
+            </summary>
+        </member>
+        <member name="T:DebtSettlement.Web.Controllers.AccountController">
+            <summary>
+            Class AccountController.
+            </summary>
+            <seealso cref="T:System.Web.Mvc.Controller" />
+        </member>
+        <member name="M:DebtSettlement.Web.Controllers.AccountController.Logout">
+            <summary>
+            Logouts this instance.
+            </summary>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="T:DebtSettlement.Web.Controllers.Api.DictionaryController">
+            <summary>
+            Class DictionaryController.
+            </summary>
+            <seealso cref="T:System.Web.Http.ApiController" />
+        </member>
+        <member name="M:DebtSettlement.Web.Controllers.Api.DictionaryController.#ctor(AlfaBank.Common.Interfaces.IApiExecuter,DebtSettlement.BusinessLayer.Services.Interfaces.IHRService,HR.Client.Interface.IDepartmentService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DebtSettlement.Web.Controllers.Api.DictionaryController"/> class.
+            </summary>
+            <param name="apiExecuter">The API executer.</param>
+            <param name="hrService">The hr service.</param>
+            <param name="departmentService"></param>
+        </member>
+        <member name="M:DebtSettlement.Web.Controllers.Api.DictionaryController.Get(System.String,System.String)">
+            <summary>
+            Get dictionary info by dictionamry name
+            </summary>
+            <param name="name"></param>
+            <param name="term"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DebtSettlement.Web.Controllers.Api.DictionaryController.Get(System.String,System.String,System.String)">
+            <summary>
+            Get dictionary info by dictionamry name and version
+            </summary>
+            <param name="name"></param>
+            <param name="version"></param>
+            <param name="term"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DebtSettlement.Web.Controllers.Api.DebtSettlementController">
+            <summary>
+            Class DebtSettlementController.
+            </summary>
+            <seealso cref="T:System.Web.Http.ApiController" />
+        </member>
+        <member name="M:DebtSettlement.Web.Controllers.Api.DebtSettlementController.#ctor(DebtSettlement.BusinessLayer.Services.Interfaces.IDebtSettlementService,DebtSettlement.BusinessLayer.Services.Interfaces.IHRService,DebtSettlement.AgreementLoader.Interface.IAgreementService,AlfaBank.Logger.ILogger)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DebtSettlement.Web.Controllers.Api.DebtSettlementController" /> class.
+            </summary>
+            <param name="debtSettlementService">The task service.</param>
+            <param name="hrService">The hr service.</param>
+            <param name="agreementService">The agreement service.</param>
+            <param name="logger">The logger.</param>
+        </member>
+        <member name="M:DebtSettlement.Web.Controllers.Api.DebtSettlementController.CreateDebtSettlement(DebtSettlement.Web.Models.ApplicationForm.ApplicationFormViewModel)">
+            <summary>
+            Creates the DebtSettlement.
+            </summary>
+            <param name="model">The model.</param>
+            <returns>Task;.</returns>
+        </member>
+        <member name="M:DebtSettlement.Web.Controllers.Api.DebtSettlementController.GetDebtSettlementProcessesAsQueryable">
+            <summary>
+            Gets all DebtSettlement processes.
+            </summary>
+            <returns>Task;.</returns>
+        </member>
+        <member name="T:DebtSettlement.Web.Controllers.Api.TasksController">
+            <summary>
+            Class TasksController.
+            </summary>
+            <seealso cref="T:System.Web.Http.ApiController" />
+        </member>
+        <member name="M:DebtSettlement.Web.Controllers.Api.TasksController.#ctor(DebtSettlement.BusinessLayer.Services.Interfaces.IDebtSettlementService,DebtSettlement.BusinessLayer.Services.Interfaces.IHRService,DebtSettlement.AgreementLoader.Interface.IAgreementService,AlfaBank.Logger.ILogger)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DebtSettlement.Web.Controllers.Api.TasksController" /> class.
+            </summary>
+            <param name="taskService">The task service.</param>
+            <param name="hrService">The hr service.</param>
+            <param name="agreementService">The agreement service.</param>
+            <param name="logger">The logger.</param>
+            <param name="spreadsheetWriter">The spreadsheet writer.</param>
+        </member>
+        <member name="T:DebtSettlement.Web.Controllers.Api.AgreementsController">
+            <summary>
+            Class UsersController.
+            </summary>
+            <seealso cref="T:System.Web.Http.ApiController" />
+        </member>
+        <member name="M:DebtSettlement.Web.Controllers.Api.AgreementsController.#ctor(DebtSettlement.AgreementLoader.Interface.IAgreementService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DebtSettlement.Web.Controllers.Api.UsersController"/> class.
+            </summary>
+            <param name="agreementService"></param>
+        </member>
+        <member name="M:DebtSettlement.Web.Controllers.Api.AgreementsController.GetAgreement(System.Int32)">
+            <summary>
+            Gets the agreement.
+            </summary>
+            <param name="agreementId">The agreement identifier.</param>
+            <returns>IEnumerable&lt;System.Object&gt;.</returns>
+        </member>
+        <member name="M:DebtSettlement.Web.Controllers.Api.AgreementsController.SearchAgreements(System.String)">
+            <summary>
+            Searches the agreements.
+            </summary>
+            <param name="searchTerm">The search term.</param>
+            <returns>System.Threading.Tasks.Task&lt;System.Collections.Generic.IEnumerable&lt;DebtSettlement.AgreementLoader.Models.SearchResult&gt;&gt;.</returns>
+        </member>
+        <member name="M:DebtSettlement.Web.Controllers.Api.AgreementsController.GetActions(System.String,System.Int32)">
+            <summary>
+            Get ection by id
+            </summary>
+            <param name="type">legal|general</param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DebtSettlement.Web.Controllers.Api.UsersController">
+            <summary>
+            Class UsersController.
+            </summary>
+            <seealso cref="T:System.Web.Http.ApiController" />
+        </member>
+        <member name="M:DebtSettlement.Web.Controllers.Api.UsersController.#ctor(DebtSettlement.BusinessLayer.Services.Interfaces.IHRService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:DebtSettlement.Web.Controllers.Api.UsersController"/> class.
+            </summary>
+            <param name="hrService">The hr service.</param>
+        </member>
+        <member name="M:DebtSettlement.Web.Controllers.Api.UsersController.GetUsers(System.String)">
+            <summary>
+            Gets the user.
+            </summary>
+            <param name="term">The term.</param>
+            <returns>IEnumerable&lt;System.String&gt;.</returns>
+        </member>
+        <member name="M:DebtSettlement.Web.Controllers.Api.UsersController.GetUser(System.String)">
+            <summary>
+            Gets the user.
+            </summary>
+            <param name="userName">Name of the user.</param>
+            <returns>IEnumerable&lt;System.String&gt;.</returns>
+        </member>
+        <member name="M:DebtSettlement.Web.Controllers.Api.UsersController.GetBoss(System.String)">
+            <summary>
+            Gets the boss of user.
+            </summary>
+            <param name="userLogin">The user login.</param>
+            <returns>IEnumerable&lt;System.String&gt;.</returns>
+        </member>
+        <member name="T:DebtSettlement.Web.Controllers.ErrorController">
+            <summary>
+            Class ErrorController.
+            </summary>
+            <seealso cref="T:System.Web.Mvc.Controller" />
+        </member>
+        <member name="M:DebtSettlement.Web.Controllers.ErrorController.Index">
+            <summary>
+            Indexes this instance.
+            </summary>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="M:DebtSettlement.Web.Controllers.ErrorController.NotFound">
+            <summary>
+            Nots the found.
+            </summary>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="M:DebtSettlement.Web.Controllers.ErrorController.Unauthorized">
+            <summary>
+            Unauthorizeds this instance.
+            </summary>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="M:DebtSettlement.Web.Controllers.ErrorController.Ajax">
+            <summary>
+            Ajaxes this instance.
+            </summary>
+            <returns>JsonResult.</returns>
+        </member>
+        <member name="T:DebtSettlement.Web.Controllers.DebtSettlementController">
+            <summary>
+            Class TaskController.
+            </summary>
+            <seealso cref="T:System.Web.Mvc.Controller" />
+        </member>
+        <member name="M:DebtSettlement.Web.Controllers.DebtSettlementController.CreateDebtSettlement(System.Int32)">
+            <summary>
+            Creates the task.
+            </summary>
+            <returns>ViewResult.</returns>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.ApplicationForm.ApplicationFormViewModel.AgreementId">
+            <summary>
+            Gets or sets the agreement identifier.
+            </summary>
+            <value>The agreement identifier.</value>
+        </member>
+        <member name="T:DebtSettlement.Web.Models.ExecuteCommandModel">
+            <summary>
+            Class ExecuteCommandModel.
+            </summary>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.ExecuteCommandModel.TaskId">
+            <summary>
+            Gets or sets the task identifier.
+            </summary>
+            <value>The task identifier.</value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.ExecuteCommandModel.CommandName">
+            <summary>
+            Gets or sets the name of the command.
+            </summary>
+            <value>The name of the command.</value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.ExecuteCommandModel.Parameters">
+            <summary>
+            Gets or sets the parameters.
+            </summary>
+            <value>The parameters.</value>
+        </member>
+        <member name="T:DebtSettlement.Web.Models.RejectProlongateTaskViewModel">
+            <summary>
+            Class RejectProlongateTaskViewModel.
+            </summary>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.RejectProlongateTaskViewModel.Comment">
+            <summary>
+            Gets or sets the comment.
+            </summary>
+            <value>The comment.</value>
+        </member>
+        <member name="T:DebtSettlement.Web.Models.ProlongateTaskViewModel">
+            <summary>
+            Class ProlongateTaskViewModel.
+            </summary>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.ProlongateTaskViewModel.Date">
+            <summary>
+            Gets or sets the date.
+            </summary>
+            <value>The date.</value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.ProlongateTaskViewModel.Comment">
+            <summary>
+            Gets or sets the comment.
+            </summary>
+            <value>The comment.</value>
+        </member>
+        <member name="T:DebtSettlement.Web.Models.Task.UploadViewModel">
+            <summary>
+            Class TaskStateModel.
+            </summary>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.Task.UploadViewModel.Success">
+            <summary>
+            Gets or sets wheather upload was successful.
+            </summary>
+            <value>The name of the state.</value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.Task.UploadViewModel.Message">
+            <summary>
+            Gets or sets the Message.
+            </summary>
+            <value>The comment.</value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.Task.UploadViewModel.AgreementContent">
+            <summary>
+            Gets or sets the content of the agreement.
+            </summary>
+            <value>The content of the agreement.</value>
+        </member>
+        <member name="T:DebtSettlement.Web.Models.Task.TaskStateModel">
+            <summary>
+            Class TaskStateModel.
+            </summary>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.Task.TaskStateModel.StateName">
+            <summary>
+            Gets or sets the name of the state.
+            </summary>
+            <value>The name of the state.</value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.Task.TaskStateModel.Comment">
+            <summary>
+            Gets or sets the comment.
+            </summary>
+            <value>The comment.</value>
+        </member>
+        <member name="T:DebtSettlement.Web.Models.Task.TaskViewModel">
+            <summary>
+            Class TaskViewModel.
+            </summary>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.Task.TaskViewModel.IsMultiTask">
+            <summary>
+            Gets or sets the IsMultiTask parameter.
+            </summary>
+            <value>The title.</value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.Task.TaskViewModel.Title">
+            <summary>
+            Gets or sets the title.
+            </summary>
+            <value>The title.</value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.Task.TaskViewModel.Description">
+            <summary>
+            Gets or sets the description.
+            </summary>
+            <value>The description.</value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.Task.TaskViewModel.Comment">
+            <summary>
+            Gets or sets the comment.
+            </summary>
+            <value>The comment.</value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.Task.TaskViewModel.Type">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:DebtSettlement.Web.Models.Task.TaskViewModel"/> is type.
+            </summary>
+            <value><c>true</c> if type; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.Task.TaskViewModel.Status">
+            <summary>
+            Gets or sets the status.
+            </summary>
+            <value>The status.</value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.Task.TaskViewModel.PlannedDate">
+            <summary>
+            Gets or sets the planned date.
+            </summary>
+            <value>The planned date.</value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.Task.TaskViewModel.Responsible">
+            <summary>
+            Gets or sets the responsible.
+            </summary>
+            <value>The responsible.</value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.Task.TaskViewModel.ResponsibleFullName">
+            <summary>
+            Bind ResponsibleFullName to model.
+            </summary>
+            <value>The ResponsibleFullName.</value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.Task.TaskViewModel.Observer">
+            <summary>
+            Gets or sets the observer.
+            </summary>
+            <value>The observer.</value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.Task.TaskViewModel.ObserverFullName">
+            <summary>
+            Bind ResponsibleFullName to model.
+            </summary>
+            <value>The ResponsibleFullName.</value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.Task.TaskViewModel.AssignedResponsible">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.Task.TaskViewModel.Initiator">
+            <summary>
+            Gets or sets the initiator.
+            </summary>
+            <value>The initiator.</value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.Task.TaskViewModel.AgreementId">
+            <summary>
+            Gets or sets the agreement identifier.
+            </summary>
+            <value>The agreement identifier.</value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.Task.TaskViewModel.AgreementProcessId">
+            <summary>
+            Get or set the agreement process id
+            </summary>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.Task.TaskViewModel.NotLegalTypeActionId">
+            <summary>
+            Gets or sets the not legal type action identifier.
+            </summary>
+            <value>The not legal type action identifier.</value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.Task.TaskViewModel.GeneralActionTypesList">
+            <summary>
+            Gets or sets the general action types list.
+            </summary>
+            <value>The general action types list.</value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.Task.TaskViewModel.LegalActionTypeId">
+            <summary>
+            Gets or sets the legal action type identifier.
+            </summary>
+            <value>The legal action type identifier.</value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.Task.TaskViewModel.LegalActionTypesList">
+            <summary>
+            Gets or sets the legal action types list.
+            </summary>
+            <value>The legal action types list.</value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.Task.TaskViewModel.TaskCategoryId">
+            <summary>
+            Gets or sets the task category identifier.
+            </summary>
+            <value>The legal task category identifier.</value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.Task.TaskViewModel.TaskCategoryList">
+            <summary>
+            Gets or sets the task category list.
+            </summary>
+            <value>The task categories list.</value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.Task.TaskViewModel.PersonFullName">
+            <summary>
+            Gets or sets the full name of the person.
+            </summary>
+            <value>The full name of the person.</value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.Task.TaskViewModel.ProductCode">
+            <summary>
+            Gets or sets the product code.
+            </summary>
+            <value>The product code.</value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.Task.TaskViewModel.OpenDate_CloseDate">
+            <summary>
+            Gets or sets the open date close date.
+            </summary>
+            <value>The open date close date.</value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.Task.TaskViewModel.Number">
+            <summary>
+            Gets or sets the number.
+            </summary>
+            <value>The number.</value>
+        </member>
+        <member name="T:DebtSettlement.Web.Extensions.GlobalExceptionLogger">
+            <summary>
+            Global Exeptoon logger
+            </summary>
+        </member>
+        <member name="M:DebtSettlement.Web.Extensions.GlobalExceptionLogger.Log(System.Web.Http.ExceptionHandling.ExceptionLoggerContext)">
+            <summary>
+            Log
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:DebtSettlement.Web.Filters.DeleteFileAttribute">
+            <summary>
+            Class DeleteFileAttribute.
+            </summary>
+            <seealso cref="T:System.Web.Mvc.ActionFilterAttribute" />
+        </member>
+        <member name="M:DebtSettlement.Web.Filters.DeleteFileAttribute.OnResultExecuted(System.Web.Mvc.ResultExecutedContext)">
+            <summary>
+            Called by the ASP.NET MVC framework after the action result executes.
+            </summary>
+            <param name="filterContext">The filter context.</param>
+        </member>
+        <member name="T:DebtSettlement.Web.Helpers.AgreementLoaderHelper">
+            <summary>
+            Class AgreementLoaderHelper.
+            </summary>
+        </member>
+        <member name="M:DebtSettlement.Web.Helpers.AgreementLoaderHelper.ToSelectListItems(System.Collections.Generic.IEnumerable{DebtSettlement.AgreementLoader.Models.ActionType},System.Int32)">
+            <summary>
+            To the select list items.
+            </summary>
+            <param name="actionTypes">The action types.</param>
+            <param name="selectedId">The selected identifier.</param>
+            <returns>IEnumerable&lt;SelectListItem&gt;.</returns>
+        </member>
+        <member name="T:DebtSettlement.Web.Helpers.Helper">
+            <summary>
+            Helper
+            </summary>
+        </member>
+        <member name="M:DebtSettlement.Web.Helpers.Helper.GetDeclension(System.Int32,System.String,System.String,System.String)">
+            <summary>
+            Возвращает слова в падеже, зависимом от заданного числа 
+            </summary>
+            <param name="number">Число от которого зависит выбранное слово</param>
+            <param name="nominativ">Именительный падеж слова. Например "день"</param>
+            <param name="genetiv">Родительный падеж слова. Например "дня"</param>
+            <param name="plural">Множественное число слова. Например "дней"</param>
+            <returns></returns>
+        </member>
+        <member name="T:DebtSettlement.Web.Helpers.LayoutHelper">
+            <summary>
+            Class LayoutHelper.
+            </summary>
+        </member>
+        <member name="M:DebtSettlement.Web.Helpers.LayoutHelper.GetDefaultLayout">
+            <summary>
+            Gets the default layout.
+            </summary>
+            <returns>System.String.</returns>
+        </member>
+        <member name="T:DebtSettlement.Web.MvcApplication">
+            <summary>
+            Class MvcApplication.
+            </summary>
+            <seealso cref="T:System.Web.HttpApplication" />
+        </member>
+        <member name="M:DebtSettlement.Web.MvcApplication.Application_Start">
+            <summary>
+            Applications the start.
+            </summary>d
+        </member>
+        <member name="M:DebtSettlement.Web.MvcApplication.Application_Error">
+            <summary>
+            Application exeptions handler
+            </summary>
+        </member>
+        <member name="M:DebtSettlement.Web.MvcApplication.Register(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Registers the specified configuration.
+            </summary>
+            <param name="config">The configuration.</param>
+        </member>
+        <member name="M:DebtSettlement.Web.MvcApplication.RegisterDependency(Unity.IUnityContainer)">
+            <summary>
+            Registers the dependency.
+            </summary>
+            <param name="container">The container.</param>
+        </member>
+        <member name="T:DebtSettlement.Web.Views.BaseView">
+            <summary>
+            Class BaseView.
+            </summary>
+            <seealso cref="T:DebtSettlement.Web.Views.BaseView`1" />
+        </member>
+        <member name="T:DebtSettlement.Web.Views.BaseView`1">
+            <summary>
+            Class BaseView.
+            </summary>
+            <typeparam name="TModel">The type of the t model.</typeparam>
+            <seealso cref="T:System.Web.Mvc.WebViewPage`1" />
+        </member>
+        <member name="M:DebtSettlement.Web.Views.BaseView`1.UserHasAccess(System.String)">
+            <summary>
+            User has access
+            </summary>
+            <param name="access"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TaskManager.Web.UnityConfig">
+            <summary>
+            Specifies the Unity configuration for the main container.
+            </summary>
+        </member>
+        <member name="P:TaskManager.Web.UnityConfig.Container">
+            <summary>
+            Configured Unity Container.
+            </summary>
+        </member>
+        <member name="M:TaskManager.Web.UnityConfig.RegisterTypes(Unity.IUnityContainer)">
+            <summary>
+            Registers the type mappings with the Unity container.
+            </summary>
+            <param name="container">The unity container to configure.</param>
+            <remarks>
+            There is no need to register concrete types such as controllers or
+            API controllers (unless you want to change the defaults), as Unity
+            allows resolving a concrete type even if it was not previously
+            registered.
+            </remarks>
+        </member>
+        <member name="T:TaskManager.Web.UnityMvcActivator">
+            <summary>
+            Provides the bootstrapping for integrating Unity with ASP.NET MVC.
+            </summary>
+        </member>
+        <member name="M:TaskManager.Web.UnityMvcActivator.Start">
+            <summary>
+            Integrates Unity when the application starts.
+            </summary>
+        </member>
+        <member name="M:TaskManager.Web.UnityMvcActivator.Shutdown">
+            <summary>
+            Disposes the Unity container when the application is shut down.
+            </summary>
+        </member>
+    </members>
+</doc>

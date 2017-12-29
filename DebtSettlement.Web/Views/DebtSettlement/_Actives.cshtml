@@ -1,0 +1,34 @@
+﻿@model DebtSettlement.Web.Models.ApplicationForm.ApplicationFormViewModel
+@{
+    Layout = null;
+}
+
+<link href="~/Content/styles/createDSform.css" rel="stylesheet" />
+
+<div class="col-md-12">
+
+    <table id="active-table" class="" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                @*<th><input name="select_all" value="1" id="example-select-all" type="checkbox" /></th>*@
+                <th></th>
+                <th class="hidden">CollateralId</th>
+                <th>Тип</th>
+                <th>Описание доп. имущества</th>
+                <th>Стоимость</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var collateral in Model.Actives)
+            {
+                <tr>
+                    <td></td>
+                    <td class="hidden">@Html.DisplayFor(item => collateral.CollateralId)</td>
+                    <td>@Html.DisplayFor(item => collateral.CollateralType)</td>
+                    <td>@Html.DisplayFor(item => collateral.CollateralDescription)</td>
+                    <td>@Html.DisplayFor(item => collateral.CollateralValue)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

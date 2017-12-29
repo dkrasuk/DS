@@ -1,0 +1,102 @@
+﻿#DsContainerHeader h2 {
+    font-size: 1.5em;
+    font-weight:bold;
+    color:#0094ff;
+}
+
+.dsComment {
+    width: 100%;
+}
+
+#dsCommentBlock {
+    margin-top:5px;
+}
+
+    #dsCommentBlock label {
+        font-weight:bold;
+        color: #808080;
+    }
+
+.addItem {
+    color: #31b0d5;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.addItem:hover {
+    color: #449d44;
+}
+
+.formSection {
+    border: 1px solid #b4b4b4;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px 0px 5px 0px;
+    position:  relative;
+}
+    .formSection table {
+        width: 100%;
+    }
+
+        .formSection table input:not([type="checkbox"]),
+        .formSection table select,
+        .formSection table textarea {
+            width: 400px;
+            min-height:30px;
+        }
+
+    .panel-body label {
+        color: #0094ff;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;        
+    }
+    
+    .labelTd {
+        width: auto;
+        padding: 5px 0px 5px 0px;         
+    }
+
+    .inputTd {
+        width: 75%;
+    }
+
+.deleteAsset,
+.deleteCollateral {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    color: #ff4600;
+    cursor:pointer;
+}
+
+
+#dsForm {
+    margin-top:10px;
+}
+
+.panel-group .panel {
+    margin-top: 5px;
+}
+
+.panel-title {
+    font-weight: bold;
+    text-align:center;
+    color: #fff;
+}
+
+.panel-group .panel-heading {
+    border-bottom: 0;
+    background-color: #31b0d5;
+}
+
+.alert-danger {
+    margin-bottom: 10px;
+}
+
+#dsActions .btn {
+    margin-bottom: 5px;
+}
+
+#question-model-dialog input,
+#question-model-dialog select{
+    margin-bottom:5px;
+}

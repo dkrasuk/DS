@@ -1,0 +1,64 @@
+{
+  "Id": 0,
+  "Name": "DS.CurrentFunctional",
+  "Version": "1",
+  "Metadata": "",
+  "Items": [
+    {
+      "Value": {
+        "Id": "1",
+        "Name": "DS1: 50/50"
+      },
+      "ValueId": "1"
+    },
+	{
+      "Value": {
+        "Id": "2",
+        "Name": "DS1: 20/80"
+      },
+      "ValueId": "2"
+    },
+	{
+      "Value": {
+        "Id": "3",
+        "Name": "DS1: 25/50/25"
+      },
+      "ValueId": "3"
+    },
+	{
+      "Value": {
+        "Id": "4",
+        "Name": "DS3: Продажа в рынок"
+      },
+      "ValueId": "4"
+    },
+	{
+      "Value": {
+        "Id": "5",
+        "Name": "DS3: Самовыкуп"
+      },
+      "ValueId": "5"
+    },
+	{
+      "Value": {
+        "Id": "6",
+        "Name": "DS3: Реструктуризация"
+      },
+      "ValueId": "6"
+    },
+	{
+      "Value": {
+        "Id": "7",
+        "Name": "Продажа через ГИС"
+      },
+      "ValueId": "7"
+    },
+	{
+      "Value": {
+        "Id": "8",
+        "Name": "Продажа в рамках Банкротства"
+      },
+      "ValueId": "8"
+    }
+  ]
+}

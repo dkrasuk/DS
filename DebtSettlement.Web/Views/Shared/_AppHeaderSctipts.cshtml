@@ -1,0 +1,21 @@
+﻿@{
+    Layout = null;
+}
+    <base href="@System.Web.Hosting.HostingEnvironment.ApplicationHost.GetVirtualPath()" id="baseTag" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/libs/jquery-ui-bootstrap/css")
+    @Styles.Render("~/Content/css")
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/application")
+    @Scripts.Render("~/bundles/jqueryval")
+
+<script data-main="@Url.Content("~/app/dist/index")" src="@Url.Content("~/libs/requirejs/require.js")"></script>
+@*<script src="@Url.Content("~/app/dist/index.js")" ></script>*@
+
+<script src="@Url.Content("~/app/_app.js")"></script>

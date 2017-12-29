@@ -1,0 +1,24 @@
+﻿.actionLink {
+    color: white;
+}
+
+.actionLink:hover {
+    color: lawngreen;
+}
+
+.bad {
+    color: #f23411;
+}
+
+.good {
+    color: lawngreen;
+}
+
+    .bad:hover,
+    .good:hover {
+        color: #ffbf59;
+    }
+
+.actionLink {
+    padding: 5px;
+}

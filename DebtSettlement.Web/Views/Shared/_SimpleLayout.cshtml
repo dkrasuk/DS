@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Task Manager";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    @Html.Partial("_AppHeaderSctipts")
+    
+    <style>
+        #formCreateTask > .panel.panel-default {
+            border: 0;
+            box-shadow: none;
+        }
+        .body-content {
+            width: 100%;
+        }
+        @@media (min-width: 768px) {
+             .modal-dialog {
+                 margin: 10px auto;
+             }
+        }
+    </style>
+</head>
+<body>
+    <div id="alert-area"></div>
+    
+    <div class="wrapper">
+        <div class="container body-content indentation-left-zero">
+
+            <div class="container-fluid container-body">
+                <div class="row">
+
+                    <div class="col-md-12 main-content-col">
+
+                        @RenderBody()
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,47 @@
+{
+  "name": "taskmanager.web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel app/src --out-dir app/dist",
+    "_build": "webpack",
+    "build__": "babel app/src --out-dir app/dist --minified --source-maps",
+    "build_": "babel app/src --out-dir app/dist --presets es2015 --plagins babel-plugin-transform-modules-requirejs --minified"
+  },
+  "author": "",
+  "license": "ISC",
+  "babel": {
+    "presets": [
+      "es2015"
+    ],
+    "plugins": [
+      "babel-plugin-transform-modules-requirejs"
+    ]
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-es2015-modules-amd": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-requirejs": "^0.1.1",
+    "babel-plugin-transform-modules-requirejs": "^0.1.4",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "requirejs-babel-plugin": "^0.4.0"
+  },
+  "_devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^6.4.1",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "copy-webpack-plugin": "^0.2.0",
+    "html-loader": "^0.5.0",
+    "html-minifier": "^3.5.3",
+    "html-minifier-loader": "^1.4.0",
+    "raw-loader": "^0.5.1",
+    "uglifyjs-webpack-plugin": "^0.4.6",
+    "webpack": "^1.15.0",
+    "webpack-dev-server": "^1.16.5"
+  }
+}

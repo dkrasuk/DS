@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Task Manager";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    @Html.Partial("_AppHeaderSctipts")
+</head>
+<body>
+    <!--[if lt IE 8]>
+        <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div id="alert-area"></div>
+    
+    <div class="wrapper">
+        <div class="container body-content">
+
+            <div class="container-fluid container-body">
+                <div class="row">
+
+                    <div class="col-md-2 left-side-menu-col" leftbar>
+
+                        @Html.Partial("_Navigation")
+
+                    </div>
+
+                    <div class="col-md-10 main-content-col">
+
+                        @RenderBody()
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

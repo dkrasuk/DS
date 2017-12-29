@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Tasks";
+}
+
+<div class="panel panel-default" ng-conroller="ViewTaskListController" style="border:none; margin-bottom: 0;">
+    <div class="panel-body padding-zero">
+        <div class="container-fluid">
+             <table id="table-tasks" class="table table-bordered table-striped tasks-table"></table>
+        </div>
+    </div>
+</div>
+
+
+@*@Html.Partial("_sharedScripts")
+
+<script src="@Url.Content("~/app/components/tasks/index.js")"></script>
+<script src="@Url.Content("~/app/components/shared/navigation.js")"></script>*@

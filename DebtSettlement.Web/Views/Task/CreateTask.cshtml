@@ -1,0 +1,254 @@
+﻿@model DebtSettlement.Web.Models.Task.TaskViewModel
+
+@{
+    ViewBag.Title = "PrivateCabinet";
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formCreateTask" }))
+{
+    <input type="hidden" name="AgreementProcessId" value="@Model.AgreementProcessId" />
+
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    <div class="col-md-6">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-12 required" })
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", spellcheck = "true" } })
+                                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-12 required" })
+                            <div class="col-md-12">
+                                @Html.TextAreaFor(model => model.Description, 16, 0, new { @class = "form-control", spellcheck = "true" })
+                                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control", spellcheck = "true" } })
+                                @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <button id="btnCreateTask" type="submit" class="btn btn-primary btn-long" style="width: 100%;">Назначить задачу</button>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-6">
+
+                        <div class="container-fluid">
+
+                            <div class="row block-agreement-change" style="display: none">
+                                <div class="form-group col-md-6">
+                                    <div class="">
+                                        @Html.EditorFor(x => x.IsMultiTask) @Html.LabelFor(model => model.IsMultiTask, htmlAttributes: new { @class = "control-label" })
+                                        @Html.ValidationMessageFor(model => model.IsMultiTask, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6 hiddenfile">
+                                </div>
+                            </div>
+
+                            <div class="agreement-info">
+
+                                <div class="row block-agreement-change" style="display: none">
+                                    <div class="form-group col-md-12">
+                                        <button id="btnOpenModalSearchAgreement" type="button" data-toggle="modal" data-target="#modalSearchAgreement" class="btn btn-primary btn-long" style="width: 100%;">Поиск договора</button>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        @Html.LabelFor(model => model.PersonFullName, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.PersonFullName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        @Html.LabelFor(model => model.ProductCode, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.ProductCode, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        @Html.LabelFor(model => model.OpenDate_CloseDate, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.OpenDate_CloseDate, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        @Html.LabelFor(model => model.Number, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.Number, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+
+                                        @Html.HiddenFor(model => model.AgreementId)
+
+                                        <input type="hidden" id="isPartial" value="@Request.Params["IsPartial"]" />
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <div class="">
+                                        @Html.EditorFor(x => x.Type) @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label" }) <span class="glyphicon glyphicon-pushpin"></span>
+                                        @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.PlannedDate, htmlAttributes: new { @class = "control-label required" })
+                                    @Html.EditorFor(model => model.PlannedDate, new { htmlAttributes = new { @class = "form-control datetimepicker", autocomplete = "off" } })
+                                    @Html.ValidationMessageFor(model => model.PlannedDate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.TaskCategoryId, htmlAttributes: new { @class = "control-label" })
+                                    @Html.DropDownListFor(model => model.TaskCategoryId, Model.TaskCategoryList, "-- Select --", htmlAttributes: new { @class = "form-control" })
+
+                                    @for (int i = 0; i < Model.TaskCategoryList.Count; i++)
+                                    {
+                                        <div id="@Model.TaskCategoryList[i].Value">
+                                            <p>
+                                                @Html.HiddenFor(m => m.TaskCategoryList[i].Value)
+                                                @Html.HiddenFor(m => m.TaskCategoryList[i].Text)
+                                            </p>
+                                        </div>
+                                    }
+
+                                    @Html.ValidationMessageFor(model => model.TaskCategoryId)
+                                </div>
+
+                                <div class="form-group col-md-6"></div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.Responsible, htmlAttributes: new { @class = "control-label required" })
+
+                                    @Html.EditorFor(model => model.ResponsibleFullName, new { htmlAttributes = new { @class = "form-control" } })
+
+                                    @Html.ValidationMessageFor(model => model.Responsible, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.Responsible)
+
+                                    <div>
+                                        @Html.EnumDropDownListFor(model => model.AssignedResponsible, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.Observer, htmlAttributes: new { @class = "control-label" })
+
+                                    @Html.EditorFor(model => model.ObserverFullName, new { htmlAttributes = new { @class = "form-control" } })
+
+                                    @Html.HiddenFor(model => model.Observer)
+
+                                    <button id="btnGetObserver" type="" class="btn btn-primary btn-long" style="width: 100%; display: none">Определить куратора</button>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="isAutocloseAllowed"><input type="checkbox" id="isAutocloseAllowed" />&nbsp;Автозакрытие задачи</label>
+                                </div>
+                            </div>
+
+                            <div class="autoclose-panel row" style="display: none">
+                                <div class="col-md-6">
+                                    @Html.LabelFor(model => model.NotLegalTypeActionId, htmlAttributes: new { @class = "control-label" })
+                                    @Html.DropDownListFor(model => model.NotLegalTypeActionId, Model.GeneralActionTypesList, "-- Select --", htmlAttributes: new { @class = "form-control" })
+
+                                    @for (int i = 0; i < Model.GeneralActionTypesList.Count; i++)
+                                    {
+                                        <div id="@Model.GeneralActionTypesList[i].Value">
+                                            <p>
+                                                @Html.HiddenFor(m => m.GeneralActionTypesList[i].Value)
+                                                @Html.HiddenFor(m => m.GeneralActionTypesList[i].Text)
+                                            </p>
+                                        </div>
+                                    }
+
+                                    @Html.ValidationMessageFor(model => model.NotLegalTypeActionId)
+                                </div>
+
+                                <div class="col-md-6">
+                                    @Html.LabelFor(model => model.LegalActionTypeId, htmlAttributes: new { @class = "control-label" })
+                                    @Html.DropDownListFor(model => model.LegalActionTypeId, Model.LegalActionTypesList, "-- Select --", htmlAttributes: new { @class = "form-control" })
+
+                                    @for (int i = 0; i < Model.LegalActionTypesList.Count; i++)
+                                    {
+                                        <div id="@Model.LegalActionTypesList[i].Value">
+                                            <p>
+                                                @Html.HiddenFor(m => m.LegalActionTypesList[i].Value)
+                                                @Html.HiddenFor(m => m.LegalActionTypesList[i].Text)
+                                            </p>
+                                        </div>
+                                    }
+
+                                    @Html.ValidationMessageFor(model => model.LegalActionTypeId)
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="modalSearchAgreement" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="width: 1200px; right: 50%;">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Поиск договора</h4>
+                        </div>
+                        <div class="modal-body form-group">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <input id="searchAgreementBox" class="text-box form-control" />
+                                </div>
+                                <div class="col-md-2">
+                                    <button id="btnStartSearch" type="button" class="btn btn-primary" style="width: 100%">Найти</button>
+                                </div>
+                                <div id="tablePanel" class="col-md-12 hidden">
+                                    <table id="agreementSearchTable" class="table table-bordered table-striped agreements-search-table form-control"></table>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+}
+
+<script src="@Url.Content("~/app/utils.js")"></script>
+<script src="@Url.Content("~/app/CreateTaskLogic.js")"></script>
+<script src="@Url.Content("~/app/SearchAgreement.js")"></script>

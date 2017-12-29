@@ -1,0 +1,61 @@
+﻿.nav-stacked {
+        width: 15%;
+        /*position: fixed;*/
+        float: right;
+
+    }
+
+.panel-group {
+        width: 85%;
+        float: left;
+        top: 100px;
+    }
+
+
+.nav > button{
+    width:150px;
+    word-wrap:normal;
+    white-space:pre-wrap;
+    margin:5px;
+}
+
+.nav > button[valid=invalid]{
+    background-color: #ad9e9e;
+    border-color: #ad9e9e;
+}
+.nav > button[valid=valid]{
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+
+.nav > button > a:focus {
+        color: aquamarine;
+        text-decoration: none;
+        border-radius: 8px;
+        background-color: rgb(212, 63, 58);
+    }
+.nav > button[current=true] {
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        background-color: rgb(212, 63, 58);
+        border-color: rgb(212, 63, 58);
+    }
+.nav > button[current=true][valid="valid"] {
+        color: #fff;
+        background-color: #f0ad4e;
+        border-color: #eea236;
+    }
+
+.panel {
+      box-shadow: 0 1px 1px rgba(0,0,0,0);
+      border: 0;
+    }
+.panel-heading{
+    background-color: #f1ecec;
+    border-radius: 8px;
+}
+select{
+    width:45%;  
+}

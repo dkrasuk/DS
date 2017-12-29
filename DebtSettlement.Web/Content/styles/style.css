@@ -1,0 +1,278 @@
+﻿@charset "UTF-8";
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+#header {
+    position:absolute;
+    left:0px;
+    width:100%;
+    height:100%;
+}
+
+.swipe-area {
+  position: absolute;
+  width: 50px;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: #f3f3f3;
+  z-index: 0;
+}
+
+/* Base Styles */
+#sidebar,
+#sidebar ul,
+#sidebar li,
+#sidebar a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  font-weight: normal;
+  text-decoration: none;
+  line-height: 1;
+  font-size: 14px;
+  color: white !important;
+}
+
+#sidebar {
+  width: 250px;
+  height: 100%;
+  position: relative;
+  left:0px;
+  float:left; 
+}
+
+
+
+#cabinet-content #sidebar-toggle {
+  background: darkorange;
+  display: block;
+  position: relative;
+  padding: 10px 7px;
+  float: left;
+}
+
+#cabinet-content #sidebar-toggle .bar {
+  display: block;
+  width: 18px;
+  margin-bottom: 3px;
+  height: 2px;
+  background-color: #fff;
+}
+
+#cabinet-content #sidebar-toggle .bar:last-child { margin-bottom: 0; }
+
+#sidebar > ul > li:first-child > a {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+#sidebar  ul  li {
+    background: #e94f31;
+    border-bottom:1px solid #c33115;
+}
+
+#sidebar ul li:hover {
+  background: #c33115;
+}
+
+#sidebar ul li a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  font-weight: normal;
+  text-decoration: none;
+  line-height: 1;
+  font-size: 14px;
+  color: white !important;
+}
+
+
+#sidebar ul li a span {
+  display: block;
+  padding: 12px 10px;
+}
+
+
+#sidebar  ul > li.has-sub > a span {
+  background: url(../images/icon_plus.png) 96% center no-repeat;
+}
+#sidebar  ul > li.has-sub.active > a span {
+  background: url(../images/icon_minus.png) 96% center no-repeat;
+}
+
+/* Sub menu */
+#sidebar ul li li {
+  background: #fff;
+  border-right: 1px solid #c33115;
+  border-left: 1px solid #c33115;
+}
+#sidebar ul li li {
+  padding: 0;
+  border-bottom: 1px solid #d4d4d4;
+  border-top: none;
+}
+
+#sidebar ul li li:last-child {
+  border-bottom: none;
+}
+
+#sidebar ul li li a {
+  display: block;
+  font-size: 0.8em;
+  font-weight: bold;
+  padding-left:20px;
+}
+
+#sidebar ul li li:hover {
+    background-color: lightgoldenrodyellow;
+}
+
+#sidebar ul li li a {
+   color: red !important;
+}
+
+
+
+#cabinet-content {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  position: relative;
+}
+
+/*.content-block {
+   box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  padding-left: 60px;
+  width: 100%;
+  position:relative;
+}*/
+
+.menu-content-item {
+    height: 140px;
+    width: 130px;
+    margin: 0px auto;
+    float: left;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.3) 3px 3px;
+    padding: 5px;
+    border: 1px solid #a2a194;
+    text-align:center;
+}
+    .menu-content-item span {
+        color: white;
+        font-weight: bold;
+        font-size: 1em;
+        text-shadow: 1px 1px 1px black;    
+    }
+
+    .menu-content-item div {
+        float:left;
+        display:inline-block;
+    }
+
+.charts {
+    background: url("../images/charts.png") no-repeat center 15%;
+    background-color: #59c306;
+}
+    .charts:hover {
+        background-color: lawngreen;
+    }
+
+.info {
+    background: url("../images/info.png") no-repeat center 15%;
+    background-color: dodgerblue;
+}
+    .info:hover {
+        background-color: deepskyblue;    
+    }
+
+.box {
+    background: url("../images/box.png") no-repeat center 15%;
+    background-color: darkorange;
+}
+    .box:hover {
+        background-color: orangered;
+    }
+
+    .content-block span
+     {
+        top: 70px;
+        display: block;
+        position: relative;
+    }
+
+#myQueue {
+    position:relative;
+    float:left;
+    border: 1px solid orange;
+    background-color: lightgoldenrodyellow;
+    border-radius: 3px;
+    width: 45%;
+    margin: 10px;
+    padding: 10px;
+    margin-left: 150px;
+}
+
+    #filterParamsBlock,
+    #queueFilterBlock,
+    #myAgreemsCh {
+        clear:both;
+        position:static;
+    }
+
+    #filterParamsBlock div label,
+    #queueFilterBlock label,
+    #myAgreemsCh label {
+        color: black;
+        margin-bottom: 10px;
+    }
+
+#getAgreemsList {
+    position: absolute;
+    right:50px;
+    bottom:25%;
+    background-color: #079805;
+    border: 1px solid #1cc462;
+    color:white;
+    height: 65px;
+    width: 65px;
+    box-shadow: rgba(0, 0, 0, 0.2) 3px 3px;
+    border-radius: 50%;
+    line-height: 65px;
+    text-align:center;
+    font-weight: bold;
+}
+
+    #getAgreemsList:hover {
+        background-color: #1cc462;
+    }
+
+#queueReport {
+    position:relative;
+    display:block;
+}
+
+#selectedQueue {    
+    position:inherit;
+    float:left;
+    width: auto;
+    margin-left:10px;   
+}
+
+.modal-content {
+    -webkit-box-shadow: 0 5px 100px rgba(0, 0, 0, .7);
+    box-shadow: 0 5px 100px rgba(0, 0, 0, .7);
+}

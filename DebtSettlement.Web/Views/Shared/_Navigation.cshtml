@@ -1,0 +1,81 @@
+﻿@using DebtSettlement.BusinessLayer
+@{
+    Layout = null;
+}
+
+<nav id="mainNavigationMenu" class="navbar navbar-default">
+    <div class="">
+
+        <ul class="nav nav-pills nav-stacked filters">
+            @if (UserHasAccess(AppSettings.DebtSettlementCreateTaskPermission))
+            {
+                <li>
+                    <a href="@Url.Content("~/Task/CreateTask")">
+                        <span class="glyphicon glyphicon-envelope"></span>
+                        &nbsp; Создать новую
+                    </a>
+                </li>
+            }
+            <li>
+                <a href="@Url.Content("~/task/list#")" class="tasks-list-filter">
+                    <span class="glyphicon glyphicon glyphicon-list-alt"></span>
+                    &nbsp; ЗАДАЧИ
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Content("~/task/list#my")" class="text-primary tasks-list-filter">
+                    <strong>Мои задачи</strong>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Content("~/task/list#my?$filter=Status eq 'Open' and Responsible eq ::username")" class="sublink tasks-list-filter">
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                    &nbsp; Назначенные
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Content("~/task/list#my?$filter=Status eq 'InProgress' and Responsible eq ::username")" class="sublink tasks-list-filter">
+                    <span class="glyphicon glyphicon-briefcase"></span>
+                    &nbsp; В работе
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Content("~/task/list#my?$filter=PlannedDate eq Date.Now and Responsible eq ::username")" class="sublink tasks-list-filter">
+                    <span class="glyphicon glyphicon-time"></span>
+                    &nbsp; Срок сегодня
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Content("~/task/list#?$filter=Status ne 'Closed' and Observer eq ::username")" class="sublink tasks-list-filter">
+                    <span class="glyphicon glyphicon-search"></span>
+                    &nbsp; Я наблюдатель
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Content("~/task/list#my?$filter=Status ne 'Closed' and PlannedDate lt Date.Now and Responsible eq ::username")"
+                   class="sublink tasks-list-filter">
+                    <span class="glyphicon glyphicon-exclamation-sign"></span>
+                    &nbsp; Просроченные
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Content("~/task/list#?$filter=Status ne 'Closed' and Initiator eq ::username")" class="sublink tasks-list-filter">
+                    <span class="glyphicon glyphicon-user"></span>
+                    &nbsp; Созданные мной
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Content("~/task/list#?$filter=Status eq 'OnApprove' and (Responsible eq ::username or Observer eq ::username)")" class="sublink tasks-list-filter">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    &nbsp; На подтверждении
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Content("~/task/list#my?$filter=Status eq 'Closed' and Responsible eq ::username")" class="tasks-list-filter">
+                    <span class="glyphicon glyphicon-remove"></span>
+                    &nbsp; Закрытые задачи
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

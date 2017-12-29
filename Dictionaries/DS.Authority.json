@@ -1,0 +1,29 @@
+{
+  "Id": 0,
+  "Name": "DS.Authority",
+  "Version": "1",
+  "Metadata": "",
+  "Items": [
+    {
+      "Value": {
+        "Id": "1",
+        "Name": "ТЕСЛЕНКО-ДОСЕНКО"
+      },
+      "ValueId": "1"
+    },
+	{
+      "Value": {
+        "Id": "2",
+        "Name": "ТЕСЛЕНКО-ТУРЧЕНКО"
+      },
+      "ValueId": "2"
+    },
+	{
+      "Value": {
+        "Id": "3",
+        "Name": "ТЕСЛЕНКО-ГАРШИН"
+      },
+      "ValueId": "3"
+    }
+  ]
+}

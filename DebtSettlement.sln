@@ -1,0 +1,69 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebtSettlement.Web", "DebtSettlement.Web\DebtSettlement.Web.csproj", "{3427F988-7960-41E0-9C00-6B0B37820A51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebtSettlement.AgreementLoader", "DebtSettlement.AgreementLoader\DebtSettlement.AgreementLoader.csproj", "{A0B8C834-B8E1-4D2F-8124-7C48906E560A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebtSettlement.BusinessLayer", "DebtSettlement.BusinessLayer\DebtSettlement.BusinessLayer.csproj", "{81741E72-5F71-4276-8C54-C7F68B12E868}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebtSettlement.Model", "DebtSettlement.Model\DebtSettlement.Model.csproj", "{A5E0E2CE-7F0B-4B2D-B512-80DE953F8082}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dictionaries", "Dictionaries", "{BCE0E870-BA0E-4A2D-B3F4-EE1D30A141FF}"
+	ProjectSection(SolutionItems) = preProject
+		Dictionaries\deployDictionaries.ps1 = Dictionaries\deployDictionaries.ps1
+		..\..\Iteration 13\DictionaryDS\DS.Authority.json = ..\..\Iteration 13\DictionaryDS\DS.Authority.json
+		..\..\Iteration 13\DictionaryDS\DS.CourtDecision.json = ..\..\Iteration 13\DictionaryDS\DS.CourtDecision.json
+		..\..\Iteration 13\DictionaryDS\DS.CurrentFunctional.json = ..\..\Iteration 13\DictionaryDS\DS.CurrentFunctional.json
+		..\..\Iteration 13\DictionaryDS\DS.EstablishDoc.json = ..\..\Iteration 13\DictionaryDS\DS.EstablishDoc.json
+		..\..\Iteration 13\DictionaryDS\DS.JurStage.json = ..\..\Iteration 13\DictionaryDS\DS.JurStage.json
+		..\..\Iteration 13\DictionaryDS\DS.PartProperty.json = ..\..\Iteration 13\DictionaryDS\DS.PartProperty.json
+		..\..\Iteration 13\DictionaryDS\DS.PortfolioSegment.json = ..\..\Iteration 13\DictionaryDS\DS.PortfolioSegment.json
+		..\..\Iteration 13\DictionaryDS\DS.SourceInformation.json = ..\..\Iteration 13\DictionaryDS\DS.SourceInformation.json
+		..\..\Iteration 13\DictionaryDS\DS.TypeDS.json = ..\..\Iteration 13\DictionaryDS\DS.TypeDS.json
+		..\..\Iteration 13\DictionaryDS\DS.TypeProperty.json = ..\..\Iteration 13\DictionaryDS\DS.TypeProperty.json
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DebtSettlement.AgreementLoaderTests1", "DebtSettlement.AgreementLoaderTests1\DebtSettlement.AgreementLoaderTests1.csproj", "{7897443F-7461-4B23-8AAF-FFB002E366FF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6804E88A-6F20-4614-B114-B9012B1C8DD4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3427F988-7960-41E0-9C00-6B0B37820A51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3427F988-7960-41E0-9C00-6B0B37820A51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3427F988-7960-41E0-9C00-6B0B37820A51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3427F988-7960-41E0-9C00-6B0B37820A51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0B8C834-B8E1-4D2F-8124-7C48906E560A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0B8C834-B8E1-4D2F-8124-7C48906E560A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0B8C834-B8E1-4D2F-8124-7C48906E560A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0B8C834-B8E1-4D2F-8124-7C48906E560A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81741E72-5F71-4276-8C54-C7F68B12E868}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81741E72-5F71-4276-8C54-C7F68B12E868}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81741E72-5F71-4276-8C54-C7F68B12E868}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81741E72-5F71-4276-8C54-C7F68B12E868}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5E0E2CE-7F0B-4B2D-B512-80DE953F8082}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5E0E2CE-7F0B-4B2D-B512-80DE953F8082}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5E0E2CE-7F0B-4B2D-B512-80DE953F8082}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5E0E2CE-7F0B-4B2D-B512-80DE953F8082}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7897443F-7461-4B23-8AAF-FFB002E366FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7897443F-7461-4B23-8AAF-FFB002E366FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7897443F-7461-4B23-8AAF-FFB002E366FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7897443F-7461-4B23-8AAF-FFB002E366FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7897443F-7461-4B23-8AAF-FFB002E366FF} = {6804E88A-6F20-4614-B114-B9012B1C8DD4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {92BAA90E-FFD7-4D92-820C-E16F22B6E5F3}
+	EndGlobalSection
+EndGlobal

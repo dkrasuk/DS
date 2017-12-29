@@ -1,0 +1,978 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TaskManager.Web</name>
+    </assembly>
+    <members>
+        <member name="T:TaskManager.Web.AutoMapperConfig">
+            <summary>
+            Class AutoMapperConfig.
+            </summary>
+        </member>
+        <member name="M:TaskManager.Web.AutoMapperConfig.RegisterMappings">
+            <summary>
+            Registers the mappings.
+            </summary>
+        </member>
+        <member name="T:TaskManager.Web.BundleConfig">
+            <summary>
+            Class BundleConfig.
+            </summary>
+        </member>
+        <member name="M:TaskManager.Web.BundleConfig.RegisterBundles(System.Web.Optimization.BundleCollection)">
+            <summary>
+            Registers the bundles.
+            </summary>
+            <param name="bundles">The bundles.</param>
+        </member>
+        <member name="T:TaskManager.Web.FilterConfig">
+            <summary>
+            Class FilterConfig.
+            </summary>
+        </member>
+        <member name="M:TaskManager.Web.FilterConfig.RegisterGlobalFilters(System.Web.Mvc.GlobalFilterCollection)">
+            <summary>
+            Registers the global filters.
+            </summary>
+            <param name="filters">The filters.</param>
+        </member>
+        <member name="T:TaskManager.Web.IocControllerFactory">
+            <summary>
+            Class IocControllerFactory.
+            </summary>
+            <seealso cref="T:System.Web.Mvc.DefaultControllerFactory" />
+        </member>
+        <member name="M:TaskManager.Web.IocControllerFactory.#ctor(Microsoft.Practices.Unity.IUnityContainer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TaskManager.Web.IocControllerFactory"/> class.
+            </summary>
+            <param name="container">The container.</param>
+        </member>
+        <member name="M:TaskManager.Web.IocControllerFactory.GetControllerInstance(System.Web.Routing.RequestContext,System.Type)">
+            <summary>
+            Retrieves the controller instance for the specified request context and controller type.
+            </summary>
+            <param name="requestContext">The context of the HTTP request, which includes the HTTP context and route data.</param>
+            <param name="controllerType">The type of the controller.</param>
+            <returns>The controller instance.</returns>
+        </member>
+        <member name="T:TaskManager.Web.RouteConfig">
+            <summary>
+            Class RouteConfig.
+            </summary>
+        </member>
+        <member name="M:TaskManager.Web.RouteConfig.RegisterRoutes(System.Web.Routing.RouteCollection)">
+            <summary>
+            Registers the routes.
+            </summary>
+            <param name="routes">The routes.</param>
+        </member>
+        <member name="T:TaskManager.Web.SwaggerConfig">
+            <summary>
+            Class SwaggerConfig.
+            </summary>
+        </member>
+        <member name="M:TaskManager.Web.SwaggerConfig.Register">
+            <summary>
+            Registers this instance.
+            </summary>
+        </member>
+        <member name="T:TaskManager.Web.WebApiConfig">
+            <summary>
+            Class WebApiConfig.
+            </summary>   
+        </member>
+        <member name="M:TaskManager.Web.WebApiConfig.Register(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Registers the specified configuration.
+            </summary>
+            <param name="config">The configuration.</param>
+        </member>
+        <member name="M:TaskManager.Web.WebApiConfig.RegisterDependencyResolver(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Registers the dependency resolver.
+            </summary>
+            <param name="config">The configuration.</param>
+        </member>
+        <member name="T:TaskManager.Web.Attributes.ODataQueryableAttribute">
+            <summary>
+            Class ODataQueryableAttribute. This class cannot be inherited.
+            </summary>
+            <seealso cref="T:System.Web.Http.OData.EnableQueryAttribute" />
+        </member>
+        <member name="M:TaskManager.Web.Attributes.ODataQueryableAttribute.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:TaskManager.Web.Attributes.ODataQueryableAttribute"/> class.
+            </summary>
+        </member>
+        <member name="M:TaskManager.Web.Attributes.ODataQueryableAttribute.ApplyQuery(System.Linq.IQueryable,System.Web.Http.OData.Query.ODataQueryOptions)">
+            <summary>
+            Applies the query to the given IQueryable based on incoming query from uri and query settings. By default, the implementation supports $top, $skip, $orderby and $filter. Override this method to perform additional query composition of the query.
+            </summary>
+            <param name="queryable">The original queryable instance from the response message.</param>
+            <param name="queryOptions">The <see cref="T:System.Web.Http.OData.Query.ODataQueryOptions" /> instance constructed based on the incoming request.</param>
+            <returns>IQueryable.</returns>
+        </member>
+        <member name="M:TaskManager.Web.Attributes.ODataQueryableAttribute.ValidateQuery(System.Net.Http.HttpRequestMessage,System.Web.Http.OData.Query.ODataQueryOptions)">
+            <summary>
+            Validates the OData query in the incoming request. By default, the implementation throws an exception if the query contains unsupported query parameters. Override this method to perform additional validation of the query.
+            </summary>
+            <param name="request">The incoming request.</param>
+            <param name="queryOptions">The <see cref="T:System.Web.Http.OData.Query.ODataQueryOptions" /> instance constructed based on the incoming request.</param>
+        </member>
+        <member name="M:TaskManager.Web.Attributes.ODataQueryableAttribute.ProcessUrl(System.String)">
+            <summary>
+            Processes the URL.
+            </summary>
+            <param name="url">The URL.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="T:TaskManager.Web.Constants">
+            <summary>
+            Class Constants.
+            </summary>
+        </member>
+        <member name="F:TaskManager.Web.Constants.DefaultConectionStringName">
+            <summary>
+            The default conection string name
+            </summary>
+        </member>
+        <member name="T:TaskManager.Web.Controllers.AccountController">
+            <summary>
+            Class AccountController.
+            </summary>
+            <seealso cref="T:System.Web.Mvc.Controller" />
+        </member>
+        <member name="M:TaskManager.Web.Controllers.AccountController.Logout">
+            <summary>
+            Logouts this instance.
+            </summary>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="T:TaskManager.Web.Controllers.Api.DictionaryController">
+            <summary>
+            Class DictionaryController.
+            </summary>
+            <seealso cref="T:System.Web.Http.ApiController" />
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.DictionaryController.#ctor(AlfaBank.Common.Interfaces.IApiExecuter,TaskManager.BusinessLayer.Services.Interfaces.IHRService,HR.Client.Interface.IDepartmentService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TaskManager.Web.Controllers.Api.DictionaryController"/> class.
+            </summary>
+            <param name="apiExecuter">The API executer.</param>
+            <param name="hrService">The hr service.</param>
+            <param name="departmentService"></param>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.DictionaryController.Get(System.String,System.String)">
+            <summary>
+            Get dictionary info by dictionamry name
+            </summary>
+            <param name="name"></param>
+            <param name="term"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.DictionaryController.Get(System.String,System.String,System.String)">
+            <summary>
+            Get dictionary info by dictionamry name and version
+            </summary>
+            <param name="name"></param>
+            <param name="version"></param>
+            <param name="term"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TaskManager.Web.Controllers.Api.TasksController">
+            <summary>
+            Class TasksController.
+            </summary>
+            <seealso cref="T:System.Web.Http.ApiController" />
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.TasksController.#ctor(TaskManager.BusinessLayer.Services.Interfaces.ITaskService,TaskManager.BusinessLayer.Services.Interfaces.IHRService,TaskManager.AgreementLoader.Interface.IAgreementService,AlfaBank.Logger.ILogger,TaskManager.SpreadsheetModelManager.Interface.ITaskSpreadsheetWriter)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TaskManager.Web.Controllers.Api.TasksController" /> class.
+            </summary>
+            <param name="taskService">The task service.</param>
+            <param name="hrService">The hr service.</param>
+            <param name="agreementService">The agreement service.</param>
+            <param name="logger">The logger.</param>
+            <param name="spreadsheetWriter">The spreadsheet writer.</param>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.TasksController.GetAll">
+            <summary>
+            Get all tasks
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.TasksController.Get(System.Guid)">
+            <summary> 
+            Get task by id
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.TasksController.GetAllMy">
+            <summary>
+            Get all tasks assigned on current user
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.TasksController.GetUsersWithResponsible(System.String,System.String,System.String)">
+            <summary>
+            Gets the users with responsible.
+            </summary>
+            <param name="term">The term.</param>
+            <param name="agreementId">The agreement identifier.</param>
+            <param name="departmentId">The department identifier.</param>
+            <returns>IEnumerable&lt;System.Object&gt;.</returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.TasksController.Duplicate(System.Guid)">
+            <summary>
+            Duplicate task by id
+            </summary>
+            <param name="id">Duplicate task id</param>
+            <returns></returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.TasksController.PutStates(System.Guid,TaskManager.Web.Models.Task.TaskStateModel)">
+            <summary>
+            Set new task state
+            </summary>
+            <param name="id">Task id</param>
+            <param name="state">State model</param>
+            <returns></returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.TasksController.GetProcessHistory(System.Guid)">
+            <summary>
+            Get history for task instance
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.TasksController.GetProcessHistory(System.Guid,System.Guid)">
+            <summary>
+            Get history for task instance
+            </summary>
+            <param name="id"></param>
+            <param name="historyId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.TasksController.Delete(System.Guid)">
+            <summary>
+            Close tack by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.TasksController.AutoClose(TaskManager.BusinessLayer.Models.AgreementAction)">
+            <summary>
+            Auto close task
+            </summary>
+            <param name="action">The action.</param>
+            <returns>Task&lt;IHttpActionResult&gt;.</returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.TasksController.GetAvailableCommands(System.Guid)">
+            <summary>
+            Get available commands by task id
+            </summary>
+            <param name="taskId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.TasksController.ExecuteCommand(System.Guid,TaskManager.Web.Models.ExecuteCommandModel)">
+            <summary>
+            Executes the command.
+            </summary>
+            <param name="taskId">The task identifier.</param>
+            <param name="commandParams">The command parameters.</param>
+            <returns>Task&lt;IHttpActionResult&gt;.</returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.TasksController.CreateTask(TaskManager.Web.Models.Task.TaskViewModel)">
+            <summary>
+            Creates the task.
+            </summary>
+            <param name="model">The model.</param>
+            <returns>Task&lt;ViewResult&gt;.</returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.TasksController.CreateMultipleTaskAndGetResult(TaskManager.Web.Models.Task.TaskViewModel)">
+            <summary>
+            Creates the multiple task and get result.
+            </summary>
+            <param name="model">The model.</param>
+            <returns>Task&lt;HttpResponseMessage&gt;.</returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.TasksController.TryToCreateTask(TaskManager.Web.Models.Task.TaskViewModel)">
+            <summary>
+            Tries to create task.
+            </summary>
+            <param name="model">The model.</param>
+            <returns>Task&lt;List&lt;TaskCreationResultDTO&gt;&gt;.</returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.TasksController.TryToCreateMultipleTasks(TaskManager.Web.Models.Task.TaskViewModel)">
+            <summary>
+            Tries to create multiple tasks.
+            </summary>
+            <param name="model">The model.</param>
+            <returns>Task&lt;List&lt;TaskCreationResultDTO&gt;&gt;.</returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.TasksController.TryToSetObserverAsBossOfDepartment(TaskManager.Model.DTO.TaskDTO,TaskManager.Web.Models.Task.TaskViewModel)">
+            <summary>
+            Tries to set observer as boss of department.
+            </summary>
+            <param name="modelDto">The model dto.</param>
+            <param name="model">The model.</param>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.TasksController.TryToSetAutomaticResponsible(TaskManager.Model.DTO.TaskDTO,TaskManager.Web.Models.Task.TaskViewModel,TaskManager.Model.DTO.TaskCreationResultDTO)">
+            <summary>
+            Tries to set automatic responsible.
+            </summary>
+            <param name="modelDto">The model dto.</param>
+            <param name="model">The model.</param>
+            <param name="agreement">The agreement.</param>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.TasksController.CreateTaskAndReturnResult(TaskManager.Model.DTO.TaskDTO,System.Boolean)">
+            <summary>
+            Creates the single task.
+            </summary>
+            <param name="task">The task.</param>
+            <param name="sendEmail"></param>
+            <returns>Task&lt;TaskCreationResultDTO&gt;.</returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.TasksController.GetInnerException(System.Exception)">
+            <summary>
+            Gets the inner exception.
+            </summary>
+            <param name="exception">The exception.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.TasksController.SendOverduedNotifications(System.String)">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:TaskManager.Web.Controllers.Api.AgreementsController">
+            <summary>
+            Class UsersController.
+            </summary>
+            <seealso cref="T:System.Web.Http.ApiController" />
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.AgreementsController.#ctor(TaskManager.AgreementLoader.Interface.IAgreementService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TaskManager.Web.Controllers.Api.UsersController"/> class.
+            </summary>
+            <param name="agreementService"></param>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.AgreementsController.GetAgreement(System.Int32)">
+            <summary>
+            Gets the agreement.
+            </summary>
+            <param name="agreementId">The agreement identifier.</param>
+            <returns>IEnumerable&lt;System.Object&gt;.</returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.AgreementsController.SearchAgreements(System.String)">
+            <summary>
+            Searches the agreements.
+            </summary>
+            <param name="searchTerm">The search term.</param>
+            <returns>System.Threading.Tasks.Task&lt;System.Collections.Generic.IEnumerable&lt;TaskManager.AgreementLoader.Models.SearchResult&gt;&gt;.</returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.AgreementsController.GetActions(System.String,System.Int32)">
+            <summary>
+            Get ection by id
+            </summary>
+            <param name="type">legal|general</param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TaskManager.Web.Controllers.Api.UsersController">
+            <summary>
+            Class UsersController.
+            </summary>
+            <seealso cref="T:System.Web.Http.ApiController" />
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.UsersController.#ctor(TaskManager.BusinessLayer.Services.Interfaces.IHRService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TaskManager.Web.Controllers.Api.UsersController"/> class.
+            </summary>
+            <param name="hrService">The hr service.</param>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.UsersController.GetUsers(System.String)">
+            <summary>
+            Gets the user.
+            </summary>
+            <param name="term">The term.</param>
+            <returns>IEnumerable&lt;System.String&gt;.</returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.UsersController.GetUser(System.String)">
+            <summary>
+            Gets the user.
+            </summary>
+            <param name="userName">Name of the user.</param>
+            <returns>IEnumerable&lt;System.String&gt;.</returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.Api.UsersController.GetBoss(System.String)">
+            <summary>
+            Gets the boss of user.
+            </summary>
+            <param name="userLogin">The user login.</param>
+            <returns>IEnumerable&lt;System.String&gt;.</returns>
+        </member>
+        <member name="T:TaskManager.Web.Controllers.ErrorController">
+            <summary>
+            Class ErrorController.
+            </summary>
+            <seealso cref="T:System.Web.Mvc.Controller" />
+        </member>
+        <member name="M:TaskManager.Web.Controllers.ErrorController.Index">
+            <summary>
+            Indexes this instance.
+            </summary>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.ErrorController.NotFound">
+            <summary>
+            Nots the found.
+            </summary>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.ErrorController.Unauthorized">
+            <summary>
+            Unauthorizeds this instance.
+            </summary>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.ErrorController.Ajax">
+            <summary>
+            Ajaxes this instance.
+            </summary>
+            <returns>JsonResult.</returns>
+        </member>
+        <member name="T:TaskManager.Web.Controllers.TaskController">
+            <summary>
+            Class TaskController.
+            </summary>
+            <seealso cref="T:System.Web.Mvc.Controller" />
+        </member>
+        <member name="M:TaskManager.Web.Controllers.TaskController.#ctor(TaskManager.AgreementLoader.Interface.IAgreementService,TaskManager.SpreadsheetModelManager.Interface.ITaskSpreadsheetReader,AlfaBank.Logger.ILogger,HR.Client.Interface.IDepartmentService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:TaskManager.Web.Controllers.TaskController" /> class.
+            </summary>
+            <param name="agreementService">The agreement service.</param>
+            <param name="spreadsheetReader">The spreadsheet reader.</param>
+            <param name="logger">The logger.</param>
+            <param name="departmentService">The Department service.</param>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.TaskController.Index">
+            <summary>
+            Indexes this instance.
+            </summary>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.TaskController.List">
+            <summary>
+            Lists this instance.
+            </summary>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.TaskController.ListPartial">
+            <summary>
+            Lists the partial.
+            </summary>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.TaskController.Item(System.Guid)">
+            <summary>
+            Items the specified identifier.
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.TaskController.History(System.Guid)">
+            <summary>
+            Histories the specified identifier.
+            </summary>
+            <param name="id">The identifier.</param>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.TaskController.CreateTask(System.Int32,System.String)">
+            <summary>
+            Creates the task.
+            </summary>
+            <returns>ViewResult.</returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.TaskController.TaskCreated">
+            <summary>
+            Tasks the created.
+            </summary>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.TaskController.UploadFileWithAgreements(System.String)">
+            <summary>
+            Uploads the file with agreements.
+            </summary>
+            <param name="agreementIds">The agreement ids.</param>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.TaskController.Upload(System.Web.HttpPostedFileBase)">
+            <summary>
+            Uploads the specified file with agreements.
+            </summary>
+            <param name="file">The file.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.TaskController.GetTaskCreationResult(System.String)">
+            <summary>
+            Gets the task creation result.
+            </summary>
+            <param name="fileName">Name of the file.</param>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.TaskController.GetInnerException(System.Exception)">
+            <summary>
+            Gets the inner exception.
+            </summary>
+            <param name="exception">The exception.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.TaskController.GetGeneralActions(System.Int32)">
+            <summary>
+            Gets the general actions.
+            </summary>
+            <param name="selectedValue">The selected value.</param>
+            <returns>List&lt;SelectListItem&gt;.</returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.TaskController.GetLegalActions(System.Int32)">
+            <summary>
+            Gets the legal actions.
+            </summary>
+            <param name="selectedValue">The selected value.</param>
+            <returns>List&lt;SelectListItem&gt;.</returns>
+        </member>
+        <member name="M:TaskManager.Web.Controllers.TaskController.GetDepartments(System.Int32)">
+            <summary>
+            Gets all departments.
+            </summary>
+            <param name="selectedValue">The selected value.</param>
+            <returns>List&lt;SelectListItem&gt;.</returns>
+        </member>
+        <member name="T:TaskManager.Web.Extensions.GlobalExceptionLogger">
+            <summary>
+            Global Exeptoon logger
+            </summary>
+        </member>
+        <member name="M:TaskManager.Web.Extensions.GlobalExceptionLogger.Log(System.Web.Http.ExceptionHandling.ExceptionLoggerContext)">
+            <summary>
+            Log
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:TaskManager.Web.Filters.DeleteFileAttribute">
+            <summary>
+            Class DeleteFileAttribute.
+            </summary>
+            <seealso cref="T:System.Web.Mvc.ActionFilterAttribute" />
+        </member>
+        <member name="M:TaskManager.Web.Filters.DeleteFileAttribute.OnResultExecuted(System.Web.Mvc.ResultExecutedContext)">
+            <summary>
+            Called by the ASP.NET MVC framework after the action result executes.
+            </summary>
+            <param name="filterContext">The filter context.</param>
+        </member>
+        <member name="T:TaskManager.Web.Helpers.AgreementLoaderHelper">
+            <summary>
+            Class AgreementLoaderHelper.
+            </summary>
+        </member>
+        <member name="M:TaskManager.Web.Helpers.AgreementLoaderHelper.ToSelectListItems(System.Collections.Generic.IEnumerable{TaskManager.AgreementLoader.Models.ActionType},System.Int32)">
+            <summary>
+            To the select list items.
+            </summary>
+            <param name="actionTypes">The action types.</param>
+            <param name="selectedId">The selected identifier.</param>
+            <returns>IEnumerable&lt;SelectListItem&gt;.</returns>
+        </member>
+        <member name="T:TaskManager.Web.Helpers.Helper">
+            <summary>
+            Helper
+            </summary>
+        </member>
+        <member name="M:TaskManager.Web.Helpers.Helper.GetDeclension(System.Int32,System.String,System.String,System.String)">
+            <summary>
+            Возвращает слова в падеже, зависимом от заданного числа 
+            </summary>
+            <param name="number">Число от которого зависит выбранное слово</param>
+            <param name="nominativ">Именительный падеж слова. Например "день"</param>
+            <param name="genetiv">Родительный падеж слова. Например "дня"</param>
+            <param name="plural">Множественное число слова. Например "дней"</param>
+            <returns></returns>
+        </member>
+        <member name="T:TaskManager.Web.Helpers.LayoutHelper">
+            <summary>
+            Class LayoutHelper.
+            </summary>
+        </member>
+        <member name="M:TaskManager.Web.Helpers.LayoutHelper.GetDefaultLayout">
+            <summary>
+            Gets the default layout.
+            </summary>
+            <returns>System.String.</returns>
+        </member>
+        <member name="T:TaskManager.Web.Models.Dictionary">
+            <summary>
+            Class Dictionary.
+            </summary>
+        </member>
+        <member name="P:TaskManager.Web.Models.Dictionary.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+            <value>The identifier.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.Dictionary.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.Dictionary.Version">
+            <summary>
+            Gets or sets the version.
+            </summary>
+            <value>The version.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.Dictionary.Metadata">
+            <summary>
+            Gets or sets the metadata.
+            </summary>
+            <value>The metadata.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.Dictionary.Items">
+            <summary>
+            Gets or sets the items.
+            </summary>
+            <value>The items.</value>
+        </member>
+        <member name="T:TaskManager.Web.Models.DictionaryItemValue">
+            <summary>
+            Class DictionaryItemValue.
+            </summary>
+        </member>
+        <member name="P:TaskManager.Web.Models.DictionaryItemValue.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+            <value>The identifier.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.DictionaryItemValue.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="T:TaskManager.Web.Models.DictionaryItem">
+            <summary>
+            Class DictionaryItem.
+            </summary>
+        </member>
+        <member name="P:TaskManager.Web.Models.DictionaryItem.ValueId">
+            <summary>
+            Gets or sets the value identifier.
+            </summary>
+            <value>The value identifier.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.DictionaryItem.Value">
+            <summary>
+            Gets or sets the value.
+            </summary>
+            <value>The value.</value>
+        </member>
+        <member name="T:TaskManager.Web.Models.ExecuteCommandModel">
+            <summary>
+            Class ExecuteCommandModel.
+            </summary>
+        </member>
+        <member name="P:TaskManager.Web.Models.ExecuteCommandModel.TaskId">
+            <summary>
+            Gets or sets the task identifier.
+            </summary>
+            <value>The task identifier.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.ExecuteCommandModel.CommandName">
+            <summary>
+            Gets or sets the name of the command.
+            </summary>
+            <value>The name of the command.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.ExecuteCommandModel.Parameters">
+            <summary>
+            Gets or sets the parameters.
+            </summary>
+            <value>The parameters.</value>
+        </member>
+        <member name="T:TaskManager.Web.Models.RejectProlongateTaskViewModel">
+            <summary>
+            Class RejectProlongateTaskViewModel.
+            </summary>
+        </member>
+        <member name="P:TaskManager.Web.Models.RejectProlongateTaskViewModel.Comment">
+            <summary>
+            Gets or sets the comment.
+            </summary>
+            <value>The comment.</value>
+        </member>
+        <member name="T:TaskManager.Web.Models.ProlongateTaskViewModel">
+            <summary>
+            Class ProlongateTaskViewModel.
+            </summary>
+        </member>
+        <member name="P:TaskManager.Web.Models.ProlongateTaskViewModel.Date">
+            <summary>
+            Gets or sets the date.
+            </summary>
+            <value>The date.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.ProlongateTaskViewModel.Comment">
+            <summary>
+            Gets or sets the comment.
+            </summary>
+            <value>The comment.</value>
+        </member>
+        <member name="T:TaskManager.Web.Models.Task.UploadViewModel">
+            <summary>
+            Class TaskStateModel.
+            </summary>
+        </member>
+        <member name="P:TaskManager.Web.Models.Task.UploadViewModel.Success">
+            <summary>
+            Gets or sets wheather upload was successful.
+            </summary>
+            <value>The name of the state.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.Task.UploadViewModel.Message">
+            <summary>
+            Gets or sets the Message.
+            </summary>
+            <value>The comment.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.Task.UploadViewModel.AgreementContent">
+            <summary>
+            Gets or sets the content of the agreement.
+            </summary>
+            <value>The content of the agreement.</value>
+        </member>
+        <member name="T:TaskManager.Web.Models.Task.TaskStateModel">
+            <summary>
+            Class TaskStateModel.
+            </summary>
+        </member>
+        <member name="P:TaskManager.Web.Models.Task.TaskStateModel.StateName">
+            <summary>
+            Gets or sets the name of the state.
+            </summary>
+            <value>The name of the state.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.Task.TaskStateModel.Comment">
+            <summary>
+            Gets or sets the comment.
+            </summary>
+            <value>The comment.</value>
+        </member>
+        <member name="T:TaskManager.Web.Models.Task.TaskViewModel">
+            <summary>
+            Class TaskViewModel.
+            </summary>
+        </member>
+        <member name="P:TaskManager.Web.Models.Task.TaskViewModel.IsMultiTask">
+            <summary>
+            Gets or sets the IsMultiTask parameter.
+            </summary>
+            <value>The title.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.Task.TaskViewModel.Title">
+            <summary>
+            Gets or sets the title.
+            </summary>
+            <value>The title.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.Task.TaskViewModel.Description">
+            <summary>
+            Gets or sets the description.
+            </summary>
+            <value>The description.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.Task.TaskViewModel.Comment">
+            <summary>
+            Gets or sets the comment.
+            </summary>
+            <value>The comment.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.Task.TaskViewModel.Type">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:TaskManager.Web.Models.Task.TaskViewModel"/> is type.
+            </summary>
+            <value><c>true</c> if type; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.Task.TaskViewModel.Status">
+            <summary>
+            Gets or sets the status.
+            </summary>
+            <value>The status.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.Task.TaskViewModel.PlannedDate">
+            <summary>
+            Gets or sets the planned date.
+            </summary>
+            <value>The planned date.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.Task.TaskViewModel.Responsible">
+            <summary>
+            Gets or sets the responsible.
+            </summary>
+            <value>The responsible.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.Task.TaskViewModel.ResponsibleFullName">
+            <summary>
+            Bind ResponsibleFullName to model.
+            </summary>
+            <value>The ResponsibleFullName.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.Task.TaskViewModel.Observer">
+            <summary>
+            Gets or sets the observer.
+            </summary>
+            <value>The observer.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.Task.TaskViewModel.ObserverFullName">
+            <summary>
+            Bind ResponsibleFullName to model.
+            </summary>
+            <value>The ResponsibleFullName.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.Task.TaskViewModel.AssignedResponsible">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:TaskManager.Web.Models.Task.TaskViewModel.Initiator">
+            <summary>
+            Gets or sets the initiator.
+            </summary>
+            <value>The initiator.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.Task.TaskViewModel.AgreementId">
+            <summary>
+            Gets or sets the agreement identifier.
+            </summary>
+            <value>The agreement identifier.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.Task.TaskViewModel.AgreementProcessId">
+            <summary>
+            Get or set the agreement process id
+            </summary>
+        </member>
+        <member name="P:TaskManager.Web.Models.Task.TaskViewModel.NotLegalTypeActionId">
+            <summary>
+            Gets or sets the not legal type action identifier.
+            </summary>
+            <value>The not legal type action identifier.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.Task.TaskViewModel.GeneralActionTypesList">
+            <summary>
+            Gets or sets the general action types list.
+            </summary>
+            <value>The general action types list.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.Task.TaskViewModel.LegalActionTypeId">
+            <summary>
+            Gets or sets the legal action type identifier.
+            </summary>
+            <value>The legal action type identifier.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.Task.TaskViewModel.LegalActionTypesList">
+            <summary>
+            Gets or sets the legal action types list.
+            </summary>
+            <value>The legal action types list.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.Task.TaskViewModel.TaskCategoryId">
+            <summary>
+            Gets or sets the task category identifier.
+            </summary>
+            <value>The legal task category identifier.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.Task.TaskViewModel.TaskCategoryList">
+            <summary>
+            Gets or sets the task category list.
+            </summary>
+            <value>The task categories list.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.Task.TaskViewModel.PersonFullName">
+            <summary>
+            Gets or sets the full name of the person.
+            </summary>
+            <value>The full name of the person.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.Task.TaskViewModel.ProductCode">
+            <summary>
+            Gets or sets the product code.
+            </summary>
+            <value>The product code.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.Task.TaskViewModel.OpenDate_CloseDate">
+            <summary>
+            Gets or sets the open date close date.
+            </summary>
+            <value>The open date close date.</value>
+        </member>
+        <member name="P:TaskManager.Web.Models.Task.TaskViewModel.Number">
+            <summary>
+            Gets or sets the number.
+            </summary>
+            <value>The number.</value>
+        </member>
+        <member name="T:TaskManager.Web.MvcApplication">
+            <summary>
+            Class MvcApplication.
+            </summary>
+            <seealso cref="T:System.Web.HttpApplication" />
+        </member>
+        <member name="M:TaskManager.Web.MvcApplication.Application_Start">
+            <summary>
+            Applications the start.
+            </summary>d
+        </member>
+        <member name="M:TaskManager.Web.MvcApplication.Application_Error">
+            <summary>
+            Application exeptions handler
+            </summary>
+        </member>
+        <member name="M:TaskManager.Web.MvcApplication.Register(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Registers the specified configuration.
+            </summary>
+            <param name="config">The configuration.</param>
+        </member>
+        <member name="M:TaskManager.Web.MvcApplication.RegisterDependency(Microsoft.Practices.Unity.IUnityContainer)">
+            <summary>
+            Registers the dependency.
+            </summary>
+            <param name="container">The container.</param>
+        </member>
+        <member name="T:TaskManager.Web.Views.BaseView">
+            <summary>
+            Class BaseView.
+            </summary>
+            <seealso cref="T:TaskManager.Web.Views.BaseView`1" />
+        </member>
+        <member name="T:TaskManager.Web.Views.BaseView`1">
+            <summary>
+            Class BaseView.
+            </summary>
+            <typeparam name="TModel">The type of the t model.</typeparam>
+            <seealso cref="T:System.Web.Mvc.WebViewPage`1" />
+        </member>
+        <member name="M:TaskManager.Web.Views.BaseView`1.UserHasAccess(System.String)">
+            <summary>
+            User has access
+            </summary>
+            <param name="access"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

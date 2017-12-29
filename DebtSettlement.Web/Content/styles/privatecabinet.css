@@ -1,0 +1,256 @@
+﻿ body,
+ html {
+    height: 100%;
+    margin: 0;
+    font-family: helvetica;
+    font-weight: 100;
+}
+
+    .main-content {
+        width: 100%;
+        margin-top: 10px;
+        position: relative;
+    }
+
+    .main-content #cabinet-content {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        width: 100%;
+        height:100%;
+    }
+
+    .main-content #sidebar-toggle {
+        background: darkorange;
+        border-radius: 3px;
+        display: block;
+        position: fixed;
+        left:10px;
+        top:55px;
+        padding: 10px 7px;
+        float: left;
+        z-index:101;
+    }
+
+    .main-content #sidebar-toggle .bar {
+        display: block;
+        width: 18px;
+        margin-bottom: 3px;
+        height: 2px;
+        background-color: #fff;
+        border-radius: 1px;
+    }
+
+        .main-content #sidebar-toggle .bar:last-child {
+            margin-bottom: 0;
+        }
+
+.menu-content-item {
+    height: 140px;
+    width: 130px;
+    margin: 0px auto;
+    float: left;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.3) 3px 3px;
+    padding: 5px;
+    border: 1px solid #a2a194;
+    text-align:center;
+}
+    .menu-content-item span {
+        color: white;
+        font-weight: bold;
+        font-size: 1em;
+        text-shadow: 1px 1px 1px black;   
+        margin-top: 60px;
+    }
+
+    .menu-content-item div {
+        float:left;
+        display:inline-block;
+    }
+
+.charts {
+    background: url("../images/charts.png") no-repeat center 15%;
+    background-color: #59c306;
+}
+    .charts:hover {
+        background-color: lawngreen;
+    }
+
+.info {
+    background: url("../images/info.png") no-repeat center 15%;
+    background-color: dodgerblue;
+}
+    .info:hover {
+        background-color: deepskyblue;    
+    }
+
+.box {
+    background: url("../images/box.png") no-repeat center 15%;
+    background-color: darkorange;
+}
+    .box:hover {
+        background-color: orangered;
+    }
+
+    .content-block span
+     {
+        top: 70px;
+        display: block;
+    }
+
+
+#queueReport {
+    width:100%;
+}
+
+#myQueue {
+    position:relative;
+    border: 1px solid orange;
+    background-color: lightgoldenrodyellow;
+    border-radius: 3px;
+    width: 45%;
+    padding: 10px;
+    margin-left:auto;
+    margin-right:auto;
+    display:block;
+    margin-bottom: 10px;
+    min-height: 100px;
+}
+
+    #filterParamsBlock,
+    #queueFilterBlock,
+    #myAgreemsCh {
+        clear:both;
+        position:static;
+    }
+
+    #filterParamsBlock div label,
+    #queueFilterBlock label,
+    #myAgreemsCh label{
+        color: black;
+        margin-bottom: 10px;
+        margin-right: 5px;
+    }
+
+        #filterParamsBlock input[type="text"] {
+            width: 100px;
+        }
+
+#getAgreemsList {
+    position: absolute;
+    right:50px;
+    bottom:25%;
+    background-color: #079805;
+    border: 1px solid #1cc462;
+    color:white;
+    height: 65px;
+    width: 65px;
+    box-shadow: rgba(0, 0, 0, 0.2) 3px 3px;
+    border-radius: 50%;
+    line-height: 65px;
+    text-align:center;
+    font-weight: bold;
+}
+
+    #getAgreemsList:hover {
+        background-color: #1cc462;
+    }
+
+    #getAgreemsList span {
+        top:unset;
+    }
+
+.processed{
+    background-color:#f2ffae !important;
+}
+
+#roomMenu {
+    background:none;
+    border:none;
+    margin-top:5px;
+    
+}
+
+    #roomMenu.navbar {
+        margin-bottom:0px;
+        min-height:10px;
+        border:none;
+        margin-left:100px;
+    }
+
+
+#bs-example-navbar-collapse-1>ul>li {
+    border: 1px solid red;
+    border-radius: 2px;
+    margin-left:2px;
+    color: white;
+    background: #e94f31;
+}
+
+    #bs-example-navbar-collapse-1 li span {
+        color:white;
+    }
+
+
+#bs-example-navbar-collapse-1 .nav > li > a:hover, 
+#bs-example-navbar-collapse-1 .nav > li > a:focus {
+     text-decoration: none;
+     background-color: darkorange;
+}
+
+#bs-example-navbar-collapse-1 .nav > li:hover,
+#bs-example-navbar-collapse-1 .nav > li:focus {
+    border-color: orange;
+}
+
+#bs-example-navbar-collapse-1 .nav > li.active {
+    border-color: orange;
+    background-color: darkorange;
+}
+
+#bs-example-navbar-collapse-1 .nav > li {
+    padding-bottom:0px;
+    padding-top:0px;
+}
+
+#bs-example-navbar-collapse-1 .navbar-nav > li > a {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+#roomMenu .navbar-brand {
+    padding-top:5px;
+    padding-bottom:5px;
+    font-weight:bold;
+}
+
+#bs-example-navbar-collapse-1 > ul > li > ul {
+    margin: 5px 0 0 0;
+    padding:0;
+}
+
+#bs-example-navbar-collapse-1 > ul > li > ul > li {
+    padding: 0;
+    border-bottom: 1px solid #d4d4d4;
+    border-top: none;
+}
+
+#bs-example-navbar-collapse-1 > ul > li > ul > li a {
+      display: block;
+      font-size: 0.9em;
+      font-weight: bold;
+      padding: 5px 20px;
+}
+
+#bs-example-navbar-collapse-1 > ul > li > ul > li a span {
+      color: red;
+}
+
+#bs-example-navbar-collapse-1 > ul > li > ul > li a:hover {
+     background-color: lightgoldenrodyellow;
+}
+
+#bs-example-navbar-collapse-1 > ul > li > ul > li:last-child {
+  border-bottom: none;
+}

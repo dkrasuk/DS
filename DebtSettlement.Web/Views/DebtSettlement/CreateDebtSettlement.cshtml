@@ -1,0 +1,468 @@
+﻿@using Microsoft.ServiceBus.Messaging
+@model DebtSettlement.Web.Models.ApplicationForm.ApplicationFormViewModel
+
+@Html.Partial("_AppHeaderSctipts");
+<link href="~/Content/styles/createDSform.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/select.dataTables.min.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "DS";
+    Layout = null;
+}
+
+@Html.Hidden("RedirectTo", Url.Action("DSCreated", "DebtSettlement"));
+
+<form action="#" class="form-horizontal" id="createDS-form">
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="container">
+        <div class="panel-group col-md-12" id="accordion">
+            <div class="panel panel-default">
+                <div class="brush">
+                    <div data-toggle="collapse" data-parent="#accordion" href="#client-step-1">
+                        Шаг 1: Клиент
+                    </div>
+                </div>
+                <div id="client-step-1" class="panel-collapse collapse in">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Client.INN, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Client.INN, new { @class = "form-control", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.Client.INN)
+                            </div>
+                        </div> <!--INN-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Client.FIO, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Client.FIO, new { @class = "form-control", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.Client.FIO)
+                            </div>
+                        </div> <!--FIO-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Client.Region, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Client.Region, new { @class = "form-control", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.Client.Region)
+                            </div>
+                        </div> <!--Region-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Client.City, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Client.City, new { @class = "form-control", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.Client.City)
+                            </div>
+                        </div> <!--City-->
+                    </div>
+                </div> <!--STEP-1-CLIENT-->
+            </div>
+            <div class="panel panel-default">
+                <div class="brush">
+                    <div data-toggle="collapse" data-parent="#accordion" href="#credit-step-2">
+                        Шаг 2: Кредит
+                    </div>
+                </div>
+                <div id="credit-step-2" class="panel-collapse collapse">
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Credit.AgreemNumber, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.AgreementId, new { @class = "form-control", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.AgreementId)
+                            </div>
+                        </div>
+                        @*<div class="row">
+                                <div class="col-md-3">
+                                    @Html.LabelFor(model => model.Credit.AgreemNumber, new { @class = "control-label" })
+                                </div>
+                                <div class="col-md-5">
+                                    @Html.DropDownListFor(model => model.Credit.AgreemNumber, new SelectList(Model.Credit.AgreemNumber), Model.AgreementId.ToString(), new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Credit.AgreemNumber)
+                                </div>
+                            </div>*@
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Credit.Portfolio, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.DropDownListFor(model => model.Credit.Portfolio, Model.Credit.PortfolioList, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Credit.Portfolio)
+                            </div>
+                        </div> <!--Portfolio-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Credit.Outstanding, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Credit.Outstanding, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Credit.Outstanding)
+                            </div>
+                        </div> <!--Outstanding-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Credit.Fees, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Credit.Fees, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Credit.Fees)
+                            </div>
+                        </div> <!--Fees-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Credit.DSType, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.DropDownListFor(model => model.Credit.DSType, Model.Credit.DSTypeList, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Credit.DSType)
+                            </div>
+                        </div> <!--DSType-->
+                    </div>
+
+                </div>
+            </div><!--credit-step-2-->
+            <div class="panel panel-default">
+                <div class="brush">
+                    <div data-toggle="collapse" data-parent="#accordion" href="#collateral-step-3">
+                        Шаг 3: Залог
+                    </div>
+                </div>
+                <div id="collateral-step-3" class="panel-collapse collapse">
+                    @{
+                        Html.RenderPartial("_Collateral");
+                    }
+                </div>
+            </div><!--Collateral-step-3-->
+            <div class="panel panel-default">
+                <div class="brush">
+                    <div data-toggle="collapse" data-parent="#accordion" href="#work-step-4">
+                        Шаг 4: Работа
+                    </div>
+                </div>
+                <div id="work-step-4" class="panel-collapse collapse">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Job.WorkPlace, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Job.WorkPlace, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Job.WorkPlace)
+                            </div>
+                        </div>
+                        <!--Job.WorkPlace-->
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Job.Position, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Job.Position, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Job.Position)
+                            </div>
+                        </div><!--Job.Position-->
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Job.Source, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.DropDownListFor(model => model.Job.Source, Model.Job.SourceList, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Job.Source)
+                            </div>
+                        </div> <!--Job.Source-->
+                    </div>
+                </div>
+            </div><!--Job-step-4-->
+
+            <div class="panel panel-default">
+                <div class="brush">
+                    <div data-toggle="collapse" data-parent="#accordion" href="#Liability-step-5">
+                        Шаг 5: Финансовые обязательства
+                    </div>
+                </div>
+                <div id="Liability-step-5" class="panel-collapse collapse">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Liability.OtherLiability, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Liability.OtherLiability, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Liability.OtherLiability)
+                            </div>
+                        </div> <!--OtherLiability-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Liability.SourceOfOtherLiability, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.DropDownListFor(model => model.Liability.SourceOfOtherLiability, Model.Liability.SourceOfOtherLiabilityList, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Liability.SourceOfOtherLiability)
+                            </div>
+                        </div> <!--SourceOfOtherLiability-->
+
+                    </div>
+                </div>
+            </div><!--Liability-step-5-->
+
+            <div class="panel panel-default">
+                <div class="brush" data-toggle="collapse" data-parent="#accordion" href="#Income-step-6">
+                    Шаг 6: Доходы
+                </div>
+                <div id="Income-step-6" class="panel-collapse collapse">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Income.IncomeValue, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Income.IncomeValue, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Income.IncomeValue)
+                            </div>
+                        </div> <!--IncomeValue-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Income.SourceOfIncome, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Income.SourceOfIncome, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Income.SourceOfIncome)
+                            </div>
+                        </div> <!--SourceOfIncome-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Income.SourceInformationOfIncome, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.DropDownListFor(model => model.Income.SourceInformationOfIncome, Model.Income.SourceInformationOfIncomesList, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Income.SourceInformationOfIncome)
+                            </div>
+                        </div> <!--SourceInformationOfIncome-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Income.SourceOfFundsDS, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Income.SourceOfFundsDS, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Income.SourceOfFundsDS)
+                            </div>
+                        </div> <!--SourceOfFundsDS-->
+                    </div>
+                </div>
+            </div><!--Income-step-5-->
+
+            <div class="panel panel-default">
+                <div class="brush" data-toggle="collapse" data-parent="#accordion" href="#Address-step-7">
+                    Шаг 7: Адрес регистрации
+                </div>
+
+                <div id="Address-step-7" class="panel-collapse collapse">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Address.MatchAddress, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-1">
+                                @Html.CheckBoxFor(model => model.Address.MatchAddress, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Address.MatchAddress)
+                            </div>
+                        </div> <!--MatchAddress-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Address.RegistrationAddress, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Address.RegistrationAddress, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Address.RegistrationAddress)
+                            </div>
+                        </div> <!--RegistrationAddress-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Address.MembershipInterestOnRegistrAddress, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.DropDownListFor(model => model.Address.MembershipInterestOnRegistrAddress, Model.Address.MembershipInterestOnRegistrAddressList, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Address.MembershipInterestOnRegistrAddress)
+                            </div>
+                        </div> <!--MembershipInterestOnRegistrAddress-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Address.ResidentialAddress, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Address.ResidentialAddress, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Address.ResidentialAddress)
+                            </div>
+                        </div> <!--ResidentialAddress-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Address.MembershipInterestOnResidentAddress, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.DropDownListFor(model => model.Address.MembershipInterestOnResidentAddress, Model.Address.MembershipInterestOnResidentAddressList, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Address.MembershipInterestOnResidentAddress)
+                            </div>
+                        </div> <!--MembershipInterestOnResidentAddress-->
+                    </div>
+                </div>
+            </div><!--Active-step-7-->
+
+
+
+            <div class="panel panel-default">
+                <div class="brush" data-toggle="collapse" data-parent="#accordion" href="#Active-step-8">
+                    Шаг 8: Активы
+                </div>
+                <div id="Active-step-8" class="panel-collapse collapse">
+                    @{
+                        Html.RenderPartial("_Actives");
+                    }
+                </div>
+            </div><!--Active-step-8-->
+
+            <div class="panel panel-default">
+                <div class="brush" data-toggle="collapse" data-parent="#accordion" href="#ReasonToDenyDS-step-9">
+                    Шаг 9: Основание для отклонения по DS
+                </div>
+                <div id="ReasonToDenyDS-step-9" class="panel-collapse collapse">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.ReasonToDenyDS.AbsenceOfDocuments, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.DropDownListFor(model => model.ReasonToDenyDS.AbsenceOfDocuments, Model.ReasonToDenyDS.AbsenceOfDocumentsList, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ReasonToDenyDS.AbsenceOfDocuments)
+                            </div>
+                        </div> <!--AbsenceOfDocuments-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.ReasonToDenyDS.PresenceOfArrest, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-1">
+                                @Html.CheckBoxFor(model => model.ReasonToDenyDS.PresenceOfArrest, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ReasonToDenyDS.PresenceOfArrest)
+                            </div>
+                        </div> <!--PresenceOfArrest-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.ReasonToDenyDS.BankruptsyReorganisation, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-1">
+                                @Html.CheckBoxFor(model => model.ReasonToDenyDS.BankruptsyReorganisation, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ReasonToDenyDS.BankruptsyReorganisation)
+                            </div>
+                        </div> <!--BankruptsyReorganisation-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.ReasonToDenyDS.DivorceProceedings, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-1">
+                                @Html.CheckBoxFor(model => model.ReasonToDenyDS.DivorceProceedings, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ReasonToDenyDS.DivorceProceedings)
+                            </div>
+                        </div> <!--DivorceProceedings-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.ReasonToDenyDS.Heirs, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-1">
+                                @Html.CheckBoxFor(model => model.ReasonToDenyDS.Heirs, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ReasonToDenyDS.Heirs)
+                            </div>
+                        </div> <!--Heirs-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.ReasonToDenyDS.AbsenceOfMortgagor, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-1">
+                                @Html.CheckBoxFor(model => model.ReasonToDenyDS.AbsenceOfMortgagor, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ReasonToDenyDS.AbsenceOfMortgagor)
+                            </div>
+                        </div> <!--AbsenceOfMortgagor-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.ReasonToDenyDS.JudgementInTheCase, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-1">
+                                @Html.CheckBoxFor(model => model.ReasonToDenyDS.JudgementInTheCase, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ReasonToDenyDS.JudgementInTheCase)
+                            </div>
+                        </div> <!--JudgementInTheCase-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.ReasonToDenyDS.DeadlyDisease, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-1">
+                                @Html.CheckBoxFor(model => model.ReasonToDenyDS.DeadlyDisease, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ReasonToDenyDS.DeadlyDisease)
+                            </div>
+                        </div> <!--DeadlyDisease-->
+
+
+                    </div>
+                </div>
+            </div><!--ReasonToDenyDS-step-9-->
+
+            <div class="panel panel-default">
+                <div class="brush" data-toggle="collapse" data-parent="#accordion" href="#HistoryOfBusinessNegotiations-step-10">
+                    Шаг 10: История переговоров
+                </div>
+                <div id="HistoryOfBusinessNegotiations-step-10" class="panel-collapse collapse">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.HistoryOfBusinessNegotiations, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextAreaFor(model => model.HistoryOfBusinessNegotiations, 10, 1, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.HistoryOfBusinessNegotiations)
+                            </div>
+                        </div> <!--HistoryOfBusinessNegotiations-->
+                    </div>
+                </div>
+            </div><!--HistoryOfBusinessNegotiations-step-10-->
+
+            <div class="panel panel-default">
+                <div class="brush" data-toggle="collapse" data-parent="#accordion" href="#Guarantors-step-11">
+                    Шаг 11: Поручители
+                </div>
+                <div id="Guarantors-step-11" class="panel-collapse collapse">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Guarantors, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextAreaFor(model => model.Guarantors, 3, 1, new { @class = "form-control", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.Guarantors)
+                            </div>
+                        </div> <!--Guarantors-->
+                    </div>
+                </div>
+            </div><!--Guarantors-step-11-->
+
+        </div>
+    </div>
+    <div class="row">
+        <button type="button" class="btn btn-success col-md-2 col-md-offset-5" id="create-DS">Отправить</button>
+    </div>
+</form>
+
+
+<script type="text/javascript" src="~/Scripts/DS/ds.js"></script>
+<script type="text/javascript" src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="~/Scripts/DataTables/dataTables.select.min.js"></script>

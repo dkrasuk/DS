@@ -1,0 +1,739 @@
+/***** clearfix *****/
+.clear {clear: both;height: 0;line-height: 0;}
+.clearfix:after {content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+.clearfix {display: inline-block;}
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+.clearfix {height: 1%;}
+.clearfix {display: block;}
+
+/* Panel Tab/button */
+.tab {
+  	background: url("/Content/images/tab_b.png") repeat-x 0 0;
+	height: 42px;
+	position: relative;
+    top: 0;
+    z-index: 999;
+}
+
+.tab ul.smallPhonePanel,
+.tab ul.agentStatusPanel {
+	display: inline-block;
+	position: relative;  	
+  	height: 42px;	
+  	font-weight: bold;
+	line-height: 42px;
+	margin: 0;
+  	color: white;
+  	font-size: 80%;
+	text-align: center;
+}
+
+    .tab ul.smallPhonePanel {
+        float: right;
+  	    clear: right;
+        width: 430px;
+    }
+
+    .tab ul.agentStatusPanel {
+         float: left;
+         clear: left;
+         width: 300px;
+         left:0px;
+    }
+
+    .tab ul.smallPhonePanel img {
+        width: 26px;
+        height:26px;
+    }
+
+        .tab ul.smallPhonePanel img:hover {
+            width: 30px;
+            height:30px;
+            cursor:pointer;
+        }
+
+
+.tab ul.smallPhonePanel li.left,
+.tab ul.agentStatusPanel li.left {
+  	background: url("/Content/images/tab_l.png") no-repeat left 0;
+  	height: 42px;
+	width: 30px;
+	padding: 0;
+	margin: 0;
+  	display: inline-block;
+	float: left;
+}
+
+.tab ul.smallPhonePanel li.right,
+.tab ul.agentStatusPanel li.right  {
+  	background: url("/Content/images/tab_r.png") no-repeat left 0;
+  	height: 42px;
+	width: 30px;
+	padding: 0;
+	margin: 0;
+  	display: block;
+	float: left;
+}
+
+.tab ul.smallPhonePanel>li,
+.tab ul.agentStatusPanel>li {
+ 	text-align: left;
+    line-height: 42px;
+  	padding: 0 6px;
+	display: block;
+	float: left;
+	height: 42px;
+  	background: url("/Content/images/tab_m.png") repeat-x 0 0;
+}
+
+.tab ul.smallPhonePanel li a {
+	color: #15ADFF;
+}
+
+.tab ul.smallPhonePanel li a:hover {
+	color: white;
+}
+        .tab ul.agentStatusPanel li.glyphicon {
+            top:0px;
+        }
+.tab .sep {color:#414141}
+
+.tab a.openTab, .tab a.closeTab {
+	height: 20px;
+	line-height: 20px !important;
+	padding-left: 30px !important;
+	cursor: pointer;
+	display: block;
+	position: relative;
+	top: 11px;
+}
+
+.tab a.openTab {background: url("/Content/images/bt_open.png") no-repeat left 0;}
+.tab a.closeTab {background: url("/Content/images/bt_close.png") no-repeat left 0;}
+.tab a:hover.openTab {background: url("/Content/images/bt_open.png") no-repeat left -19px;}
+.tab a:hover.closeTab {background: url("/Content/images/bt_close.png") no-repeat left -19px;}
+
+/* sliding panel */
+#bottompanel {
+    position: fixed;   /*Panel will overlap  content */
+    /*position: relative;*/   /*Panel will "push" the content down */
+    bottom: 0;
+    width: 100%;
+    z-index: 999;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#panel {
+	width: 100%;
+	height: 160px;
+	color: #999999;
+	background: #272727;
+	overflow: hidden;
+	position: relative;
+	z-index: 3;
+	display: none;
+}
+
+#panel h1 {
+	font-size: 1.6em;
+	padding: 5px 0 10px;
+	margin: 0;
+	color: white;
+}
+
+#panel h2{
+	font-size: 1.2em;
+	padding: 10px 0 5px;
+	margin: 0;
+	color: white;
+}
+
+#panel p {
+	margin: 5px 0;
+	padding: 0;
+}
+
+#panel a {
+	text-decoration: none;
+	color: #15ADFF;
+}
+
+    #panel .phoneButton {
+        background-color:  rgba(0,0,0,0.5);
+        border: 2px rgba(255,255,255, 0.2) solid;
+        border-radius: 50px;
+        padding: 5px;
+        width: 170px;
+        padding-left:5px;
+        margin-bottom: 5px;
+    }
+        #panel .phoneButton:hover {
+            background-color:  rgba(255,255,255, 0.2);
+            border: 2px rgba(0,0,0,0.5) solid;
+        }
+        #panel .phoneButton span {
+            font-weight: bold;
+            margin-left: 10px;
+            color:white;
+        }
+
+#panel a:hover {
+	color: white;
+}
+
+
+#panel .content {
+	width: 100%;
+	margin: 0 auto;
+	padding-top: 0px;
+	text-align: left;
+	font-size: 0.85em;
+    position:relative;
+}
+
+#panel .content .left {
+	width: 290px;
+	float: left;
+	padding: 0 15px;
+	border-left: 1px solid #333;
+}
+
+#panel .content .right {
+	border-right: 1px solid #333;   
+}
+
+
+#panel .content input:focus.field {
+	background: #545454;
+}
+
+#panel .content #phoneInputPanel {
+    width: 180px;
+    margin-top:0px;
+    float:left;
+}
+
+#panel .content #phoneInputPanel li {
+        list-style:none;
+        width:40px;
+        height:30px;
+        background-color: grey;
+        border-radius: 5px 5px;
+        margin-bottom: 2px;
+        margin-right:2px;
+        float:left;
+        text-align:center;
+        line-height:30px;
+        color:white;
+        font-weight:bold;
+        border: 1px solid #adadad;
+        cursor: pointer;
+    }
+
+    #panel .content #phoneInputPanel li:hover {
+        background: #000;
+        border: 1px solid white;
+    }
+
+    #panel .content #phoneInputPanel #cisco-button-dial    
+     {
+        background-color: #079805;
+        border: 1px solid #1cc462;
+        cursor:pointer;
+    }
+
+        #panel .content #phoneInputPanel #cisco-button-dial:hover {
+             background-color: #1cc462;
+        }
+
+    #panel .content #cisco-phone-input {
+        float:left;
+        width: 140px;
+    }
+
+    #panel .content #cisco-field-phone-number {
+        line-height: 20px;
+        padding: 2px;
+        color: black;
+        font-weight: bold;
+    }
+
+.inputBlock {
+    display:none;
+}
+
+.hiddenCallButtons {
+    display: none;
+    padding: 0px;
+}
+
+#callListPanel {
+    margin: 0px 0px 0px 20px;
+    position:inherit;
+}
+
+#userCallList {
+    width: 300px;  
+    margin-top: 5px; 
+}
+
+#callVariblesTable {
+    margin-left: 10px;
+}
+
+    #userCallList td,
+    #userCallList th,
+    #callVariblesTable td,
+    #callVariblesTable th {
+        width: 100px;
+        padding: 5px;
+        background: #414141;
+        color:white;
+        font-weight:bold;
+        border: 1px #999999 solid;
+        text-align:center;
+    }
+
+    #callVariblesTable td,
+    #callVariblesTable th  {
+        width: 150px;
+    }
+
+
+    #panel .content #callListPanel #userCallList tr:hover td {
+        background-color: #999999;
+    }
+
+#panel .content #callListPanel #userCallList .selected td {
+    background-color: #079805;
+}
+#panel .content #callListPanel #userCallList .selected:hover td {
+    background-color: #f7dd0c;
+    color: red;
+}
+
+#consultInputPanel input{
+    font-weight: bold;
+    color: black;
+    padding: 2px;
+    width: 200px;
+}
+
+#consultInputPanel ul {
+    list-style:none;
+    background: #f5f2f2;
+    color: black;
+    border: 1px solid white;
+    width: 200px;
+    height: 80px;
+    overflow:auto;
+    padding: 5px;
+}
+
+    #consultInputPanel .ui-widget-content .ui-state-focus,
+    #consultInputPanel li.ui-state-focus {
+        background: #079805;
+        color: white;
+        font-weight: bold;
+        border:none;
+    }
+
+#callConsult,
+#transferButton,
+#conferenceButton,
+#callback_input #cisco-button-callBack,
+#callback_input #cisco-button-cancel-callBack
+ {
+    width:110px;
+    height:30px;
+    background-color: #079805;
+    color: white;
+    border-radius: 5px 5px;
+    line-height: 30px;
+    text-align: center;
+    margin: 5px 5px 0px 0px;
+    right: 0px;
+    position: relative;
+    display: inline-block;
+    border: 1px solid #1cc462;
+}
+
+
+
+#callConsult:hover,
+#callback_input #cisco-button-callBack:hover,
+#callback_input #cisco-button-cancel-callBack:hover,
+#nextAgreemButton:hover{
+    background-color: #1cc462;
+}
+
+
+#myAgreemsCheckbox input {
+    margin: 0px 5px 0px 0px;
+    color:white;
+}
+
+#myAgreemsCheckbox{
+    margin: 5px 25px;
+}
+
+#queueFilter {
+    font-size: 1.2em;
+    color:black;
+    font-weight: bold;
+    margin: 0px 25px;
+}
+
+
+#filterParams div {
+    margin: 0px 25px;
+    width: 240px;
+}
+    #filterParams div select {
+        color: black;
+        font-weight: bold;
+        font-size: 1.2em;  
+        float:right;  
+        width: 100px; 
+    }
+
+    #filterParams div label,
+    #queueFilter label,
+    #myAgreemsCheckbox label {
+        float:left;
+        color: white;
+        margin-bottom: 5px;
+        display: inline-block;
+        width: 140px;
+        text-align: left;
+        line-height: 20px;
+    }
+
+    #filterParams div input {
+        float:right;
+        color:black;
+        font-weight:bold;    
+        width: 100px;  
+    }
+
+.leftPanelBlock,
+.centralPanelBlock,
+.rightPanelBlock {
+    padding: 0px;
+    margin: 0px;
+    display:inline-block;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.leftPanelBlock {
+    min-width: 300px;
+    height: 150px;
+    width: 40%;
+    float:left;
+    border-right: 1px solid #414141;
+    position:inherit;
+}
+
+.centralPanelBlock {
+    width: 30%;
+    min-width: 200px;
+    height: 150px;
+    right: 50px;
+    border-right: 1px solid #414141;   
+}
+.rightPanelBlock {
+    width: 30%;
+    min-width: 300px;
+    height: 150px;
+    float:right;
+}
+#callback_input div {
+    width: 270px;
+}
+
+#callback_input div label {
+    float:left;
+    line-height: 20px;
+    margin-bottom: 5px;
+    color:white;
+}
+#callback_input div input {
+    float:right;
+    margin-bottom: 5px;
+}
+
+#btns {
+    clear:both;
+    margin-top:10px;
+}
+
+#callback_input #cisco-button-callBack {   
+    float:left;    
+}
+
+#callback_input #cisco-button-cancel-callBack,
+#panel .content #phoneInputPanel #delFromDial
+ {
+    background-color: #cb0404;
+    border-color: red;
+    cursor:pointer;
+}
+
+#callback_input #cisco-button-cancel-callBack:hover,
+#panel .content #phoneInputPanel #delFromDial:hover {
+    background-color: #ff2929;
+}    
+
+.agentStatusPanel {
+    min-width: 600px;
+}
+.agentStatusPanel ul.dropdown-menu li {
+    color: black;
+    font-size: 1em;
+    height: 20px;
+    line-height:20px;
+    padding-left:10px;
+    margin-bottom:2px;    
+    min-width:180px;  
+}
+
+    .agentStatusPanel ul.dropdown-menu li:hover,
+    .selectedReason {
+         background-color: #079805;
+         color: white;
+    }
+
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu > .dropdown-menu {
+  top: 5px;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+}
+
+.dropdown-submenu:hover > .dropdown-menu {
+  display: block;
+}
+
+.dropup .dropdown-submenu > .dropdown-menu {
+  top: auto;
+  bottom: 0;
+  margin-top: 0;
+  margin-bottom: -2px;
+}
+
+.dropdown-submenu > a:after {
+  position: absolute;
+  display: inline-block;
+  font-size: 14px;
+  right: 7px;
+  top: 7px;
+  font-family: FontAwesome;
+  height: auto;
+  content: "\f105";
+  font-weight: 300;
+}
+
+.dropdown-submenu:hover > a:after {
+  border-left-color: #ffffff;
+}
+
+.dropdown-submenu.pull-left {
+  float: none;
+}
+
+.dropdown-submenu.pull-left > .dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+}
+
+.notreadyagent,
+.readyagent,
+.talkingagent,
+#agentLogout,
+.notActive,
+#nextAgreemButton {
+    height: 25px;
+    min-width: 70px;
+    text-align:center;
+    line-height:25px;
+    padding: 0px 2px;
+    top:1px;
+    display: inline-block;
+    position:relative;
+    border-radius: 5px 5px;
+    color: white;
+    cursor: pointer;
+}
+.notreadyagent {
+    background-color: #cb0404;
+    border: 1px solid red;   
+}
+
+.readyagent,
+#nextAgreemButton  {
+    background-color: #079805;
+    border: 1px solid #1cc462;
+}
+
+.talkingagent {
+    background-color: #d97903;
+    border: 1px solid #ffa400;
+}
+
+#agentLogout,
+.notActive {    
+    background-color: rgba(255,255,255,0.3);
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+#logoutModal {
+    position:fixed;
+    right:10px;
+    top:10px;
+    width: 120px;
+}
+
+    #logoutModal span {
+        font-weight:bold;
+        color:red;
+        font-size: 1.5em;
+}
+
+    #agentLogout:hover {
+        background-color: rgba(255,255,255,0.5);    
+    }
+
+    #agentLogout span {
+         font-weight:bold;
+         padding: 0px;
+         margin: 0px;
+         top:0px;
+    }
+
+#callVariblesTable > div {
+    width: 50%;
+    min-width: 150px;
+    padding: 2px;
+
+}
+
+#callVariblesTable div:nth-child(even) {
+    float: right;
+}
+
+#callVariblesTable div:nth-child(odd) {
+    float: left;
+}
+
+#callVariblesTable div span.varName {
+    padding-left:5px;
+}
+
+#callVariblesTable div span.varValue {
+    font-weight: bold;
+    color: white;
+}
+
+#notready-modal.modal .modal-content {
+    background: none;
+    border:none;
+}
+
+    #notready-modal.modal .modal-content #notReadyDuration,
+    #notready-modal.modal .modal-content #reasonCodeName,
+    #notready-modal.modal .modal-content #notReadyDurationTotal {            
+            width: 760px;
+            text-align:center;
+            margin:50px 0 0 -100px;
+            font-weight: bold;
+            font-size: 10em;
+    }
+
+
+    #notready-modal.modal .modal-content #notReadyDurationTotal,
+    #notready-modal.modal .modal-content #reasonCodeName {   
+            font-weight: bold;
+            font-size: 5em;
+    }
+
+    
+#notready-modal.modal .modal-content #notReadyDuration.goodTime span,
+#notready-modal.modal .modal-content #notReadyDurationTotal.goodTime span {
+    color: #00ff1d;
+}
+
+#notready-modal.modal .modal-content #notReadyDuration.badTime span,
+#notready-modal.modal .modal-content #notReadyDurationTotal.badTime span {
+    color: red;
+}
+
+#notready-modal.modal .modal-content #notReadyDuration.alertTime span,
+#notready-modal.modal .modal-content #reasonCodeName.alertTime span,
+#notready-modal.modal .modal-content #notReadyDurationTotal.alertTime span {
+    color: orange;
+}
+
+#notReadyMinutes, 
+#notReadySeconds,
+#notReadyHours,
+#totalHours,
+#totalMinutes,
+#totalSeconds{
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+    padding:5px;
+}
+
+@media (min-width: 768px){
+    #notready-modal.modal .modal-content {
+        -webkit-box-shadow: none; 
+        box-shadow: none;
+    }
+}
+
+.modal-backdrop.in {
+  opacity: .8;
+}
+
+#GSMGatePrefix {
+    margin-top: 5px;
+    color: black;
+    font-weight: bold;
+}
+
+
+.btn-circle {
+    -ms-border-radius: 50% !important;
+    border-radius: 50% !important;
+}
+
+    .btn-circle.dots-vertical {
+        width: 35px;
+        height: 35px;
+        margin-bottom: 0;
+    }
+
+
+.dots-vertical:after {
+    content: '\2807';
+    font-size: 28px;
+    padding-left: 0;
+    line-height: 1;
+}
+
+.font-size-h3 {
+    font-size: 24px;
+}
+.font-size-h4 {
+    font-size: 18px;
+}

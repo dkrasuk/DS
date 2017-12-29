@@ -1,0 +1,256 @@
+﻿<div ng-controller="ViewTaskController" class="container-fluid">
+    <div style="padding: 10px;">
+        <div class="btn-group">
+            <button data-model="task"
+                    data-custom="click:refreshTaskForm"
+                    title="Обновить данные"
+                    class="btn btn-md btn-primary">
+                <span class="glyphicon glyphicon-repeat"></span>
+            </button>
+
+            <button data-model="task" data-custom="click:showTaskHistory" class="btn btn-md btn-primary">
+                <span class="glyphicon glyphicon-list-alt"></span>
+                История
+            </button>
+
+            <button data-model="task" data-custom="click:duplicateTask"
+                    title="Создать новую задачу копируя текущюю"
+                    class="btn btn-md btn-primary">
+                <span class="glyphicon glyphicon-duplicate"></span>
+                Копировать
+            </button>
+        </div>
+
+        <div id="workflowCommandsPanel" class="workflow-commands-panel btn-group"></div>
+
+        <div class="pull-right">
+            <span>Статус:</span>
+            <span data-model="task.Status"
+                  style="font-size:18px;"
+                  data-format="func:generateStatusTemplate"
+                  data-encode="false"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label col-md-12" >Краткое название задачи</label>
+                <div class="col-md-12">
+                    <span class="form-control" data-model="task.Title"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-12" >Описание задачи</label>
+                    <div class="col-md-12">
+                        <span class="form-control task-description"
+                              data-model="task.Description"
+                              name="Description"
+                              rows="14"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-12" >Комментарий</label>
+                    <div class="col-md-12">
+                        <span class="form-control text-box single-line" 
+                              data-model="task.Comment"
+                              name="Comment" type="text" value=""></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+
+            <div class="container-fluid">
+                <div class="row new-NewStatus new-action-data-form hidden" >
+                    <div class="col-md-6">
+                        <label class="control-label">Новый статус</label>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <span class="form-control text-box single-line"
+                                  data-model="task.NewStatus"
+                                  style="font-size:18px;"
+                                  data-format="func:generateStatusTemplate"
+                                  data-encode="false"
+                                  name="NewStatus"></span>
+                        </div>
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input class="check-box" disabled nd-bind="Type"
+                                           name="Type" type="checkbox" />
+                                    <input name="Type" type="hidden" value="false" />
+                                    Важная задача
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label" >Дата исполнения</label>
+                            <span class="form-control text-box single-line"
+                                  data-model="task.PlannedDate"
+                                  data-format="date: dd.MM.yyyy"
+                                  name="PlannedDate"></span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row new-NewPlannedDate new-action-data-form hidden">
+                    <div class="col-md-6">
+                        <label class="control-label">Новая дата исполнения</label>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <span class="form-control datetimepicker text-box single-line"
+                                  data-model="task.NewPlannedDate"
+                                  data-format="date: dd.MM.yyyy"
+                                  name="NewPlannedDate"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Наблюдатель</label>
+                            <span class="form-control text-box single-line" 
+                                  data-model="task.Observer" data-format="func:renderUserInfo"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label" >Постановщик</label>
+                            <span class="form-control text-box single-line" 
+                                  data-model="task.Initiator" data-format="func:renderUserInfo"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row new-NewObserver new-action-data-form hidden">
+                    <div class="col-md-6">
+                        <label class="control-label" >Новый наблюдатель</label>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <span class="form-control text-box single-line"
+                                  data-model="task.NewObserver"
+                                  data-format="func:renderUserInfo"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label ">Исполнитель</label>
+                            <span class="form-control text-box single-line" 
+                                  data-model="task.Responsible" data-format="func:renderUserInfo"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row new-NewResponsible new-action-data-form hidden">
+                    <div class="col-md-6">
+                        <label class="control-label">Новый исполнитель</label>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <span class="form-control text-box single-line"
+                                  data-model="task.NewResponsible"
+                                  data-format="func:renderUserInfo"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label" >ФИО клиента</label>
+                            <span class="form-control text-box single-line"
+                                  data-model="task.Agreement.PersonFullName"
+                                  name="LegalActionTypeId"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label" >Продукт</label>
+                            <span class="form-control text-box single-line"
+                                  data-model="task.Agreement.ProductCode"
+                                  name="LegalActionTypeId"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label" >Дата начала-Дата окончания</label>
+                            <span class="form-control text-box single-line">
+                                <span data-model="task.Agreement.OpenDate"
+                                      data-format="date: dd.MM.yyyy"></span>
+                                <span> - </span>
+                                <span data-model="task.Agreement.CloseDate"
+                                      data-format="date: dd.MM.yyyy"></span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label" >Номер сделки</label>
+                            <span class="form-control text-box single-line"
+                                  data-model="task.Agreement.Number"
+                                  name="LegalActionTypeId"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Автозакрытие задачи</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label" >Тип действия (кроме Legal)</label>
+                            <span class="form-control text-box single-line"
+                                  data-action-type="general"
+                                  data-model="task.NotLegalTypeActionId"
+                                  data-format="func:renderActionInfo"
+                                  name="NotLegalTypeActionId"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label" >Тип действий (для Legal)</label>
+                            <span class="form-control text-box single-line"
+                                  data-model="task.LegalActionTypeId"
+                                  data-action-type="legal"
+                                  data-format="func:renderActionInfo"
+                                  name="LegalActionTypeId"></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+

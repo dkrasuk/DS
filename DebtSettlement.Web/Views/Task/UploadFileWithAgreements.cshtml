@@ -1,0 +1,36 @@
+﻿@model DebtSettlement.Web.Models.Task.UploadViewModel
+@{
+    Layout = "~/Views/Shared/_SimpleLayout.cshtml";
+}
+
+@using (Html.BeginForm("Upload", "Task", FormMethod.Post, new { id = "formCreateTask", enctype = "multipart/form-data", style = "padding-left: 5px" }))
+{
+    <input type="submit" style="display: none" />
+
+    <input type="file" name="file" id="file" style="display: none" />
+
+    <button id="btnLoadFileWithAgreements" class="btn btn-primary" style="margin-bottom: 0;">Загрузить список договоров</button>
+
+    <script>
+        try {
+            var model =  @Html.Raw(Json.Encode(Model));
+
+            if (model != null) {
+                if (model.AgreementContent != null) {
+                    parent.document.getElementById("AgreementId").value = model.AgreementContent;
+                } else {
+                    parent.document.getElementById("AgreementId").value = '-1';
+                }
+
+                window.parent.app.utils.ui.notify('Импорт: ', model.Message, model.Success ? 'success' : 'error');
+            } else {
+                parent.document.getElementById("AgreementId").value = '-1';
+                parent.document.getElementById("AgreementProcessId").value = '-1';
+                window.parent.app.utils.ui.notify('Импорт: ', 'произошла неидентифицированная ошибка при загрузке файла.', model.Success ? 'success' : 'error');
+            }
+        }
+        catch (e) { }
+    </script>
+}
+
+<script src="@Url.Content("~/app/UploadAgreementsLogic.js")"></script>

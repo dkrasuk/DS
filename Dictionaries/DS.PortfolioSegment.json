@@ -1,0 +1,272 @@
+{
+  "Id": 0,
+  "Name": "DS.PortfolioSegment",
+  "Version": "1",
+  "Metadata": "",
+  "Items": [
+    {
+      "Value": {
+        "Id": "1",
+        "Name": "Retail Collateral (Bank) (Retail)",
+		"Segment": "Retail"
+      },
+      "ValueId": "1"
+    },
+	{
+      "Value": {
+        "Id": "2",
+        "Name": "Retail Purchased: SWED (Bank)",
+		"Segment": "Retail"
+      },
+      "ValueId": "2"
+    },
+	{
+      "Value": {
+        "Id": "3",
+        "Name": "Retail Purchased: PIB (Bank)",
+		"Segment": "Retail"
+      },
+      "ValueId": "3"
+    },
+	{
+      "Value": {
+        "Id": "4",
+        "Name": "Retail Purchased: ProstoFinance (Bank)",
+		"Segment": "Retail"
+      },
+      "ValueId": "4"
+    },
+	{
+      "Value": {
+        "Id": "5",
+        "Name": "Retail Purchased: ProfinBank (Bank)",
+		"Segment": "Retail"
+      },
+      "ValueId": "5"
+    },
+	{
+      "Value": {
+        "Id": "6",
+        "Name": "Сyprus NCL (Bank)",
+		"Segment": "Retail"
+      },
+      "ValueId": "6"
+    },
+	{
+      "Value": {
+        "Id": "7",
+        "Name": "Retail  Укрсоцбанк",
+		"Segment": "Retail"
+      },
+      "ValueId": "7"
+    },
+	{
+      "Value": {
+        "Id": "8",
+        "Name": "NPL Retail (Bank) (NPL)",
+		"Segment": "NPL"
+      },
+      "ValueId": "8"
+    },
+	{
+      "Value": {
+        "Id": "9",
+        "Name": "NPL Retail (SPV) (NPL)",
+		"Segment": "NPL"
+      },
+      "ValueId": "9"
+    },
+	{
+      "Value": {
+        "Id": "10",
+        "Name": "NPL SWED (Bank)",
+		"Segment": "NPL"
+      },
+      "ValueId": "10"
+    },
+	{
+      "Value": {
+        "Id": "11",
+        "Name": "NPL SWED (SPV)",
+		"Segment": "NPL"
+      },
+      "ValueId": "11"
+    },
+	{
+      "Value": {
+        "Id": "12",
+        "Name": "NPL PIB (Bank)",
+		"Segment": "NPL"
+      },
+      "ValueId": "12"
+    },
+	{
+      "Value": {
+        "Id": "13",
+        "Name": "NPL PIB (SPV)",
+		"Segment": "NPL"
+      },
+      "ValueId": "13"
+    },
+	{
+      "Value": {
+        "Id": "14",
+        "Name": "NPL ProstoFinance (Bank)",
+		"Segment": "NPL"
+      },
+      "ValueId": "14"
+    },
+	{
+      "Value": {
+        "Id": "15",
+        "Name": "NPL ProstoFinance (SPV)",
+		"Segment": "NPL"
+      },
+      "ValueId": "15"
+    },
+	{
+      "Value": {
+        "Id": "16",
+        "Name": "NPL ProfinBank (Bank)",
+		"Segment": "NPL"
+      },
+      "ValueId": "16"
+    },
+	{
+      "Value": {
+        "Id": "17",
+        "Name": "NPL ProfinBank (SPV)",
+		"Segment": "NPL"
+      },
+      "ValueId": "17"
+    },
+	{
+      "Value": {
+        "Id": "18",
+        "Name": "NPL Cyprus (Bank)",
+		"Segment": "NPL"
+      },
+      "ValueId": "18"
+    },
+	{
+      "Value": {
+        "Id": "19",
+        "Name": "NPL Cyprus (SPV)",
+		"Segment": "NPL"
+      },
+      "ValueId": "19"
+    },
+	{
+      "Value": {
+        "Id": "20",
+        "Name": "NPL BTA (SPV)",
+		"Segment": "NPL"
+      },
+      "ValueId": "20"
+    },
+	{
+      "Value": {
+        "Id": "21",
+        "Name": "NPL Укрсоцбанк (NPL)",
+		"Segment": "NPL"
+      },
+      "ValueId": "21"
+    },
+	{
+      "Value": {
+        "Id": "22",
+        "Name": "Retail Collateral (Bank) (SME Business)",
+		"Segment": "SME Business"
+      },
+      "ValueId": "22"
+    },
+	{
+      "Value": {
+        "Id": "23",
+        "Name": "NPL Retail (Bank) (SME Business)",
+		"Segment": "SME Business"
+      },
+      "ValueId": "23"
+    },
+	{
+      "Value": {
+        "Id": "24",
+        "Name": "NPL Retail (SPV) (SME Business)",
+		"Segment": "SME Business"
+      },
+      "ValueId": "24"
+    },
+	{
+      "Value": {
+        "Id": "25",
+        "Name": "NPL MASS (SME Business)",
+		"Segment": "SME Business"
+      },
+      "ValueId": "25"
+    },
+	{
+      "Value": {
+        "Id": "26",
+        "Name": "Retail  Укрсоцбанк (SME Business)",
+		"Segment": "SME Business"
+      },
+      "ValueId": "26"
+    },
+	{
+      "Value": {
+        "Id": "27",
+        "Name": "NPL Укрсоцбанк (SME Business)",
+		"Segment": "SME Business"
+      },
+      "ValueId": "27"
+    },
+	{
+      "Value": {
+        "Id": "28",
+        "Name": "Retail Collateral (Bank) (MASS Business)",
+		"Segment": "MASS Business"
+      },
+      "ValueId": "28"
+    },
+	{
+      "Value": {
+        "Id": "29",
+        "Name": "NPL Retail (Bank) (MASS Business)",
+		"Segment": "MASS Business"
+      },
+      "ValueId": "29"
+    },
+	{
+      "Value": {
+        "Id": "30",
+        "Name": "NPL Retail (SPV) (MASS Business)",
+		"Segment": "MASS Business"
+      },
+      "ValueId": "30"
+    },
+	{
+      "Value": {
+        "Id": "31",
+        "Name": "NPL MASS (MASS Business)",
+		"Segment": "MASS Business"
+      },
+      "ValueId": "31"
+    },
+	{
+      "Value": {
+        "Id": "32",
+        "Name": "Retail Укрсоцбанк (MASS Business)",
+		"Segment": "MASS Business"
+      },
+      "ValueId": "32"
+    },
+	{
+      "Value": {
+        "Id": "33",
+        "Name": "NPL Укрсоцбанк (MASS Business)",
+		"Segment": "MASS Business"
+      },
+      "ValueId": "33"
+    }		
+  ]
+}
