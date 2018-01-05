@@ -1,0 +1,533 @@
+﻿@model DebtSettlement.Web.Models.ApplicationForm.ApplicationFormViewModel
+
+@Html.Partial("_AppHeaderSctipts");
+<link href="~/Content/styles/createDSform.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Content/DataTables/css/select.dataTables.min.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "Анкета ОРК";
+    Layout = null;
+}
+
+<form action="#" class="form-horizontal" id="ork-form">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="container">
+        <div class="panel-group col-md-12" id="accordion">
+            <div class="panel panel-default">
+                <div class="brush">
+                    <div data-toggle="collapse" data-parent="#accordion" href="#client-step-1">
+                        Шаг 1: Клиент
+                    </div>
+                </div>
+                <div id="client-step-1" class="panel-collapse collapse in">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Client.INN, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Client.INN, new { @class = "form-control", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.Client.INN)
+                            </div>
+                        </div> <!--INN-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Client.FIO, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Client.FIO, new { @class = "form-control", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.Client.FIO)
+                            </div>
+                        </div> <!--FIO-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Credit.AgreemNumber, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.AgreementId, new { @class = "form-control", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.AgreementId)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Client.MacroSegment, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.DropDownListFor(model => model.Client.MacroSegment, Model.Client.MacroSegmentList, new { @class = "form-control", id = "macroSegment-ork" })
+                                @Html.ValidationMessageFor(model => model.Client.MacroSegment)
+                            </div>
+                        </div> <!--MacroSegmentList-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Client.Portfolio, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Client.Portfolio, new { @class = "form-control", id = "portfolio-ork", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.Client.Portfolio)
+                            </div>
+                        </div> <!--Portfolio-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Client.SubSegment, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Client.SubSegment, new { @class = "form-control", id = "" })
+                                @Html.ValidationMessageFor(model => model.Client.SubSegment)
+                            </div>
+                        </div> <!--SubSegment-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Client.Region, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Client.Region, new { @class = "form-control", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.Client.Region)
+                            </div>
+                        </div> <!--Region-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Client.City, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Client.City, new { @class = "form-control", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.Client.City)
+                            </div>
+                        </div> <!--City-->
+                    </div>
+                </div> <!--STEP-1-CLIENT-->
+            </div>
+            <div class="panel panel-default">
+                <div class="brush">
+                    <div data-toggle="collapse" data-parent="#accordion" href="#credit-step-2">
+                        Шаг 2: Кредит
+                    </div>
+                </div>
+                <div id="credit-step-2" class="panel-collapse collapse">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Credit.Outstanding, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Credit.Outstanding, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Credit.Outstanding)
+                            </div>
+                        </div> <!--Outstanding-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Credit.Principal, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Credit.Principal, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Credit.Principal)
+                            </div>
+                        </div> <!--Principal-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Credit.Interest, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Credit.Interest, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Credit.Interest)
+                            </div>
+                        </div> <!--Interest-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Credit.PurchasePrice, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Credit.PurchasePrice, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Credit.PurchasePrice)
+                            </div>
+                        </div> <!--PurchasePrice-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Credit.DPD, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Credit.DPD, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Credit.DPD)
+                            </div>
+                        </div> <!--DPD-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Credit.AllPayments, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Credit.AllPayments, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Credit.AllPayments)
+                            </div>
+                        </div> <!--AllPayments-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Credit.Fees, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Credit.Fees, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Credit.Fees)
+                            </div>
+                        </div> <!--Fees-->
+                    </div>
+                </div>
+            </div><!--credit-step-2-->
+            <div class="panel panel-default">
+                <div class="brush">
+                    <div data-toggle="collapse" data-parent="#accordion" href="#collateral-step-3">
+                        Шаг 3: Залог
+                    </div>
+                </div>
+                <div class="col-md-5 hidden">
+                    @Html.DisplayFor(model => model.CollateralOtherParameters.Selected, new { @id = "CollateralsSelected" })
+                    @Html.HiddenFor(model => model.CollateralOtherParameters.Selected, new { @id = "CollateralsSelected" })
+                </div>
+                <div id="collateral-step-3" class="panel-collapse collapse">
+                    @{
+                        Html.RenderPartial("_Collateral");
+                    }
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.CollateralOtherParameters.OtherAssetsForCollection, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.CheckBoxFor(model => model.CollateralOtherParameters.OtherAssetsForCollection)
+                                @Html.ValidationMessageFor(model => model.CollateralOtherParameters.OtherAssetsForCollection)
+                            </div>
+                        </div><!--OtherAssetsForCollection-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.CollateralOtherParameters.CoverOutstanding, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.CollateralOtherParameters.CoverOutstanding, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.CollateralOtherParameters.CoverOutstanding)
+                            </div>
+                        </div><!--CoverOutstanding-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.CollateralOtherParameters.RepaymentAmount, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.CollateralOtherParameters.RepaymentAmount, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.CollateralOtherParameters.RepaymentAmount)
+                            </div>
+                        </div><!--RepaymentAmount-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.CollateralOtherParameters.CheckEvaluation, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.CheckBoxFor(model => model.CollateralOtherParameters.CheckEvaluation)
+                                @Html.ValidationMessageFor(model => model.CollateralOtherParameters.CheckEvaluation)
+                            </div>
+                        </div><!--CheckEvaluation-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.CollateralOtherParameters.Approve, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.CheckBoxFor(model => model.CollateralOtherParameters.Approve)
+                                @Html.ValidationMessageFor(model => model.CollateralOtherParameters.Approve)
+                            </div>
+                        </div><!--Approve-->
+                    </div>
+                </div>
+            </div><!--Collateral-step-3-->
+            <div class="panel panel-default">
+                <div class="brush">
+                    <div data-toggle="collapse" data-parent="#accordion" href="#finance-step-4">
+                        Шаг 4: Финансы
+                    </div>
+                </div>
+                <div id="finance-step-4" class="panel-collapse collapse">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Finance.CashTotal, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Finance.CashTotal, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Finance.CashTotal)
+                            </div>
+                        </div> <!--CashTotal-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Finance.NPV, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Finance.NPV, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Finance.NPV)
+                            </div>
+                        </div><!--NPV-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Finance.CashCollateralValue, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Finance.CashCollateralValue, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Finance.CashCollateralValue)
+                            </div>
+                        </div> <!--CashCollateralValue-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Finance.LTV, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Finance.LTV, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Finance.LTV)
+                            </div>
+                        </div> <!--LTV-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Finance.CashToOut, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Finance.CashToOut, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Finance.CashTotal)
+                            </div>
+                        </div><!--CashTotal-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Finance.TermInstallments, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Finance.TermInstallments, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Finance.TermInstallments)
+                            </div>
+                        </div> <!--TermInstallments-->
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Finance.FirstPayment, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Finance.FirstPayment, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Finance.FirstPayment)
+                            </div>
+                        </div> <!--FirstPayment-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Finance.FPValue, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Finance.FPValue, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Finance.FPValue)
+                            </div>
+                        </div><!--FPValue-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Finance.OtherCredits, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.CheckBoxFor(model => model.Finance.OtherCredits)
+                                @Html.ValidationMessageFor(model => model.Finance.OtherCredits)
+                            </div>
+                        </div> <!--OtherCredits-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Finance.TypeDS, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.DropDownListFor(model => model.Finance.TypeDS, Model.Finance.TypeDSList, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Finance.TypeDS)
+                            </div>
+                        </div><!--TypeDS-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Finance.EssenceDeviation, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Finance.EssenceDeviation, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Finance.EssenceDeviation)
+                            </div>
+                        </div> <!--EssenceDeviation-->
+                    </div>
+                </div>
+            </div><!--Finance-step-4-->
+
+            <div class="panel panel-default">
+                <div class="brush">
+                    <div data-toggle="collapse" data-parent="#accordion" href="#Status-step-5">
+                        Шаг 5: Статус
+                    </div>
+                </div>
+                <div id="Status-step-5" class="panel-collapse collapse">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Status.HaveAnotherBankProduct, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.CheckBoxFor(model => model.Status.HaveAnotherBankProduct)
+                                @Html.ValidationMessageFor(model => model.Status.HaveAnotherBankProduct)
+                            </div>
+                        </div> <!--HaveAnotherBankProduct-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Status.LegalStage, new { @class = "control-label required required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.DropDownListFor(model => model.Status.LegalStage, Model.Status.LegalStageList, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Status.LegalStage)
+                            </div>
+                        </div> <!--LegalStage-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Status.Date, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Status.Date, new { @class = "form-control datetimepicker", placeholder = "ДД.ММ.ГГГГ" })
+                                @Html.ValidationMessageFor(model => model.Status.Date)
+                            </div>
+                        </div> <!--Date-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Status.LegalStage, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Status.LegalStatus, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Status.LegalStatus)
+                            </div>
+                        </div> <!--LegalStatus-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Status.StatusOfBankruptcy, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.CheckBoxFor(model => model.Status.StatusOfBankruptcy)
+                                @Html.ValidationMessageFor(model => model.Status.StatusOfBankruptcy)
+                            </div>
+                        </div> <!--StatusOfBankruptcy-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Status.OpenDateOfBankruptcy, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Status.OpenDateOfBankruptcy, new { @class = "form-control datetimepicker", placeholder = "ДД.ММ.ГГГГ" })
+                                @Html.ValidationMessageFor(model => model.Status.OpenDateOfBankruptcy)
+                            </div>
+                        </div> <!--OpenDateOfBankruptcy-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Status.RiskOfLoss, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.CheckBoxFor(model => model.Status.RiskOfLoss)
+                                @Html.ValidationMessageFor(model => model.Status.RiskOfLoss)
+                            </div>
+                        </div> <!--RiskOfLoss-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Status.DateRiskOfLoss, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Status.DateRiskOfLoss, new { @class = "form-control datetimepicker", placeholder = "ДД.ММ.ГГГГ" })
+                                @Html.ValidationMessageFor(model => model.Status.DateRiskOfLoss)
+                            </div>
+                        </div> <!--DateRiskOfLoss-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Status.ActionsPlanned, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextAreaFor(model => model.Status.ActionsPlanned, 10, 1, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Status.ActionsPlanned)
+                            </div>
+                        </div> <!--ActionsPlanned-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Status.CurrentTool, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.DropDownListFor(model => model.Status.CurrentTool, Model.Status.CurrentToolList, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Status.CurrentTool)
+                            </div>
+                        </div> <!--CurrentTool-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Status.Argumentation, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextAreaFor(model => model.Status.Argumentation, 10, 1, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Status.Argumentation)
+                            </div>
+                        </div> <!--Argumentation-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Status.ConclusionSecurity, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextAreaFor(model => model.Status.ConclusionSecurity, 10, 1, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Status.ConclusionSecurity)
+                            </div>
+                        </div> <!--ConclusionSecurity-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Status.HistoryTalks, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextAreaFor(model => model.Status.HistoryTalks, 10, 1, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Status.HistoryTalks)
+                            </div>
+                        </div> <!--HistoryTalks-->
+                    </div>
+                </div>
+            </div><!--Status-step-5-->
+            <div class="panel panel-default">
+                <div class="brush" data-toggle="collapse" data-parent="#accordion" href="#Decision-step-6">
+                    Шаг 6: Решение
+                </div>
+                <div id="Decision-step-6" class="panel-collapse collapse">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Decision.DraftDecision, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Decision.DraftDecision, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Decision.DraftDecision)
+                            </div>
+                        </div> <!--DraftDecision-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Decision.FinEffect, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Decision.FinEffect, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Decision.FinEffect)
+                            </div>
+                        </div> <!--FinEffect-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Decision.CashOutstanding, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Decision.CashOutstanding, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Decision.CashOutstanding)
+                            </div>
+                        </div> <!--CashOutstanding-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Decision.CashOutstandingLiquidation, new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Decision.CashOutstandingLiquidation, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Decision.CashOutstandingLiquidation)
+                            </div>
+                        </div> <!--CashOutstandingLiquidation-->
+                    </div>
+                </div>
+            </div><!--Decision-step-6-->
+        </div>
+    </div>
+    <div class="row">
+        <button type="button" class="btn btn-success col-md-2 col-md-offset-5" id="create-ORK">Сохранить</button>
+    </div>
+</form>
+
+<script type="text/javascript" src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="~/Scripts/DataTables/dataTables.select.min.js"></script>
+<script type="text/javascript" src="~/app/utils.js"></script>
+<script type="text/javascript" src="~/Scripts/DS/orkForm.js"></script>

@@ -11,12 +11,13 @@ using Newtonsoft.Json;
 using DebtSettlement.Web.Filters;
 
 using HR.Client.Interface;
-using DebtSettlement.Model.DTO.ApplicationForm;
+
 using DebtSettlement.Web.Models.ApplicationForm;
 using AutoMapper;
 using DebtSettlement.AgreementLoader.Interface;
 using DebtSettlement.AgreementLoader;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 using DebtSettlement.BusinessLayer;
 using DebtSettlement.BusinessLayer.Services.Interfaces;
 
@@ -27,6 +28,7 @@ namespace DebtSettlement.Web.Controllers
     /// </summary>
     /// <seealso cref="System.Web.Mvc.Controller" />
     [Authorize]
+    [RoutePrefix("debtsettlement")]
     public class DebtSettlementController : Controller
     {
         private ICollateralServices CollateralService;
@@ -55,20 +57,34 @@ namespace DebtSettlement.Web.Controllers
             var agreementDto = await DebtSettlementService.GetAgreementInfo(agreementId);
 
             model.AgreementId = agreementDto.AgreementId;
-            model.Client = new Models.ApplicationForm.Client { City = agreementDto.Client.City, FIO = agreementDto.Client.FIO, INN = agreementDto.Client.INN, Region = agreementDto.Client.Region };
-            model.Credit = new Models.ApplicationForm.Credit { AgreemNumber = agreementDto.Credit.AgreemNumber, Outstanding = agreementDto.Credit.Outstanding, DPD = agreementDto.Credit.DPD};
+            model.Client = new Models.ApplicationForm.Client { City = (!string.IsNullOrWhiteSpace(agreementDto.Client.City) ? agreementDto.Client.City : "-"), FIO = agreementDto.Client.FIO, INN = agreementDto.Client.INN, Region = (!string.IsNullOrWhiteSpace(agreementDto.Client.Region) ? agreementDto.Client.Region : "-") };
+            model.Credit = new Models.ApplicationForm.Credit { AgreemNumber = agreementDto.Credit.AgreemNumber, Outstanding = agreementDto.Credit.Outstanding, DPD = agreementDto.Credit.DPD, Interest = agreementDto.Credit.Interest, Principal = agreementDto.Credit.Principal};
             model.Job = new Models.ApplicationForm.Job { Position = agreementDto.Job.Position, WorkPlace = agreementDto.Job.WorkPlace };
             model.Address = new Models.ApplicationForm.Address { RegistrationAddress = agreementDto.Address.RegistrationAddress, ResidentialAddress = agreementDto.Address.ResidentialAddress };
             model.Guarantors = agreementDto.Guarantors;
 
-
             var collateralsDto = await CollateralService.GetCollaterals(Convert.ToString(agreementId));
+            var activesDto = await CollateralService.GetActives(Convert.ToString(agreementId));
             model.Collaterals = Mapper.Map<List<Model.DTO.ApplicationForm.Collateral>, List<Models.ApplicationForm.Collateral>>(collateralsDto);
-            model.Actives = Mapper.Map<List<Model.DTO.ApplicationForm.Collateral>, List<Models.ApplicationForm.Collateral>>(collateralsDto.Where(n=>n.isAdditionalProperty == true).ToList());
+            model.Actives = Mapper.Map<List<Model.DTO.ApplicationForm.Collateral>, List<Models.ApplicationForm.Collateral>>(activesDto);
 
             await InitializeLists(model);
 
-            return View("CreateDebtSettlement",model);
+            return View("CreateDebtSettlement", model);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> CreateORK()
+        {
+            var model = new ApplicationFormViewModel();
+
+            model.Client = new Client { MacroSegment = "12" , Portfolio = "Херня"};
+            model.Finance = new Finance {TypeDS = "2"};
+            model.Status = new Status { LegalStage = "3", CurrentTool = "2"};
+
+            await InitializeLists(model);
+
+            return View("ORKDeptSettlement", model);
         }
 
         [HttpGet]
@@ -77,16 +93,31 @@ namespace DebtSettlement.Web.Controllers
             return View("DSCreated");
         }
 
+        [HttpGet]
+        [Route("portfolioType")]
+        public async Task<string> GetPortfolioType(string macroSegment)
+        {
+            var portfolio =
+                await DictionaryService.GetDictionaryPortfolioSegmentByNameAsync("DS.PortfolioSegment", "1");
+            var portfolioType = portfolio.Where(n => n.Id == macroSegment)?.FirstOrDefault();
+            return new JavaScriptSerializer().Serialize(portfolioType);
+        }
+
         public async Task InitializeLists(ApplicationFormViewModel model)
         {
-            model.Job.SourceList = await PopulateDropDownList(DictionaryService, "DS.SourceInformation", "", "1");
-            model.Credit.DSTypeList = await PopulateDropDownList(DictionaryService, "DS.TypeDS", "", "1");
-            model.Liability.SourceOfOtherLiabilityList = await PopulateDropDownList(DictionaryService, "DS.SourceInformation", "", "1");
-            model.Income.SourceInformationOfIncomesList = await PopulateDropDownList(DictionaryService, "DS.SourceInformation", "", "1");
-            model.ReasonToDenyDS.AbsenceOfDocumentsList = await PopulateDropDownList(DictionaryService, "DS.EstablishDoc", "", "1");
-            model.Address.MembershipInterestOnRegistrAddressList = await PopulateDropDownList(DictionaryService, "DS.PartProperty", "", "1");
-            model.Address.MembershipInterestOnResidentAddressList = await PopulateDropDownList(DictionaryService, "DS.PartProperty", "", "1");
-            model.Credit.PortfolioList = await PopulateDropDownListForPortfolioSegment(DictionaryService, "DS.PortfolioSegment", "", "1");
+            model.Job.SourceList = await PopulateDropDownList(DictionaryService, "DS.SourceInformation", model.Job.Source, "1");
+            model.Credit.DSTypeList = await PopulateDropDownList(DictionaryService, "DS.TypeDS", model.Credit.DSType, "1");
+            model.Liability.SourceOfOtherLiabilityList = await PopulateDropDownList(DictionaryService, "DS.SourceInformation", model.Liability.SourceOfOtherLiability, "1");
+            model.Income.SourceInformationOfIncomesList = await PopulateDropDownList(DictionaryService, "DS.SourceInformation", model.Income.SourceInformationOfIncome, "1");
+            model.ReasonToDenyDS.AbsenceOfDocumentsList = await PopulateDropDownList(DictionaryService, "DS.EstablishDoc", model.ReasonToDenyDS.AbsenceOfDocuments, "1");
+            model.Address.MembershipInterestOnRegistrAddressList = await PopulateDropDownList(DictionaryService, "DS.PartProperty", model.Address.MembershipInterestOnRegistrAddress, "1");
+            model.Address.MembershipInterestOnResidentAddressList = await PopulateDropDownList(DictionaryService, "DS.PartProperty", model.Address.MembershipInterestOnResidentAddress, "1");
+            model.ActiveOtherParameters.SourceInformationOfActiveList = await PopulateDropDownList(DictionaryService, "DS.SourceInformation", model.ActiveOtherParameters.SourceInformationOfActive, "1");
+
+            model.Finance.TypeDSList = await PopulateDropDownList(DictionaryService, "DS.TypeDS", model.Finance.TypeDS, "1");
+            model.Status.LegalStageList = await PopulateDropDownList(DictionaryService, "DS.JurStage", model.Status.LegalStage, "1");
+            model.Status.CurrentToolList = await PopulateDropDownList(DictionaryService, "DS.CurrentFunctional", model.Status.LegalStage, "1");
+            model.Client.MacroSegmentList = await PopulateDropDownList(DictionaryService, "DS.PortfolioSegment", model.Client.MacroSegment, "1");
         }
 
         protected async Task<List<SelectListItem>> PopulateDropDownList(IDictionaryService _dictionaryService, string dictionary, string selectedValue, string version)
@@ -106,53 +137,6 @@ namespace DebtSettlement.Web.Controllers
                 throw new DebtSettlementException($"Failed to get dictionary: {dictionary}", _logger);
             }
             return typeList;
-        }
-
-        protected async Task<List<SelectListItem>> PopulateDropDownListForPortfolioSegment(IDictionaryService _dictionaryService, string dictionary, string selectedValue, string version)
-        {
-            var blankItem = new SelectListItem { Text = "", Value = "" };
-            var typeList = new List<SelectListItem> { blankItem };
-            try
-            {
-                var Type = await _dictionaryService.GetDictionaryPortfolioSegmentByNameAsync(dictionary, version);
-                if (Type != null)
-                {
-                    typeList.AddRange(Type.Select(x => new SelectListItem { Text = x.Name, Value = x.Segment, Selected = (selectedValue == x.Id) ? true : false }));
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new DebtSettlementException($"Failed to get dictionary: {dictionary}", _logger);
-            }
-            return typeList;
-        }
-
-        /*
-        
-        #region Private members
-        private readonly IAgreementService _agreementService;
-        private readonly ILogger _logger;
-        private readonly ITaskSpreadsheetReader _spreadsheetReader;
-        private readonly IDepartmentService _departmentService;
-        #endregion
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TaskController" /> class.
-        /// </summary>
-        /// <param name="agreementService">The agreement service.</param>
-        /// <param name="spreadsheetReader">The spreadsheet reader.</param>
-        /// <param name="logger">The logger.</param>
-        /// <param name="departmentService">The Department service.</param>
-        public TaskController(IAgreementService agreementService,
-            ITaskSpreadsheetReader spreadsheetReader, ILogger logger, IDepartmentService departmentService)
-        {
-            _agreementService = agreementService;
-
-            _spreadsheetReader = spreadsheetReader;
-
-            _logger = logger;
-
-            _departmentService = departmentService;
         }
 
         /// <summary>
@@ -183,6 +167,38 @@ namespace DebtSettlement.Web.Controllers
         {
             return View("ListPartial");
         }
+
+        /*
+        
+        #region Private members
+        private readonly IAgreementService _agreementService;
+        private readonly ILogger _logger;
+        private readonly ITaskSpreadsheetReader _spreadsheetReader;
+        private readonly IDepartmentService _departmentService;
+        #endregion
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TaskController" /> class.
+        /// </summary>
+        /// <param name="agreementService">The agreement service.</param>
+        /// <param name="spreadsheetReader">The spreadsheet reader.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="departmentService">The Department service.</param>
+        public TaskController(IAgreementService agreementService,
+            ITaskSpreadsheetReader spreadsheetReader, ILogger logger, IDepartmentService departmentService)
+        {
+            _agreementService = agreementService;
+
+            _spreadsheetReader = spreadsheetReader;
+
+            _logger = logger;
+
+            _departmentService = departmentService;
+        }
+
+       
+
+      
 
         /// <summary>
         /// Items the specified identifier.

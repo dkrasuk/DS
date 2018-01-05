@@ -107,7 +107,7 @@ class TaskHistoryController {
         //$table.on('processing.dt', function () { bindTableActions(); });
         historyTable = $table.DataTable({
             ajax: {
-                url: utils.urlContent('/api/tasks/' + id + '/history'),
+                url: utils.urlContent('/api/debtsettlements/' + id + '/history'),
                 dataSrc: '',
                 complete: function () {
                     //utils.ui.loader('#table-tasks', false);

@@ -1,13 +1,18 @@
 ﻿using AutoMapper;
 using AlfaBank.Logger;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
+using AlfaBank.Common.Utils;
 using DebtSettlement.AgreementLoader.Interface;
 using DebtSettlement.BusinessLayer.Services.Interfaces;
 using DebtSettlement.Model.DTO.ApplicationForm;
 using DebtSettlement.Web.Models.ApplicationForm;
 using DebtSettlement.BusinessLayer;
+using DebtSettlement.Model.DTO;
+using DebtSettlement.Web.Attributes;
 using System.Linq;
 
 namespace DebtSettlement.Web.Controllers.Api
@@ -84,5 +89,41 @@ namespace DebtSettlement.Web.Controllers.Api
         {
             return await _debtSettlementService.GetDebtSettlementProcessesAsQueryable();
         }
+
+        /*[HttpGet]
+        [Route("")]
+        [ODataQueryable]
+        public async Task<IEnumerable<ApplicationFormViewModel>> GetAll()
+        {
+            var userName = RequestContext.Principal.Identity.Name.FormatUserName();
+
+            var odataFilter = Request.RequestUri.Query.Replace("::username", "'" + userName + "'");
+            var myFilter = $"Initiator eq '{userName}' or Observer eq '{userName}' or Responsible eq '{userName}'";
+
+            if (odataFilter.IndexOf("$filter", StringComparison.Ordinal) > -1)
+            {
+                var queryArray = odataFilter.Split('&');
+                var filter = queryArray.Select(i =>
+                {
+                    if (i.StartsWith("$filter=") || i.StartsWith("?$filter="))
+                    {
+                        i = i + " and (" + myFilter + ")";
+                    }
+                    return i;
+                });
+                odataFilter = string.Join("&", filter);
+            }
+            else
+            {
+                odataFilter += "&$filter=" + myFilter;
+            }
+
+            return new List<ApplicationFormViewModel>
+            {
+                new ApplicationFormViewModel {Guarantors = "odataFilter"},
+                new ApplicationFormViewModel {Guarantors = "odataFilter"},
+                new ApplicationFormViewModel {Guarantors = "odataFilter"}
+            };
+        }*/
     }
 }

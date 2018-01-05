@@ -29,8 +29,8 @@ namespace DebtSettlement.Web.Controllers.Api
     /// <seealso cref="System.Web.Http.ApiController" />
     //[Authorize]
     //[ApiAuthorizeFilter(Role = Common.Constants.Roles.DebtSettlementUser)]
-    [RoutePrefix("api/tasks")]
-    public class TasksController : ApiController
+    [RoutePrefix("api/DebtSettlements")]
+    public class DebtSettlementsController : ApiController
     {
         private readonly IDebtSettlementService _taskService;
         private readonly IHRService _hrService;
@@ -43,34 +43,31 @@ namespace DebtSettlement.Web.Controllers.Api
         private const string AutomaticValue = "auto";
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TasksController" /> class.
+        /// Initializes a new instance of the <see cref="DebtSettlementsController"/> class.
         /// </summary>
         /// <param name="taskService">The task service.</param>
         /// <param name="hrService">The hr service.</param>
         /// <param name="agreementService">The agreement service.</param>
         /// <param name="logger">The logger.</param>
-        /// <param name="spreadsheetWriter">The spreadsheet writer.</param>
-        public TasksController(
+        public DebtSettlementsController(
             IDebtSettlementService taskService,
             IHRService hrService,
             IAgreementService agreementService,
             ILogger logger)
-            //ITaskSpreadsheetWriter spreadsheetWriter)
         {
             _taskService = taskService;
             _hrService = hrService;
             _agreementService = agreementService;
             _logger = logger;
-            //_spreadsheetWriter = spreadsheetWriter;
         }
-        /*
+        
         /// <summary>
         /// Get all tasks
         /// </summary>
         /// <returns></returns>
         [HttpGet]
         [Route("")]
-        //[ODataQueryable]
+        [ODataQueryable]
         public async Task<IEnumerable<TaskDTO>> GetAll()
         {
             var userName = RequestContext.Principal.Identity.Name.FormatUserName();

@@ -13,5 +13,11 @@ namespace DebtSettlement.Model.DTO.ApplicationForm
         public string Region { get; set; }
         
         public string City { get; set; }
+       
+        public string MacroSegment { get; set; }
+       
+        public string Portfolio { get; set; }
+      
+        public string SubSegment { get; set; }
     }
 }

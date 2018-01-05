@@ -8,7 +8,7 @@ namespace DebtSettlement.Web.Models.ApplicationForm
     {
         [Display(Name = "Выявленные обязательства Клиента в др. финансово-кредитных учереждениях")]
         [Required(ErrorMessage = "Поле обязательно для заполнения")]
-        [StringLength(4000, ErrorMessage = "Превышение максимального кол-ва символов (4000)")]
+        [StringLength(2000, ErrorMessage = "Превышение максимального кол-ва символов (2000)")]
         public string OtherLiability { get; set; }
 
         [Display(Name = "Источник информации о выявленных обязательствах")]

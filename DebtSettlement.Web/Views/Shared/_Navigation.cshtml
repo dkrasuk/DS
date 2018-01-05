@@ -5,32 +5,56 @@
 
 <nav id="mainNavigationMenu" class="navbar navbar-default">
     <div class="">
-
         <ul class="nav nav-pills nav-stacked filters">
-            @if (UserHasAccess(AppSettings.DebtSettlementCreateTaskPermission))
-            {
-                <li>
-                    <a href="@Url.Content("~/Task/CreateTask")">
-                        <span class="glyphicon glyphicon-envelope"></span>
-                        &nbsp; Создать новую
-                    </a>
-                </li>
-            }
             <li>
-                <a href="@Url.Content("~/task/list#")" class="tasks-list-filter">
+                <a href="@Url.Content("~/DebtSettlements/list#my")" class="text-primary tasks-list-filter">
+                    <strong>Мои заявки</strong>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Content("~/DebtSettlements/list#")" class="tasks-list-filter">
                     <span class="glyphicon glyphicon glyphicon-list-alt"></span>
-                    &nbsp; ЗАДАЧИ
+                    &nbsp; Мои процессы
                 </a>
             </li>
             <li>
-                <a href="@Url.Content("~/task/list#my")" class="text-primary tasks-list-filter">
-                    <strong>Мои задачи</strong>
+                <a href="@Url.Content("~/DebtSettlements/list#my?$filter=Status eq 'InProgress' and Responsible eq ::username")" class="sublink tasks-list-filter">
+                    <span class="glyphicon glyphicon-briefcase"></span>
+                    &nbsp; В работе
                 </a>
             </li>
             <li>
-                <a href="@Url.Content("~/task/list#my?$filter=Status eq 'Open' and Responsible eq ::username")" class="sublink tasks-list-filter">
-                    <span class="glyphicon glyphicon-star-empty"></span>
-                    &nbsp; Назначенные
+                <a href="@Url.Content("~/DebtSettlements/list#my?$filter=Status eq 'InProgress' and Responsible eq ::username")" class="sublink tasks-list-filter">
+                    <span class="glyphicon glyphicon-inbox"></span>
+                    &nbsp; Архив
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Content("~/DebtSettlements/list#my?$filter=Status eq 'Open' and Responsible eq ::username")" class="sublink tasks-list-filter">
+                    <span class="	glyphicon glyphicon-th"></span>
+                    &nbsp; Процессы группы
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Content("~/DebtSettlements/list#my")" class="text-primary tasks-list-filter">
+                    <strong>Заявки группы</strong>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Content("~/DebtSettlements/list#my?$filter=Status eq 'InProgress' and Responsible eq ::username")" class="sublink tasks-list-filter">
+                    <span class="glyphicon glyphicon-briefcase"></span>
+                    &nbsp; В работе
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Content("~/DebtSettlements/list#my?$filter=Status eq 'InProgress' and Responsible eq ::username")" class="sublink tasks-list-filter">
+                    <span class="glyphicon glyphicon-inbox"></span>
+                    &nbsp; Архив
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Content("~/DebtSettlements/list#my")" class="text-primary tasks-list-filter">
+                    <strong>Все заявки</strong>
                 </a>
             </li>
             <li>
@@ -40,42 +64,18 @@
                 </a>
             </li>
             <li>
-                <a href="@Url.Content("~/task/list#my?$filter=PlannedDate eq Date.Now and Responsible eq ::username")" class="sublink tasks-list-filter">
-                    <span class="glyphicon glyphicon-time"></span>
-                    &nbsp; Срок сегодня
+                <a href="@Url.Content("~/DebtSettlements/list#my?$filter=Status eq 'InProgress' and Responsible eq ::username")" class="sublink tasks-list-filter">
+                    <span class="glyphicon glyphicon-inbox"></span>
+                    &nbsp; Архив
                 </a>
             </li>
             <li>
-                <a href="@Url.Content("~/task/list#?$filter=Status ne 'Closed' and Observer eq ::username")" class="sublink tasks-list-filter">
-                    <span class="glyphicon glyphicon-search"></span>
-                    &nbsp; Я наблюдатель
+                <a href="@Url.Content("~/DebtSettlements/list#my?$filter=Status eq 'InProgress' and Responsible eq ::username")" class="sublink tasks-list-filter">
+                    <span class="glyphicon glyphicon-asterisk"></span>
+                    &nbsp; Все процессы
                 </a>
             </li>
-            <li>
-                <a href="@Url.Content("~/task/list#my?$filter=Status ne 'Closed' and PlannedDate lt Date.Now and Responsible eq ::username")"
-                   class="sublink tasks-list-filter">
-                    <span class="glyphicon glyphicon-exclamation-sign"></span>
-                    &nbsp; Просроченные
-                </a>
-            </li>
-            <li>
-                <a href="@Url.Content("~/task/list#?$filter=Status ne 'Closed' and Initiator eq ::username")" class="sublink tasks-list-filter">
-                    <span class="glyphicon glyphicon-user"></span>
-                    &nbsp; Созданные мной
-                </a>
-            </li>
-            <li>
-                <a href="@Url.Content("~/task/list#?$filter=Status eq 'OnApprove' and (Responsible eq ::username or Observer eq ::username)")" class="sublink tasks-list-filter">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                    &nbsp; На подтверждении
-                </a>
-            </li>
-            <li>
-                <a href="@Url.Content("~/task/list#my?$filter=Status eq 'Closed' and Responsible eq ::username")" class="tasks-list-filter">
-                    <span class="glyphicon glyphicon-remove"></span>
-                    &nbsp; Закрытые задачи
-                </a>
-            </li>
+            
         </ul>
     </div>
 </nav>

@@ -27,7 +27,7 @@ define(['app/components/tasks/services/tasksService', 'app/components/tasks/help
     exports.default = function () {
 
         var defaultDateFotmat = 'dd.MM.yyyy';
-        var baseApiUrl = '/api/tasks/';
+        var baseApiUrl = '/api/debtsettlements/';
         var gridSelector = '#table-tasks';
         var gridFilter = void 0;
         var mainGrid = void 0;
@@ -37,7 +37,7 @@ define(['app/components/tasks/services/tasksService', 'app/components/tasks/help
             view: function view(id) {
                 var dialog = _utils2.default.ui.dialog({
                     content: {
-                        url: _utils2.default.urlContent('/task/item?id=' + id + '&isPartial=true'),
+                        url: _utils2.default.urlContent('/debtsettlements/item?id=' + id + '&isPartial=true'),
                         onload: function onload() {
                             var ctrl = new _viewTaskController2.default();
                             ctrl.init(dialog.find('.modal-body'), id);
@@ -233,18 +233,13 @@ define(['app/components/tasks/services/tasksService', 'app/components/tasks/help
                 scrollX: true,
                 scrollY: "440px",
                 fnServerData: fnServerOData,
-                //iODataVersion": 4,
                 bUseODataViaJSONP: false,
                 sPaginationType: "full_numbers",
-                //"aLengthMenu": [[2, 5, 10, -1], ["Two", "Five", "Ten", "All"]],
-
                 bProcessing: true,
                 bServerSide: true,
-
                 sAjaxSource: _utils2.default.urlContent(baseApiUrl),
-
                 iODataVersion: 3,
-                pagingType: 'simple', //'simple_numbers',
+                pagingType: 'simple',
                 processing: false,
                 language: {
                     processing: "",
@@ -270,81 +265,91 @@ define(['app/components/tasks/services/tasksService', 'app/components/tasks/help
                 },
                 order: [[5, 'desc']],
                 columnDefs: [{
-                    "targets": [1],
+                    "targets": [3],
+                    "visible": false
+                }, {
+                    "targets": [4],
+                    "visible": false
+                }, {
+                    "targets": [5],
+                    "visible": false
+                }, {
+                    "targets": [6],
+                    "visible": false
+                }, {
+                    "targets": [12],
                     "visible": false
                 }],
                 columns: [{
-                    mData: 'ID',
-                    title: '',
+                    title: 'ID',
                     name: 'ID',
                     data: 'ID',
-                    searchable: false,
-                    render: tableHelpers.renderActionsMenu
+                    searchable: false
                 }, {
-                    title: 'Comment', name: 'Comment', data: 'Comment', "visible": false
+                    title: 'Дата входа в этап',
+                    name: 'StateEnterDate',
+                    data: '',
+                    type: 'date'
                 }, {
-                    title: 'Краткое название',
-                    name: 'Title',
-                    data: 'Title',
-                    type: 'string',
-                    render: function render(value, display, data) {
-                        if (value) {
-                            value = value.replace(/"/g, '');
-                            var result = '<a data-view-task="" data-task-id="' + data.ID + '" href="' + _utils2.default.urlContent('/task/item?id=' + data.ID) + '" ';
-                            if (value.length > 30) {
-                                result += ' title="' + value + '"';
-                            }
-                            var str = value.length > 30 ? value.substr(0, 30) + '...' : value;
-                            result += '>' + str + '</a>';
-                            return result;
-                        }
-                        return '';
-                    }
+                    title: 'Номер договора',
+                    name: 'AgreementNumber',
+                    data: '',
+                    type: 'string'
                 }, {
-                    title: 'Исполнитель', name: 'Responsible', data: 'Responsible'
+                    title: 'ФИО должника',
+                    name: 'ClientFullName',
+                    data: '',
+                    type: 'string'
                 }, {
-                    title: 'Постановщик', name: 'Initiator', data: 'Initiator'
+                    title: 'Outstanding ',
+                    name: 'Outstanding ',
+                    data: '',
+                    type: 'number'
                 }, {
-                    title: 'Дата создания',
-                    name: 'CreateDate',
-                    data: 'CreateDate',
-                    type: 'date',
-                    searchable: false,
-                    render: function render(value) {
-                        return parseDate(value, 'dd.MM.yyyy HH:mm:ss');
-                    }
+                    title: 'Сумма погашения ',
+                    name: 'RepaymentAmount ',
+                    data: '',
+                    type: 'number'
                 }, {
-                    title: 'Дата исполнения',
-                    name: 'PlannedDate',
-                    data: 'PlannedDate',
-                    type: 'date',
-                    searchable: false,
-                    render: function render(value) {
-                        return parseDate(value, 'dd.MM.yyyy');
-                    }
+                    title: 'Регион',
+                    name: 'Region',
+                    data: '',
+                    type: 'string'
                 }, {
-                    title: 'Описание задачи',
-                    name: 'Description',
-                    data: 'Description',
-                    type: 'string',
-                    render: function render(value) {
-                        if (value) {
-                            value = value.replace(/"/g, '');
-                            return '<span title="' + value + '">' + (value.length > 30 ? value.substr(0, 30) + '...' : value) + '</span>';
-                        }
-                        return '';
-                    }
+                    title: 'Инициатор',
+                    name: 'Initiator',
+                    data: '',
+                    type: 'string'
                 }, {
-                    title: 'Статус',
-                    name: 'Status',
-                    data: 'Status',
-                    type: 'string',
-                    render: function render(value, display, data) {
-                        var title = _utils2.default.htmlEncode(data.Comment).replace(/"/g, '\'');
-                        return '<span data-toggle="tooltip"\n                                        title="' + title + '"\n                                        class="' + _htmlHelpers2.default.generateLabelClassByStatus(value) + '">' + value + '</span>';
-                    }
+                    title: 'Ответственный',
+                    name: 'Responsible',
+                    data: '',
+                    type: 'string'
                 }, {
-                    title: 'Тип', name: 'TaskType', data: 'TaskType'
+                    title: 'Ответственное подразделение',
+                    name: 'ResponsibleRoles',
+                    data: '',
+                    type: 'string'
+                }, {
+                    title: 'Этап процесса',
+                    name: 'ProcessState',
+                    data: '',
+                    type: 'string'
+                }, {
+                    title: 'Время нахождения в этапе',
+                    name: 'StateDaysCount',
+                    data: '',
+                    type: 'string'
+                }, {
+                    title: 'Индикатор нахождения в этапе',
+                    name: 'StateIndicator',
+                    data: '',
+                    type: 'string'
+                }, {
+                    title: 'Ответственный сотрудник ОРК',
+                    name: 'OrkResponsible',
+                    data: '',
+                    type: 'string'
                 }]
             };
 
@@ -357,9 +362,9 @@ define(['app/components/tasks/services/tasksService', 'app/components/tasks/help
 
         function processFilterHash(filter) {
             if (filter.hash) {
-                baseApiUrl = '/api/tasks/' + filter.hash.replace('sysdatetime', 'DateTime\'' + new Date().toISOString() + '\'').replace('sysdate', 'DateTime\'' + new Date().toISOString().substr(0, 10) + '\'');
+                baseApiUrl = '/api/debtsettlements/' + filter.hash.replace('sysdatetime', 'DateTime\'' + new Date().toISOString() + '\'').replace('sysdate', 'DateTime\'' + new Date().toISOString().substr(0, 10) + '\'');
             } else {
-                baseApiUrl = '/api/tasks/';
+                baseApiUrl = '/api/debtsettlements/';
             }
         }
 

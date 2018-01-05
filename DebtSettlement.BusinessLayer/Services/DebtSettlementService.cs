@@ -141,17 +141,6 @@ namespace DebtSettlement.BusinessLayer.Services
         }
 
 
-        /*
- В view, надо добавить такие поля:
-- Дата входа в этап;
-- Сума погашение;
-- Инициатор;
-- Ответственный;
-- Ответственный сотрудник ОРК;
-- Ответственное подразделение (это массив с названиями ролей (Actor), которые могут выполнять комманды из данного Activity
-*/
-
-
         #region Mappings
 
         /// <summary>
@@ -178,15 +167,22 @@ namespace DebtSettlement.BusinessLayer.Services
                     INN = debtSettlementProcess.INN,
                     FIO = debtSettlementProcess.FIO,
                     Region = debtSettlementProcess.Region,
-                    City = debtSettlementProcess.City
+                    City = debtSettlementProcess.City,
+                    MacroSegment = debtSettlementProcess.MacroSegment,
+                    Portfolio = debtSettlementProcess.Portfolio,
+                    SubSegment = debtSettlementProcess.SubSegment
                 };
 
                 process.Credit = new Credit()
                 {
-                    Portfolio = debtSettlementProcess.Portfolio,
                     Outstanding = debtSettlementProcess.Outstanding,
                     Fees = debtSettlementProcess.Fees,
-                    DSType = debtSettlementProcess.DSType
+                    DSType = debtSettlementProcess.DSType,
+                    Principal = debtSettlementProcess.Principal,
+                    Interest = debtSettlementProcess.Interest,
+                    PurchasePrice = debtSettlementProcess.PurchasePrice,
+                    AllPayments = debtSettlementProcess.AllPayments,
+                    DPD = debtSettlementProcess.DPD
                 };
 
                 process.Job = new Job()
@@ -221,10 +217,6 @@ namespace DebtSettlement.BusinessLayer.Services
 
                 process.OtherActives = debtSettlementProcess.OtherActives;
 
-                process.SourceOfOtherActives = debtSettlementProcess.SourceOfOtherActives;
-
-                //result.Collaterals = debtSettlementProcess.Collaterals;
-
                 process.ReasonToDenyDS = new ReasonToDenyDS()
                 {
                     AbsenceOfDocuments = debtSettlementProcess.AbsenceOfDocuments,
@@ -241,7 +233,66 @@ namespace DebtSettlement.BusinessLayer.Services
 
                 process.Guarantors = debtSettlementProcess.Guarantors;
 
-                //result.Actives = debtSettlementProcess.Actives;
+                process.Decision = new Decision()
+                {
+                    DraftDecision = debtSettlementProcess.PreparationOfaDraftDecision,
+                    FinEffect = debtSettlementProcess.FinancialEffect,
+                    CashOutstanding = debtSettlementProcess.CashPercentToOutstanding,
+                    CashOutstandingLiquidation = debtSettlementProcess.CashPercentToOutstandingLiquidation,
+                    CostGIS = debtSettlementProcess.CostInStateInfoSystem,
+                    LiquidationValue = debtSettlementProcess.LiquidationValue
+                };
+
+                process.Finance = new Finance()
+                {
+                    CashTotal = debtSettlementProcess.CashTotal,
+                    NPV  = debtSettlementProcess.NPV,
+                    CashCollateralValue = debtSettlementProcess.CashToCollateralValue,
+                    LTV = debtSettlementProcess.LTV,
+                    CashToOut = debtSettlementProcess.CashToOut,
+                    TermInstallments = debtSettlementProcess.InstallmentPayments,
+                    FirstPayment = debtSettlementProcess.FirstPayment,
+                    FPValue = debtSettlementProcess.FpToValue,
+                    OtherCredits  = debtSettlementProcess.OtherCredits,
+                    TypeDS  = debtSettlementProcess.DSType,
+                    Reject = debtSettlementProcess.IsRejected,
+                    EssenceDeviation  = debtSettlementProcess.CauseOfReject
+                };
+
+                process.Status = new Status()
+                {
+                    HaveAnotherBankProduct = debtSettlementProcess.HaveAnotherBankProduct,
+                    LegalStage = debtSettlementProcess.LegalStage,
+                    Date = debtSettlementProcess.DateOfLegalStage,
+                    LegalStatus = debtSettlementProcess.LegalStatus,
+                    StatusOfBankruptcy  = debtSettlementProcess.StatusOfBankruptcy,
+                    OpenDateOfBankruptcy = debtSettlementProcess.OpenDateOfBankruptcy,
+                    RiskOfLoss  = debtSettlementProcess.RiskOfLoss,
+                    DateRiskOfLoss = debtSettlementProcess.DateRiskOfLoss,
+                    ActionsPlanned = debtSettlementProcess.ActionResultsOfRisk,
+                    CurrentTool = debtSettlementProcess.CurrentTools,
+                    Argumentation = debtSettlementProcess.ArgumentationOfDesicion,
+                    ConclusionSecurity = debtSettlementProcess.SecurityConclusion,
+                    HistoryTalks = debtSettlementProcess.HistoryOfBusinessNegotiations
+                };
+
+                process.CollateralOtherParameters = new CollateralOtherParameters()
+                {
+                    Selected = debtSettlementProcess.Collaterals,
+                    CoverOutstanding = debtSettlementProcess.PercentOutstanding,
+                    RepaymentAmount = debtSettlementProcess.PaymentSum,
+                    OtherAssetsForCollection = debtSettlementProcess.CollectionOtherAssets,
+                    CheckEvaluation = debtSettlementProcess.CheckEvaluation,
+                    Approve = debtSettlementProcess.Approve
+                };
+
+                process.ActiveOtherParameters = new ActiveOtherParameters()
+                {
+                    ActivesSelected = debtSettlementProcess.Actives,
+                    OwnershipShare = debtSettlementProcess.MembershipInterestOfProperty,
+                    SourceInformationOfActive = debtSettlementProcess.SourceOfOtherActives,
+                    Comment = debtSettlementProcess.CommentOnProperty
+                };
 
                 result.Add(process);
             }
@@ -264,14 +315,21 @@ namespace DebtSettlement.BusinessLayer.Services
             result.FIO = applicationForm.Client?.FIO;
             result.Region = applicationForm.Client?.Region;
             result.City = applicationForm.Client?.City;
+            result.MacroSegment = applicationForm.Client?.MacroSegment;
+            result.Portfolio = applicationForm.Client?.Portfolio;
+            result.SubSegment = applicationForm.Client?.SubSegment;
 
             result.AgreemNumber = applicationForm.AgreementId;
-            result.Portfolio = applicationForm.Credit?.Portfolio;
             result.Outstanding = applicationForm.Credit?.Outstanding?.ToString();
             result.Fees = applicationForm.Credit?.Fees?.ToString();
             result.DSType = applicationForm.Credit?.DSType;
+            result.Principal = applicationForm.Credit?.Principal;
+            result.Interest = applicationForm.Credit?.Interest;
+            result.PurchasePrice = applicationForm.Credit?.PurchasePrice;
+            result.AllPayments = applicationForm.Credit?.AllPayments;
+            result.DPD = applicationForm.Credit?.DPD;
 
-            result.Collaterals = applicationForm.Collaterals.Select(i => i.CollateralId).ToList();
+            result.Collaterals = applicationForm.CollateralOtherParameters?.Selected;
 
             result.WorkPlace = applicationForm.Job?.WorkPlace;
             result.Position = applicationForm.Job?.Position;
@@ -287,13 +345,13 @@ namespace DebtSettlement.BusinessLayer.Services
 
             result.MatchAddress = applicationForm.Address?.MatchAddress;
             result.RegistrationAddress = applicationForm.Address?.RegistrationAddress;
-            result.MembershipInterestOnResidentAddress = applicationForm.Address?.MembershipInterestOnResidentAddress.ToString();
-            result.MembershipInterestOnRegistrAddress = applicationForm.Address?.MembershipInterestOnRegistrAddress.ToString();
+            result.MembershipInterestOnResidentAddress = applicationForm.Address?.MembershipInterestOnResidentAddress;
+            result.MembershipInterestOnRegistrAddress = applicationForm.Address?.MembershipInterestOnRegistrAddress;
             result.ResidentialAddress = applicationForm.Address?.ResidentialAddress;
 
             result.OtherActives = applicationForm.OtherActives;
-            result.SourceOfOtherActives = applicationForm.SourceOfOtherActives;
-            result.Actives = applicationForm.Actives.Select(i => i.CollateralId).ToList();
+
+            result.Actives = applicationForm.ActiveOtherParameters?.ActivesSelected;
 
             result.AbsenceOfDocuments = applicationForm.ReasonToDenyDS?.AbsenceOfDocuments;
             result.PresenceOfArrest = applicationForm.ReasonToDenyDS?.PresenceOfArrest;
@@ -307,6 +365,51 @@ namespace DebtSettlement.BusinessLayer.Services
             result.HistoryOfBusinessNegotiations = applicationForm.HistoryOfBusinessNegotiations;
             result.Guarantors = applicationForm.Guarantors;
 
+            result.PreparationOfaDraftDecision = applicationForm.Decision?.DraftDecision;
+            result.FinancialEffect = applicationForm.Decision?.FinEffect;
+            result.CashPercentToOutstanding = applicationForm.Decision?.CashOutstanding;
+            result.CashPercentToOutstandingLiquidation = applicationForm.Decision?.CashOutstandingLiquidation;
+            result.CostInStateInfoSystem = applicationForm.Decision?.CostGIS;
+            result.LiquidationValue = applicationForm.Decision?.LiquidationValue;
+
+            result.CashTotal = applicationForm.Finance?.CashTotal;
+            result.NPV = applicationForm.Finance?.NPV;
+            result.CashToCollateralValue = applicationForm.Finance?.CashCollateralValue;
+            result.LTV = applicationForm.Finance?.LTV;
+            result.CashToOut = applicationForm.Finance?.CashToOut;
+            result.InstallmentPayments = applicationForm.Finance?.TermInstallments;
+            result.FirstPayment = applicationForm.Finance?.FirstPayment;
+            result.FpToValue = applicationForm.Finance?.FPValue;
+            result.OtherCredits = applicationForm.Finance?.OtherCredits;
+            result.DSType = applicationForm.Finance?.TypeDS;
+            result.IsRejected = applicationForm.Finance?.Reject;
+            result.CauseOfReject = applicationForm.Finance?.EssenceDeviation;
+
+            result.HaveAnotherBankProduct = applicationForm.Status?.HaveAnotherBankProduct;
+            result.LegalStage = applicationForm.Status?.LegalStage;
+            result.DateOfLegalStage = applicationForm.Status?.Date;
+            result.LegalStatus = applicationForm.Status?.LegalStatus;
+            result.StatusOfBankruptcy = applicationForm.Status?.StatusOfBankruptcy;
+            result.OpenDateOfBankruptcy = applicationForm.Status?.OpenDateOfBankruptcy;
+            result.RiskOfLoss = applicationForm.Status?.RiskOfLoss;
+            result.DateRiskOfLoss = applicationForm.Status?.DateRiskOfLoss;
+            result.ActionResultsOfRisk = applicationForm.Status?.ActionsPlanned;
+            result.CurrentTools = applicationForm.Status?.CurrentTool;
+            result.ArgumentationOfDesicion = applicationForm.Status?.Argumentation;
+            result.SecurityConclusion = applicationForm.Status?.ConclusionSecurity;
+            result.HistoryOfBusinessNegotiations = applicationForm.Status?.HistoryTalks;
+
+            result.Collaterals = applicationForm.CollateralOtherParameters?.Selected;
+            result.PercentOutstanding = applicationForm.CollateralOtherParameters?.CoverOutstanding;
+            result.PaymentSum = applicationForm.CollateralOtherParameters?.RepaymentAmount;
+            result.CollectionOtherAssets = applicationForm.CollateralOtherParameters?.OtherAssetsForCollection;
+            result.CheckEvaluation = applicationForm.CollateralOtherParameters?.CheckEvaluation;
+            result.Approve = applicationForm.CollateralOtherParameters?.Approve;
+
+            result.Actives = applicationForm.ActiveOtherParameters?.ActivesSelected;
+            result.MembershipInterestOfProperty = applicationForm.ActiveOtherParameters?.OwnershipShare;
+            result.SourceOfOtherActives = applicationForm.ActiveOtherParameters?.SourceInformationOfActive;
+            result.CommentOnProperty = applicationForm.ActiveOtherParameters?.Comment;
 
             return result;
         }

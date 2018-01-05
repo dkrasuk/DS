@@ -2,7 +2,7 @@
 
     let service = {};
     function baseApiUrl() {
-        return utils.urlContent('/api/tasks/');
+        return utils.urlContent('/api/debtsettlements/');
     }
 
     service.getTask = function (id) {

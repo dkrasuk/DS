@@ -145,7 +145,7 @@ define(['app/utils', 'app/components/tasks/services/tasksService', 'app/componen
                 //$table.on('processing.dt', function () { bindTableActions(); });
                 historyTable = $table.DataTable({
                     ajax: {
-                        url: _utils2.default.urlContent('/api/tasks/' + id + '/history'),
+                        url: _utils2.default.urlContent('/api/debtsettlements/' + id + '/history'),
                         dataSrc: '',
                         complete: function complete() {
                             //utils.ui.loader('#table-tasks', false);

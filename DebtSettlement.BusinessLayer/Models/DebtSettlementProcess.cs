@@ -1,16 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using WorkflowEngine.Client.Attributes;
 
 namespace DebtSettlement.BusinessLayer.Models
 {
     public class DebtSettlementProcess
     {
-        public DebtSettlementProcess()
-        {
-            Collaterals = new List<string>();
-            Actives = new List<string>();
-        }
-
         [PersistanceProcessParameter]
         public string INN { get; set; }
 
@@ -40,8 +35,8 @@ namespace DebtSettlement.BusinessLayer.Models
         public string DSType { get; set; }
 
 
-        //[PersistanceProcessParameter]
-        public List<string> Collaterals { get; set; }
+        [PersistanceProcessParameter]
+        public string Collaterals { get; set; }
 
 
         [PersistanceProcessParameter]
@@ -96,8 +91,8 @@ namespace DebtSettlement.BusinessLayer.Models
         [PersistanceProcessParameter]
         public string SourceOfOtherActives { get; set; }
 
-        //[PersistanceProcessParameter]
-        public List<string> Actives { get; set; }
+        [PersistanceProcessParameter]
+        public string Actives { get; set; }
 
 
         [PersistanceProcessParameter]
@@ -130,5 +125,157 @@ namespace DebtSettlement.BusinessLayer.Models
 
         [PersistanceProcessParameter]
         public string Guarantors { get; set; }
+
+
+        [PersistanceProcessParameter]
+        public double? PaymentSum { get; set; }
+
+        [PersistanceProcessParameter]
+        public string Resposnible { get; set; }
+
+        [PersistanceProcessParameter]
+        public string Initiator { get; set; }
+
+        [PersistanceProcessParameter]
+        public string ResponsibleActors { get; set; }
+
+
+        [PersistanceProcessParameter]
+        public double? PercentOutstanding { get; set; }
+
+        [PersistanceProcessParameter]
+        public int? MembershipInterestOfProperty { get; set; }
+
+        [PersistanceProcessParameter]
+        public string CommentOnProperty { get; set; }
+
+
+        [PersistanceProcessParameter]
+        public string Authority { get; set; }
+
+        [PersistanceProcessParameter]
+        public int? DPD { get; set; }
+
+        [PersistanceProcessParameter]
+        public double? Principal { get; set; }
+
+        [PersistanceProcessParameter]
+        public double? PurchasePrice { get; set; }
+
+
+        [PersistanceProcessParameter]
+        public bool? CheckEvaluation { get; set; }
+
+        [PersistanceProcessParameter]
+        public bool? Approve { get; set; }
+
+
+        [PersistanceProcessParameter]
+        public bool? HaveAnotherBankProduct { get; set; }
+
+        [PersistanceProcessParameter]
+        public string StatusAndTypesOfAnotherBankProduct { get; set; }
+
+        [PersistanceProcessParameter]
+        public string LegalStage { get; set; }
+
+        [PersistanceProcessParameter]
+        public DateTime? DateOfLegalStage { get; set; }
+
+        [PersistanceProcessParameter]
+        public string LegalStatus { get; set; }
+
+        [PersistanceProcessParameter]
+        public bool? StatusOfBankruptcy { get; set; }
+
+        [PersistanceProcessParameter]
+        public DateTime? OpenDateOfBankruptcy { get; set; }
+
+        [PersistanceProcessParameter]
+        public bool? RiskOfLoss { get; set; }
+
+        [PersistanceProcessParameter]
+        public DateTime? DateRiskOfLoss { get; set; }
+
+        [PersistanceProcessParameter]
+        public string ActionResultsOfRisk { get; set; }
+
+        [PersistanceProcessParameter]
+        public string CurrentTools { get; set; }
+
+        [PersistanceProcessParameter]
+        public bool? IsRejected { get; set; }
+
+        [PersistanceProcessParameter]
+        public string CauseOfReject { get; set; }
+
+
+        [PersistanceProcessParameter]
+        public string SecurityConclusion { get; set; }
+
+        [PersistanceProcessParameter]
+        public string PreparationOfaDraftDecision { get; set; }
+
+        [PersistanceProcessParameter]
+        public string ArgumentationOfDesicion { get; set; }
+
+        [PersistanceProcessParameter]
+        public double? CashTotal { get; set; }
+
+        [PersistanceProcessParameter]
+        public double? FinancialEffect { get; set; }
+
+        [PersistanceProcessParameter]
+        public double? CashPercentToOutstanding { get; set; }
+
+        [PersistanceProcessParameter]
+        public double? CashPercentToOutstandingLiquidation { get; set; }
+
+        [PersistanceProcessParameter]
+        public double? CostInStateInfoSystem { get; set; }
+
+        [PersistanceProcessParameter]
+        public double? LiquidationValue { get; set; }
+
+
+        [PersistanceProcessParameter]
+        public string MacroSegment { get; set; }
+
+        [PersistanceProcessParameter]
+        public string SubSegment { get; set; }
+
+        [PersistanceProcessParameter]
+        public double? Interest { get; set; }
+
+        [PersistanceProcessParameter]
+        public double? AllPayments { get; set; }
+
+        [PersistanceProcessParameter]
+        public double? NPV { get; set; }
+
+        [PersistanceProcessParameter]
+        public double? CashToCollateralValue { get; set; }
+
+        [PersistanceProcessParameter]
+        public double? LTV { get; set; }
+
+        [PersistanceProcessParameter]
+        public double? CashToOut { get; set; }
+
+        [PersistanceProcessParameter]
+        public double? FirstPayment { get; set; }
+
+        [PersistanceProcessParameter]
+        public double? FpToValue { get; set; }
+
+        [PersistanceProcessParameter]
+        public bool? OtherCredits { get; set; }
+
+        [PersistanceProcessParameter]
+        public bool? CollectionOtherAssets { get; set; }
+
+        [PersistanceProcessParameter]
+        public double? InstallmentPayments { get; set; }
+
     }
 }

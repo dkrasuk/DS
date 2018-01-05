@@ -8,8 +8,6 @@ namespace DebtSettlement.Model.DTO.ApplicationForm
     {
         public ApplicationForm()
         {
-            Collaterals = new List<Collateral>();
-            Actives = new List<Collateral>();
             Credit = new Credit();
         }
 
@@ -31,7 +29,6 @@ namespace DebtSettlement.Model.DTO.ApplicationForm
         public bool IsCollateralsVerified { get; set; }
 
         public List<Collateral> Collaterals { get; set; }
-
 
         public bool IsJobsVerified { get; set; }
 
@@ -57,23 +54,30 @@ namespace DebtSettlement.Model.DTO.ApplicationForm
 
         public bool? OtherActives { get; set; }
 
-        public string SourceOfOtherActives { get; set; }
 
         public List<Collateral> Actives { get; set; }
-
 
         public bool IsReasonToDenyDSVerified { get; set; }
 
         public ReasonToDenyDS ReasonToDenyDS { get; set; }
 
-
         public bool IsHistoryOfBusinessNegotiationsVerified { get; set; }
 
         public string HistoryOfBusinessNegotiations { get; set; }
 
-
         public bool IsGuarantorsVerified { get; set; }
 
         public string Guarantors { get; set; }
+
+        public Decision Decision { get; set; }
+
+        public Finance Finance { get; set; }
+
+        public Status Status { get; set; }
+
+        public CollateralOtherParameters CollateralOtherParameters { get; set; }
+
+        public ActiveOtherParameters ActiveOtherParameters { get; set; }
+
     }
 }

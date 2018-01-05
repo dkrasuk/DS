@@ -28,7 +28,7 @@ namespace DebtSettlement.Web.Models.ApplicationForm
         [DisplayFormat(DataFormatString = "{0:N2}", ApplyFormatInEditMode = true)]
         [RegularExpression(@"^[0-9]{1,13}([,][0-9]{1,2})?$", ErrorMessage = "Неверный формат числа")]
         [Required(ErrorMessage = "Поле обязательно для заполнения")]
-        public string PaymentSum { get; set; }
+        public double? PaymentSum { get; set; }
 
         public bool? isAdditionalProperty { get; set; }
 

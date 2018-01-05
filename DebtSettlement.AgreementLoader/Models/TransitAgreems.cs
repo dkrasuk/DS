@@ -46,6 +46,11 @@ namespace DebtSettlement.AgreementLoader.Models
         public double? Outstanding { get; set; }
 
         /// <summary>
+        /// Gets or sets the CurrentInterest.
+        /// </summary>
+        public double? CurrentInterest { get; set; }
+
+        /// <summary>
         /// Gets or sets the product code.
         /// </summary>
         /// <value>The product code.</value>

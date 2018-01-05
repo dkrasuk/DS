@@ -23,6 +23,22 @@ namespace DebtSettlement.Web.Models.ApplicationForm
         [Required(ErrorMessage = "Поле обязательно для заполнения")]
         public double? Outstanding { get; set; }
 
+        [Display(Name = "Principal, $")]
+        [Required(ErrorMessage = "Поле обязательно для заполнения")]
+        public double? Principal { get; set; }
+
+        [Display(Name = "Interest, $")]
+        [Required(ErrorMessage = "Поле обязательно для заполнения")]
+        public double? Interest { get; set; }
+
+        [Display(Name = "Purchase Price, $")]
+        [Required(ErrorMessage = "Поле обязательно для заполнения")]
+        public double? PurchasePrice { get; set; }
+
+        [Display(Name = "All Payments")]
+        [Required(ErrorMessage = "Поле обязательно для заполнения")]
+        public double? AllPayments { get; set; }
+
         [Display(Name = "Fees, $")]
         [Required(ErrorMessage = "Поле обязательно для заполнения")]
         public double? Fees { get; set; }

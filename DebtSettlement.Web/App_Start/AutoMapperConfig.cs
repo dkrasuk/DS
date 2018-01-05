@@ -22,8 +22,11 @@ namespace DebtSettlement.Web
             Mapper.CreateMap<Model.DTO.ApplicationForm.Credit, Models.ApplicationForm.Credit>();
             Mapper.CreateMap<Models.ApplicationForm.Credit, Model.DTO.ApplicationForm.Credit>();
 
-            Mapper.CreateMap<Model.DTO.ApplicationForm.Collateral, Models.ApplicationForm.Collateral>();
-            Mapper.CreateMap<Models.ApplicationForm.Collateral, Model.DTO.ApplicationForm.Collateral>();
+            Mapper.CreateMap<Model.DTO.ApplicationForm.CollateralOtherParameters, Models.ApplicationForm.CollateralOtherParameters>();
+            Mapper.CreateMap<Models.ApplicationForm.CollateralOtherParameters, Model.DTO.ApplicationForm.CollateralOtherParameters>();
+
+            Mapper.CreateMap<Model.DTO.ApplicationForm.ActiveOtherParameters, Models.ApplicationForm.ActiveOtherParameters>();
+            Mapper.CreateMap<Models.ApplicationForm.ActiveOtherParameters, Model.DTO.ApplicationForm.ActiveOtherParameters>();
 
             Mapper.CreateMap<Model.DTO.ApplicationForm.Job, Models.ApplicationForm.Job>();
             Mapper.CreateMap<Models.ApplicationForm.Job, Model.DTO.ApplicationForm.Job>();
@@ -37,11 +40,20 @@ namespace DebtSettlement.Web
             Mapper.CreateMap<Model.DTO.ApplicationForm.Address, Models.ApplicationForm.Address>();
             Mapper.CreateMap<Models.ApplicationForm.Address, Model.DTO.ApplicationForm.Address>();
 
-            Mapper.CreateMap<Model.DTO.ApplicationForm.Active, Models.ApplicationForm.Active>();
-            Mapper.CreateMap<Models.ApplicationForm.Active, Model.DTO.ApplicationForm.Active>();
-
             Mapper.CreateMap<Model.DTO.ApplicationForm.ReasonToDenyDS, Models.ApplicationForm.ReasonToDenyDS>();
             Mapper.CreateMap<Models.ApplicationForm.ReasonToDenyDS, Model.DTO.ApplicationForm.ReasonToDenyDS>();
+
+            Mapper.CreateMap<Model.DTO.ApplicationForm.Finance, Models.ApplicationForm.Finance>();
+            Mapper.CreateMap<Models.ApplicationForm.Finance, Model.DTO.ApplicationForm.Finance>();
+
+            Mapper.CreateMap<Model.DTO.ApplicationForm.Decision, Models.ApplicationForm.Decision>();
+            Mapper.CreateMap<Models.ApplicationForm.Decision, Model.DTO.ApplicationForm.Decision>();
+
+            Mapper.CreateMap<Model.DTO.ApplicationForm.Status, Models.ApplicationForm.Status>();
+            Mapper.CreateMap<Models.ApplicationForm.Status, Model.DTO.ApplicationForm.Status>();
+
+            Mapper.CreateMap<Model.DTO.ApplicationForm.Collateral, Models.ApplicationForm.Collateral>();
+            Mapper.CreateMap<Models.ApplicationForm.Collateral, Model.DTO.ApplicationForm.Collateral>();
         }
     }
 }

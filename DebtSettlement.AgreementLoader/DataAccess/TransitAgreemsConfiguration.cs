@@ -16,6 +16,7 @@ namespace DebtSettlement.AgreementLoader.DataAccess
             Property(t => t.PlanedCloseDate).HasColumnName("PLANEDCLOSEDATE");
             Property(t => t.ProductCodeId).HasColumnName("PRODUCTCODEID");
             Property(t => t.Outstanding).HasColumnName("OUTSTANDING");
+            Property(t => t.CurrentInterest).HasColumnName("CURRENTINTEREST");
 
             HasKey(t => t.AgreementId);
 

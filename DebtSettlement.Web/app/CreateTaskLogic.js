@@ -303,7 +303,7 @@
     $("#ResponsibleFullName").catcomplete({
         source: function (request, response) {
             $.ajax({
-                url: app.utils.urlContent("/api/tasks/GetUsersWithResponsible"),
+                url: app.utils.urlContent("/api/debtsettlements/GetUsersWithResponsible"),
                 dataType: "json",
                 data: {
                     term: request.term,
@@ -369,7 +369,7 @@
 
             $.ajax({
                 type: "POST",
-                url: app.utils.urlContent("/api/tasks/CreateMultipleTaskAndGetResult"),
+                url: app.utils.urlContent("/api/debtsettlements/CreateMultipleTaskAndGetResult"),
                 data: $("#formCreateTask").serialize(),
                 success: function(data) {
                     app.utils.ui.loader(form, false);
@@ -404,7 +404,7 @@
             var data = $("#formCreateTask").serialize();
             $.ajax({
                 type: "POST",
-                url: app.utils.urlContent("/api/tasks"),
+                url: app.utils.urlContent("/api/debtsettlements"),
                 data: data,
                 success: function() {
                     app.utils.ui.loader(form, false);

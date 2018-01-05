@@ -16,7 +16,7 @@ define(['app/utils'], function (_utils) {
 
     var service = {};
     function baseApiUrl() {
-        return _utils2.default.urlContent('/api/tasks/');
+        return _utils2.default.urlContent('/api/debtsettlements/');
     }
 
     service.getTask = function (id) {

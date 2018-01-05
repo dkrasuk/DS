@@ -112,12 +112,16 @@
     <Reference Include="Unity.ServiceLocation, Version=2.0.8.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.5.3.2\lib\net45\Unity.ServiceLocation.dll</HintPath>
     </Reference>
-    <Reference Include="WorkflowEngine.Client, Version=1.0.0.12, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WorkflowEngine.Client.1.0.0.12\lib\net462\WorkflowEngine.Client.dll</HintPath>
+    <Reference Include="WorkflowEngine.Client, Version=1.0.0.17, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WorkflowEngine.Client.1.0.0.17\lib\net462\WorkflowEngine.Client.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dictionary\AdvancedDictionary\PortfolioSegment.cs" />
+    <Compile Include="DTO\ApplicationForm\ActiveOtherParameters.cs" />
+    <Compile Include="DTO\ApplicationForm\CollateralOtherParameters.cs" />
+    <Compile Include="DTO\ApplicationForm\Decision.cs" />
+    <Compile Include="DTO\ApplicationForm\Finance.cs" />
     <Compile Include="DTO\ApplicationForm\ReasonToDenyDS.cs" />
     <Compile Include="DTO\ApplicationForm\Active.cs" />
     <Compile Include="DTO\ApplicationForm\ApplicationForm.cs" />
@@ -131,6 +135,8 @@
     <Compile Include="Dictionary\Dictionary.cs" />
     <Compile Include="Dictionary\DictionaryItem.cs" />
     <Compile Include="Dictionary\DictionaryItemValue.cs" />
+    <Compile Include="DTO\ApplicationForm\Status.cs" />
+    <Compile Include="DTO\DebtSettlementDTO.cs" />
     <Compile Include="DTO\DebtSettlementCreationResultDTO.cs" />
     <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="Enums\AssignedUser.cs" />

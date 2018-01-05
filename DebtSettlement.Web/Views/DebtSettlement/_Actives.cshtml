@@ -9,20 +9,19 @@
 
     <table id="active-table" class="" cellspacing="0" width="100%">
         <thead>
-            <tr>
-                @*<th><input name="select_all" value="1" id="example-select-all" type="checkbox" /></th>*@
-                <th></th>
-                <th class="hidden">CollateralId</th>
-                <th>Тип</th>
-                <th>Описание доп. имущества</th>
-                <th>Стоимость</th>
-            </tr>
+        <tr>
+            <th></th>
+            <th class="hidden">CollateralId</th>
+            <th>Тип</th>
+            <th>Описание доп. имущества</th>
+            <th>Стоимость</th>
+        </tr>
         </thead>
         <tbody>
             @foreach (var collateral in Model.Actives)
             {
                 <tr>
-                    <td></td>
+                    <td><input type="checkbox" /></td>
                     <td class="hidden">@Html.DisplayFor(item => collateral.CollateralId)</td>
                     <td>@Html.DisplayFor(item => collateral.CollateralType)</td>
                     <td>@Html.DisplayFor(item => collateral.CollateralDescription)</td>

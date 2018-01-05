@@ -48,7 +48,6 @@ namespace DebtSettlement.Web.Attributes
         /// <returns>IQueryable.</returns>
         public override IQueryable ApplyQuery(IQueryable queryable, ODataQueryOptions queryOptions)
         {
-            
             if (queryOptions.Filter != null)
             {
                 var url = queryOptions.Request.RequestUri.AbsoluteUri;

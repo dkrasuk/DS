@@ -1,13 +1,13 @@
-﻿@using Microsoft.ServiceBus.Messaging
-@model DebtSettlement.Web.Models.ApplicationForm.ApplicationFormViewModel
+﻿@model DebtSettlement.Web.Models.ApplicationForm.ApplicationFormViewModel
 
 @Html.Partial("_AppHeaderSctipts");
 <link href="~/Content/styles/createDSform.css" rel="stylesheet" />
 <link href="~/Content/DataTables/css/jquery.dataTables.min.css" rel="stylesheet" />
 <link href="~/Content/DataTables/css/select.dataTables.min.css" rel="stylesheet" />
 
+
 @{
-    ViewBag.Title = "DS";
+    ViewBag.Title = "Анкета инициатора";
     Layout = null;
 }
 
@@ -17,7 +17,7 @@
 
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    <div class="container">
+    <div class="container" id="loadingBusy">
         <div class="panel-group col-md-12" id="accordion">
             <div class="panel panel-default">
                 <div class="brush">
@@ -29,7 +29,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-3">
-                                @Html.LabelFor(model => model.Client.INN, new { @class = "control-label" })
+                                @Html.LabelFor(model => model.Client.INN, new { @class = "control-label required" })
                             </div>
                             <div class="col-md-5">
                                 @Html.TextBoxFor(model => model.Client.INN, new { @class = "form-control", @readonly = "readonly" })
@@ -38,7 +38,7 @@
                         </div> <!--INN-->
                         <div class="row">
                             <div class="col-md-3">
-                                @Html.LabelFor(model => model.Client.FIO, new { @class = "control-label" })
+                                @Html.LabelFor(model => model.Client.FIO, new { @class = "control-label required" })
                             </div>
                             <div class="col-md-5">
                                 @Html.TextBoxFor(model => model.Client.FIO, new { @class = "form-control", @readonly = "readonly" })
@@ -47,7 +47,43 @@
                         </div> <!--FIO-->
                         <div class="row">
                             <div class="col-md-3">
-                                @Html.LabelFor(model => model.Client.Region, new { @class = "control-label" })
+                                @Html.LabelFor(model => model.Credit.AgreemNumber, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.AgreementId, new { @class = "form-control", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.AgreementId)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Client.MacroSegment, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.DropDownListFor(model => model.Client.MacroSegment, Model.Client.MacroSegmentList, new { @class = "form-control", id = "macroSegment" })
+                                @Html.ValidationMessageFor(model => model.Client.MacroSegment)
+                            </div>
+                        </div> <!--MacroSegment-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Client.Portfolio, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Client.Portfolio, new { @class = "form-control", id = "portfolio", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.Client.Portfolio)
+                            </div>
+                        </div> <!--Portfolio-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Client.SubSegment, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.Client.SubSegment, new { @class = "form-control", id = "" })
+                                @Html.ValidationMessageFor(model => model.Client.SubSegment)
+                            </div>
+                        </div> <!--SubSegment-->
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.Client.Region, new { @class = "control-label required" })
                             </div>
                             <div class="col-md-5">
                                 @Html.TextBoxFor(model => model.Client.Region, new { @class = "form-control", @readonly = "readonly" })
@@ -56,7 +92,7 @@
                         </div> <!--Region-->
                         <div class="row">
                             <div class="col-md-3">
-                                @Html.LabelFor(model => model.Client.City, new { @class = "control-label" })
+                                @Html.LabelFor(model => model.Client.City, new { @class = "control-label required" })
                             </div>
                             <div class="col-md-5">
                                 @Html.TextBoxFor(model => model.Client.City, new { @class = "form-control", @readonly = "readonly" })
@@ -75,15 +111,6 @@
                 <div id="credit-step-2" class="panel-collapse collapse">
 
                     <div class="container">
-                        <div class="row">
-                            <div class="col-md-3">
-                                @Html.LabelFor(model => model.Credit.AgreemNumber, new { @class = "control-label" })
-                            </div>
-                            <div class="col-md-5">
-                                @Html.TextBoxFor(model => model.AgreementId, new { @class = "form-control", @readonly = "readonly" })
-                                @Html.ValidationMessageFor(model => model.AgreementId)
-                            </div>
-                        </div>
                         @*<div class="row">
                                 <div class="col-md-3">
                                     @Html.LabelFor(model => model.Credit.AgreemNumber, new { @class = "control-label" })
@@ -93,18 +120,18 @@
                                     @Html.ValidationMessageFor(model => model.Credit.AgreemNumber)
                                 </div>
                             </div>*@
+                        @*<div class="row">
+                                <div class="col-md-3">
+                                    @Html.LabelFor(model => model.Credit.Portfolio, new { @class = "control-label required" })
+                                </div>
+                                <div class="col-md-5">
+                                    @Html.DropDownListFor(model => model.Credit.Portfolio, Model.Credit.PortfolioList, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Credit.Portfolio)
+                                </div>
+                            </div>*@ <!--Portfolio-->
                         <div class="row">
                             <div class="col-md-3">
-                                @Html.LabelFor(model => model.Credit.Portfolio, new { @class = "control-label" })
-                            </div>
-                            <div class="col-md-5">
-                                @Html.DropDownListFor(model => model.Credit.Portfolio, Model.Credit.PortfolioList, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.Credit.Portfolio)
-                            </div>
-                        </div> <!--Portfolio-->
-                        <div class="row">
-                            <div class="col-md-3">
-                                @Html.LabelFor(model => model.Credit.Outstanding, new { @class = "control-label" })
+                                @Html.LabelFor(model => model.Credit.Outstanding, new { @class = "control-label required" })
                             </div>
                             <div class="col-md-5">
                                 @Html.TextBoxFor(model => model.Credit.Outstanding, new { @class = "form-control" })
@@ -113,7 +140,7 @@
                         </div> <!--Outstanding-->
                         <div class="row">
                             <div class="col-md-3">
-                                @Html.LabelFor(model => model.Credit.Fees, new { @class = "control-label" })
+                                @Html.LabelFor(model => model.Credit.Fees, new { @class = "control-label required" })
                             </div>
                             <div class="col-md-5">
                                 @Html.TextBoxFor(model => model.Credit.Fees, new { @class = "form-control" })
@@ -122,7 +149,7 @@
                         </div> <!--Fees-->
                         <div class="row">
                             <div class="col-md-3">
-                                @Html.LabelFor(model => model.Credit.DSType, new { @class = "control-label" })
+                                @Html.LabelFor(model => model.Credit.DSType, new { @class = "control-label required" })
                             </div>
                             <div class="col-md-5">
                                 @Html.DropDownListFor(model => model.Credit.DSType, Model.Credit.DSTypeList, new { @class = "form-control" })
@@ -139,10 +166,34 @@
                         Шаг 3: Залог
                     </div>
                 </div>
+                <div class="col-md-5 hidden">
+                    @Html.DisplayFor(model => model.CollateralOtherParameters.Selected, new { @id = "CollateralsSelected" })
+                    @Html.HiddenFor(model => model.CollateralOtherParameters.Selected, new { @id = "CollateralsSelected" })
+                </div>
                 <div id="collateral-step-3" class="panel-collapse collapse">
                     @{
                         Html.RenderPartial("_Collateral");
                     }
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.CollateralOtherParameters.CoverOutstanding, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.CollateralOtherParameters.CoverOutstanding, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.CollateralOtherParameters.CoverOutstanding)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.CollateralOtherParameters.RepaymentAmount, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.CollateralOtherParameters.RepaymentAmount, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.CollateralOtherParameters.RepaymentAmount)
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div><!--Collateral-step-3-->
             <div class="panel panel-default">
@@ -155,7 +206,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-3">
-                                @Html.LabelFor(model => model.Job.WorkPlace, new { @class = "control-label" })
+                                @Html.LabelFor(model => model.Job.WorkPlace, new { @class = "control-label required" })
                             </div>
                             <div class="col-md-5">
                                 @Html.TextBoxFor(model => model.Job.WorkPlace, new { @class = "form-control" })
@@ -166,7 +217,7 @@
 
                         <div class="row">
                             <div class="col-md-3">
-                                @Html.LabelFor(model => model.Job.Position, new { @class = "control-label" })
+                                @Html.LabelFor(model => model.Job.Position, new { @class = "control-label required" })
                             </div>
                             <div class="col-md-5">
                                 @Html.TextBoxFor(model => model.Job.Position, new { @class = "form-control" })
@@ -176,7 +227,7 @@
 
                         <div class="row">
                             <div class="col-md-3">
-                                @Html.LabelFor(model => model.Job.Source, new { @class = "control-label" })
+                                @Html.LabelFor(model => model.Job.Source, new { @class = "control-label required" })
                             </div>
                             <div class="col-md-5">
                                 @Html.DropDownListFor(model => model.Job.Source, Model.Job.SourceList, new { @class = "form-control" })
@@ -197,16 +248,16 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-3">
-                                @Html.LabelFor(model => model.Liability.OtherLiability, new { @class = "control-label" })
+                                @Html.LabelFor(model => model.Liability.OtherLiability, new { @class = "control-label required" })
                             </div>
                             <div class="col-md-5">
-                                @Html.TextBoxFor(model => model.Liability.OtherLiability, new { @class = "form-control" })
+                                @Html.TextAreaFor(model => model.Liability.OtherLiability, 10, 1, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(model => model.Liability.OtherLiability)
                             </div>
                         </div> <!--OtherLiability-->
                         <div class="row">
                             <div class="col-md-3">
-                                @Html.LabelFor(model => model.Liability.SourceOfOtherLiability, new { @class = "control-label" })
+                                @Html.LabelFor(model => model.Liability.SourceOfOtherLiability, new { @class = "control-label required" })
                             </div>
                             <div class="col-md-5">
                                 @Html.DropDownListFor(model => model.Liability.SourceOfOtherLiability, Model.Liability.SourceOfOtherLiabilityList, new { @class = "form-control" })
@@ -226,7 +277,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-3">
-                                @Html.LabelFor(model => model.Income.IncomeValue, new { @class = "control-label" })
+                                @Html.LabelFor(model => model.Income.IncomeValue, new { @class = "control-label required" })
                             </div>
                             <div class="col-md-5">
                                 @Html.TextBoxFor(model => model.Income.IncomeValue, new { @class = "form-control" })
@@ -235,7 +286,7 @@
                         </div> <!--IncomeValue-->
                         <div class="row">
                             <div class="col-md-3">
-                                @Html.LabelFor(model => model.Income.SourceOfIncome, new { @class = "control-label" })
+                                @Html.LabelFor(model => model.Income.SourceOfIncome, new { @class = "control-label required" })
                             </div>
                             <div class="col-md-5">
                                 @Html.TextBoxFor(model => model.Income.SourceOfIncome, new { @class = "form-control" })
@@ -244,7 +295,7 @@
                         </div> <!--SourceOfIncome-->
                         <div class="row">
                             <div class="col-md-3">
-                                @Html.LabelFor(model => model.Income.SourceInformationOfIncome, new { @class = "control-label" })
+                                @Html.LabelFor(model => model.Income.SourceInformationOfIncome, new { @class = "control-label required" })
                             </div>
                             <div class="col-md-5">
                                 @Html.DropDownListFor(model => model.Income.SourceInformationOfIncome, Model.Income.SourceInformationOfIncomesList, new { @class = "form-control" })
@@ -253,7 +304,7 @@
                         </div> <!--SourceInformationOfIncome-->
                         <div class="row">
                             <div class="col-md-3">
-                                @Html.LabelFor(model => model.Income.SourceOfFundsDS, new { @class = "control-label" })
+                                @Html.LabelFor(model => model.Income.SourceOfFundsDS, new { @class = "control-label required" })
                             </div>
                             <div class="col-md-5">
                                 @Html.TextBoxFor(model => model.Income.SourceOfFundsDS, new { @class = "form-control" })
@@ -276,13 +327,13 @@
                                 @Html.LabelFor(model => model.Address.MatchAddress, new { @class = "control-label" })
                             </div>
                             <div class="col-md-1">
-                                @Html.CheckBoxFor(model => model.Address.MatchAddress, new { @class = "form-control" })
+                                @Html.CheckBoxFor(model => model.Address.MatchAddress)
                                 @Html.ValidationMessageFor(model => model.Address.MatchAddress)
                             </div>
                         </div> <!--MatchAddress-->
                         <div class="row">
                             <div class="col-md-3">
-                                @Html.LabelFor(model => model.Address.RegistrationAddress, new { @class = "control-label" })
+                                @Html.LabelFor(model => model.Address.RegistrationAddress, new { @class = "control-label required" })
                             </div>
                             <div class="col-md-5">
                                 @Html.TextBoxFor(model => model.Address.RegistrationAddress, new { @class = "form-control" })
@@ -291,7 +342,7 @@
                         </div> <!--RegistrationAddress-->
                         <div class="row">
                             <div class="col-md-3">
-                                @Html.LabelFor(model => model.Address.MembershipInterestOnRegistrAddress, new { @class = "control-label" })
+                                @Html.LabelFor(model => model.Address.MembershipInterestOnRegistrAddress, new { @class = "control-label required" })
                             </div>
                             <div class="col-md-5">
                                 @Html.DropDownListFor(model => model.Address.MembershipInterestOnRegistrAddress, Model.Address.MembershipInterestOnRegistrAddressList, new { @class = "form-control" })
@@ -300,7 +351,7 @@
                         </div> <!--MembershipInterestOnRegistrAddress-->
                         <div class="row">
                             <div class="col-md-3">
-                                @Html.LabelFor(model => model.Address.ResidentialAddress, new { @class = "control-label" })
+                                @Html.LabelFor(model => model.Address.ResidentialAddress, new { @class = "control-label required" })
                             </div>
                             <div class="col-md-5">
                                 @Html.TextBoxFor(model => model.Address.ResidentialAddress, new { @class = "form-control" })
@@ -309,7 +360,7 @@
                         </div> <!--ResidentialAddress-->
                         <div class="row">
                             <div class="col-md-3">
-                                @Html.LabelFor(model => model.Address.MembershipInterestOnResidentAddress, new { @class = "control-label" })
+                                @Html.LabelFor(model => model.Address.MembershipInterestOnResidentAddress, new { @class = "control-label required" })
                             </div>
                             <div class="col-md-5">
                                 @Html.DropDownListFor(model => model.Address.MembershipInterestOnResidentAddress, Model.Address.MembershipInterestOnResidentAddressList, new { @class = "form-control" })
@@ -327,9 +378,42 @@
                     Шаг 8: Активы
                 </div>
                 <div id="Active-step-8" class="panel-collapse collapse">
+                    <div class="col-md-5 hidden">
+                        @Html.DisplayFor(model => model.ActiveOtherParameters.ActivesSelected, new { @id = "ActivesSelected" })
+                        @Html.HiddenFor(model => model.ActiveOtherParameters.ActivesSelected, new { @id = "ActivesSelected" })
+                    </div>
                     @{
                         Html.RenderPartial("_Actives");
                     }
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.ActiveOtherParameters.OwnershipShare, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextBoxFor(model => model.ActiveOtherParameters.OwnershipShare, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ActiveOtherParameters.OwnershipShare)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.ActiveOtherParameters.SourceInformationOfActive, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.DropDownListFor(model => model.ActiveOtherParameters.SourceInformationOfActive, Model.ActiveOtherParameters.SourceInformationOfActiveList, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ActiveOtherParameters.SourceInformationOfActive)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                @Html.LabelFor(model => model.ActiveOtherParameters.Comment, new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-5">
+                                @Html.TextAreaFor(model => model.ActiveOtherParameters.Comment, 10, 1, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ActiveOtherParameters.Comment)
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div><!--Active-step-8-->
 
@@ -341,7 +425,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-3">
-                                @Html.LabelFor(model => model.ReasonToDenyDS.AbsenceOfDocuments, new { @class = "control-label" })
+                                @Html.LabelFor(model => model.ReasonToDenyDS.AbsenceOfDocuments, new { @class = "control-label required" })
                             </div>
                             <div class="col-md-5">
                                 @Html.DropDownListFor(model => model.ReasonToDenyDS.AbsenceOfDocuments, Model.ReasonToDenyDS.AbsenceOfDocumentsList, new { @class = "form-control" })
@@ -353,7 +437,7 @@
                                 @Html.LabelFor(model => model.ReasonToDenyDS.PresenceOfArrest, new { @class = "control-label" })
                             </div>
                             <div class="col-md-1">
-                                @Html.CheckBoxFor(model => model.ReasonToDenyDS.PresenceOfArrest, new { @class = "form-control" })
+                                @Html.CheckBoxFor(model => model.ReasonToDenyDS.PresenceOfArrest)
                                 @Html.ValidationMessageFor(model => model.ReasonToDenyDS.PresenceOfArrest)
                             </div>
                         </div> <!--PresenceOfArrest-->
@@ -362,7 +446,7 @@
                                 @Html.LabelFor(model => model.ReasonToDenyDS.BankruptsyReorganisation, new { @class = "control-label" })
                             </div>
                             <div class="col-md-1">
-                                @Html.CheckBoxFor(model => model.ReasonToDenyDS.BankruptsyReorganisation, new { @class = "form-control" })
+                                @Html.CheckBoxFor(model => model.ReasonToDenyDS.BankruptsyReorganisation)
                                 @Html.ValidationMessageFor(model => model.ReasonToDenyDS.BankruptsyReorganisation)
                             </div>
                         </div> <!--BankruptsyReorganisation-->
@@ -371,7 +455,7 @@
                                 @Html.LabelFor(model => model.ReasonToDenyDS.DivorceProceedings, new { @class = "control-label" })
                             </div>
                             <div class="col-md-1">
-                                @Html.CheckBoxFor(model => model.ReasonToDenyDS.DivorceProceedings, new { @class = "form-control" })
+                                @Html.CheckBoxFor(model => model.ReasonToDenyDS.DivorceProceedings)
                                 @Html.ValidationMessageFor(model => model.ReasonToDenyDS.DivorceProceedings)
                             </div>
                         </div> <!--DivorceProceedings-->
@@ -380,7 +464,7 @@
                                 @Html.LabelFor(model => model.ReasonToDenyDS.Heirs, new { @class = "control-label" })
                             </div>
                             <div class="col-md-1">
-                                @Html.CheckBoxFor(model => model.ReasonToDenyDS.Heirs, new { @class = "form-control" })
+                                @Html.CheckBoxFor(model => model.ReasonToDenyDS.Heirs)
                                 @Html.ValidationMessageFor(model => model.ReasonToDenyDS.Heirs)
                             </div>
                         </div> <!--Heirs-->
@@ -389,7 +473,7 @@
                                 @Html.LabelFor(model => model.ReasonToDenyDS.AbsenceOfMortgagor, new { @class = "control-label" })
                             </div>
                             <div class="col-md-1">
-                                @Html.CheckBoxFor(model => model.ReasonToDenyDS.AbsenceOfMortgagor, new { @class = "form-control" })
+                                @Html.CheckBoxFor(model => model.ReasonToDenyDS.AbsenceOfMortgagor)
                                 @Html.ValidationMessageFor(model => model.ReasonToDenyDS.AbsenceOfMortgagor)
                             </div>
                         </div> <!--AbsenceOfMortgagor-->
@@ -398,7 +482,7 @@
                                 @Html.LabelFor(model => model.ReasonToDenyDS.JudgementInTheCase, new { @class = "control-label" })
                             </div>
                             <div class="col-md-1">
-                                @Html.CheckBoxFor(model => model.ReasonToDenyDS.JudgementInTheCase, new { @class = "form-control" })
+                                @Html.CheckBoxFor(model => model.ReasonToDenyDS.JudgementInTheCase)
                                 @Html.ValidationMessageFor(model => model.ReasonToDenyDS.JudgementInTheCase)
                             </div>
                         </div> <!--JudgementInTheCase-->
@@ -407,7 +491,7 @@
                                 @Html.LabelFor(model => model.ReasonToDenyDS.DeadlyDisease, new { @class = "control-label" })
                             </div>
                             <div class="col-md-1">
-                                @Html.CheckBoxFor(model => model.ReasonToDenyDS.DeadlyDisease, new { @class = "form-control" })
+                                @Html.CheckBoxFor(model => model.ReasonToDenyDS.DeadlyDisease)
                                 @Html.ValidationMessageFor(model => model.ReasonToDenyDS.DeadlyDisease)
                             </div>
                         </div> <!--DeadlyDisease-->
@@ -425,7 +509,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-3">
-                                @Html.LabelFor(model => model.HistoryOfBusinessNegotiations, new { @class = "control-label" })
+                                @Html.LabelFor(model => model.HistoryOfBusinessNegotiations, new { @class = "control-label required" })
                             </div>
                             <div class="col-md-5">
                                 @Html.TextAreaFor(model => model.HistoryOfBusinessNegotiations, 10, 1, new { @class = "form-control" })
@@ -444,10 +528,10 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-3">
-                                @Html.LabelFor(model => model.Guarantors, new { @class = "control-label" })
+                                @Html.LabelFor(model => model.Guarantors, new { @class = "control-label required" })
                             </div>
                             <div class="col-md-5">
-                                @Html.TextAreaFor(model => model.Guarantors, 3, 1, new { @class = "form-control", @readonly = "readonly" })
+                                @Html.TextAreaFor(model => model.Guarantors, 3, 1, new { @class = "form-control" })
                                 @Html.ValidationMessageFor(model => model.Guarantors)
                             </div>
                         </div> <!--Guarantors-->
@@ -463,6 +547,7 @@
 </form>
 
 
-<script type="text/javascript" src="~/Scripts/DS/ds.js"></script>
+<script type="text/javascript" src="~/Scripts/DS/initiatorForm.js"></script>
 <script type="text/javascript" src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="~/Scripts/DataTables/dataTables.select.min.js"></script>
+<script type="text/javascript" src="~/app/utils.js"></script>

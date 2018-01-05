@@ -12,9 +12,15 @@ namespace DebtSettlement.Model.DTO.ApplicationForm
 
         public List<int> AgreemNumber { get; set; }
 
-        public string Portfolio { get; set; }
-
         public double? Outstanding { get; set; }
+       
+        public double? Principal { get; set; }
+      
+        public double? Interest { get; set; }
+      
+        public double? PurchasePrice { get; set; }
+     
+        public double? AllPayments { get; set; }
 
         public double? Fees { get; set; }
 

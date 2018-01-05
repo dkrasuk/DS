@@ -55,7 +55,7 @@ namespace DebtSettlement.AgreementLoader
                     {
                         AgreementId = agreementId,
                         Client = new Client() { INN = t.Person.Inn, FIO = t.Person.Fio, Region = t.Person.ContactsAdress.FirstOrDefault().Region.Region, City = t.Person.ContactsAdress.FirstOrDefault().Settlement, PersonId = t.Person.ContactsAdress.FirstOrDefault().PersonId },
-                        Credit = new Credit() {Outstanding = t.Outstanding, DPD = t.Delinquency.DPD}
+                        Credit = new Credit() {Outstanding = t.Outstanding, DPD = t.Delinquency.DPD, Interest = t.CurrentInterest, PurchasePrice = t.CurrentInterest}
                         
                     }).FirstOrDefault();
 

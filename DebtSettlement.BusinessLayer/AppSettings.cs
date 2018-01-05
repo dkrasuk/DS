@@ -24,12 +24,12 @@ namespace DebtSettlement.BusinessLayer
 
         public static string NotificationsServiceUrl => ConfigurationManager.AppSettings["NotificationsServiceUrl"];        
 
-        public static string DebtSettlementCreateTaskPermission
+        public static string CreateDebtSettlementPermissionName
         {
             get
             {
-                var value = ConfigurationManager.AppSettings["DebtSettlementCreateTaskPermission"];
-                return value ?? "DebtSettlementCreateTaskPermission";
+                var value = ConfigurationManager.AppSettings["CreateDebtSettlementPermissionName"];
+                return value ?? "CreateDebtSettlement";
             }
         }
     }

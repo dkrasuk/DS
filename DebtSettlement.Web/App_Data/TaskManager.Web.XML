@@ -208,22 +208,6 @@
             </summary>
             <returns>Task;.</returns>
         </member>
-        <member name="T:DebtSettlement.Web.Controllers.Api.TasksController">
-            <summary>
-            Class TasksController.
-            </summary>
-            <seealso cref="T:System.Web.Http.ApiController" />
-        </member>
-        <member name="M:DebtSettlement.Web.Controllers.Api.TasksController.#ctor(DebtSettlement.BusinessLayer.Services.Interfaces.IDebtSettlementService,DebtSettlement.BusinessLayer.Services.Interfaces.IHRService,DebtSettlement.AgreementLoader.Interface.IAgreementService,AlfaBank.Logger.ILogger)">
-            <summary>
-            Initializes a new instance of the <see cref="T:DebtSettlement.Web.Controllers.Api.TasksController" /> class.
-            </summary>
-            <param name="taskService">The task service.</param>
-            <param name="hrService">The hr service.</param>
-            <param name="agreementService">The agreement service.</param>
-            <param name="logger">The logger.</param>
-            <param name="spreadsheetWriter">The spreadsheet writer.</param>
-        </member>
         <member name="T:DebtSettlement.Web.Controllers.Api.AgreementsController">
             <summary>
             Class UsersController.
@@ -333,11 +317,231 @@
             </summary>
             <returns>ViewResult.</returns>
         </member>
+        <member name="M:DebtSettlement.Web.Controllers.DebtSettlementController.Index">
+            <summary>
+            Indexes this instance.
+            </summary>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="M:DebtSettlement.Web.Controllers.DebtSettlementController.List">
+            <summary>
+            Lists this instance.
+            </summary>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="M:DebtSettlement.Web.Controllers.DebtSettlementController.ListPartial">
+            <summary>
+            Lists the partial.
+            </summary>
+            <returns>ActionResult.</returns>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.ApplicationForm.ActiveOtherParameters.ActivesSelected">
+            <summary>
+            Gets or sets the ActivesSelected.
+            </summary>
+            <value>
+            The source of other actives.
+            </value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.ApplicationForm.ActiveOtherParameters.OwnershipShare">
+            <summary>
+            Gets or sets the OwnershipShare.
+            </summary>
+            <value>
+            The collaterals.
+            </value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.ApplicationForm.ActiveOtherParameters.SourceInformationOfActive">
+            <summary>
+            Gets or sets the SourceInformationOfActive.
+            </summary>
+            <value>
+            The collaterals.
+            </value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.ApplicationForm.ActiveOtherParameters.SourceInformationOfActiveList">
+            <summary>
+            Gets or sets the SourceInformationOfActiveList.
+            </summary>
+            <value>
+            The collaterals.
+            </value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.ApplicationForm.CollateralOtherParameters.Selected">
+            <summary>
+            Gets or sets the CollateralsSelected.
+            </summary>
+            <value>
+            The collaterals.
+            </value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.ApplicationForm.CollateralOtherParameters.CoverOutstanding">
+            <summary>
+            Gets or sets the CollateralOutstanding.
+            </summary>
+            <value>
+            The collaterals.
+            </value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.ApplicationForm.CollateralOtherParameters.RepaymentAmount">
+            <summary>
+            Gets or sets the CollateralRepaymentAmount.
+            </summary>
+            <value>
+            The collaterals.
+            </value>
+        </member>
+        <member name="T:DebtSettlement.Web.Models.ApplicationForm.ApplicationFormViewModel">
+            <summary>
+            Application Form ViewModel
+            </summary>
+        </member>
         <member name="P:DebtSettlement.Web.Models.ApplicationForm.ApplicationFormViewModel.AgreementId">
             <summary>
             Gets or sets the agreement identifier.
             </summary>
             <value>The agreement identifier.</value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.ApplicationForm.ApplicationFormViewModel.Client">
+            <summary>
+            Gets or sets the client.
+            </summary>
+            <value>
+            The client.
+            </value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.ApplicationForm.ApplicationFormViewModel.Credit">
+            <summary>
+            Gets or sets the credit.
+            </summary>
+            <value>
+            The credit.
+            </value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.ApplicationForm.ApplicationFormViewModel.Collaterals">
+            <summary>
+            Gets or sets the collaterals.
+            </summary>
+            <value>
+            The collaterals.
+            </value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.ApplicationForm.ApplicationFormViewModel.CollateralOtherParameters">
+            <summary>
+            Gets or sets the CollateralOtherParameters.
+            </summary>
+            <value>
+            The collaterals.
+            </value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.ApplicationForm.ApplicationFormViewModel.Job">
+            <summary>
+            Gets or sets the job.
+            </summary>
+            <value>
+            The job.
+            </value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.ApplicationForm.ApplicationFormViewModel.Liability">
+            <summary>
+            Gets or sets the liability.
+            </summary>
+            <value>
+            The liability.
+            </value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.ApplicationForm.ApplicationFormViewModel.Income">
+            <summary>
+            Gets or sets the income.
+            </summary>
+            <value>
+            The income.
+            </value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.ApplicationForm.ApplicationFormViewModel.Address">
+            <summary>
+            Gets or sets the address.
+            </summary>
+            <value>
+            The address.
+            </value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.ApplicationForm.ApplicationFormViewModel.OtherActives">
+            <summary>
+            Gets or sets a value indicating whether [other actives].
+            </summary>
+            <value>
+              <c>true</c> if [other actives]; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.ApplicationForm.ApplicationFormViewModel.Actives">
+            <summary>
+            Gets or sets the Actives.
+            </summary>
+            <value>
+            The source of other actives.
+            </value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.ApplicationForm.ApplicationFormViewModel.ActiveOtherParameters">
+            <summary>
+            Gets or sets the ActiveOtherParameters.
+            </summary>
+            <value>
+            The source of other actives.
+            </value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.ApplicationForm.ApplicationFormViewModel.ReasonToDenyDS">
+            <summary>
+            Gets or sets the reason to deny ds.
+            </summary>
+            <value>
+            The reason to deny ds.
+            </value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.ApplicationForm.ApplicationFormViewModel.HistoryOfBusinessNegotiations">
+            <summary>
+            Gets or sets the history of business negotiations.
+            </summary>
+            <value>
+            The history of business negotiations.
+            </value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.ApplicationForm.ApplicationFormViewModel.Guarantors">
+            <summary>
+            Gets or sets the guarantors.
+            </summary>
+            <value>
+            The guarantors.
+            </value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.ApplicationForm.ApplicationFormViewModel.Decision">
+            <summary>
+            Gets or sets the Decision.
+            </summary>
+            <value>
+            The guarantors.
+            </value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.ApplicationForm.ApplicationFormViewModel.Finance">
+            <summary>
+            Gets or sets the Finance.
+            </summary>
+            <value>
+            The guarantors.
+            </value>
+        </member>
+        <member name="P:DebtSettlement.Web.Models.ApplicationForm.ApplicationFormViewModel.Status">
+            <summary>
+            Gets or sets the Status.
+            </summary>
+            <value>
+            The guarantors.
+            </value>
+        </member>
+        <member name="M:DebtSettlement.Web.Models.ApplicationForm.ApplicationFormViewModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:DebtSettlement.Web.Models.ApplicationForm.ApplicationFormViewModel"/> class.
+            </summary>
         </member>
         <member name="T:DebtSettlement.Web.Models.ExecuteCommandModel">
             <summary>
